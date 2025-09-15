@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>와석초등학교 업무갈등 조정 실무 매뉴얼</title>
+    <style>
+        body {
+            font-family: "맑은 고딕", "Malgun Gothic", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+            color: #2c3e50;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-top: 8px;
+        }
+        
+        .btn-group {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 5px 8px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary {
+            background-color: #95a5a6;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+        
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 8px;
+            margin: 30px 0 15px 0;
+        }
+        
+        h3 {
+            font-size: 16px;
+            font-weight: bold;
+            color: #34495e;
+            margin: 20px 0 10px 0;
+        }
+        
+        h4 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #5d6d7e;
+            margin: 15px 0 8px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+            background-color: white;
+        }
+        
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 12px 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        th {
+            background-color: #ecf0f1;
+            font-weight: bold;
+            text-align: center;
+            color: #2c3e50;
+        }
+        
+        .priority-high {
+            background-color: #fadbd8;
+        }
+        
+        .priority-medium {
+            background-color: #fef9e7;
+        }
+        
+        .priority-low {
+            background-color: #eafaf1;
+        }
+        
+        .box {
+            border: 1px solid #bdc3c7;
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .box-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-size: 15px;
+        }
+        
+        .do-dont {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+        }
+        
+        .do, .dont {
+            flex: 1;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .do {
+            background-color: #eafaf1;
+            border-left: 4px solid #27ae60;
+        }
+        
+        .dont {
+            background-color: #fadbd8;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .do-title {
+            font-weight: bold;
+            color: #27ae60;
+            margin-bottom: 8px;
+        }
+        
+        .dont-title {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 8px;
+        }
+        
+        .principles {
+            background-color: #eef2f7;
+            border: 1px solid #a4b0be;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .checklist {
+            background-color: #f4f6f7;
+            border-left: 4px solid #5d6d7e;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 13px;
+            color: #7f8c8d;
+            border-top: 1px solid #ecf0f1;
+            padding-top: 20px;
+        }
+        
+        ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 6px 0;
+        }
+        
+        ol {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        @media print {
+            .btn, .btn-group {
+                display: none !important;
+            }
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>와석초등학교 업무갈등 조정 실무 매뉴얼</h1>
+            <div class="subtitle">2025학년도 연구학교 운영 결과물 | 와석초 학교업무협의체</div>
+        </div>
+
+        <div class="btn-group">
+            <button onclick="window.print()" class="btn">📄 PDF로 저장</button>
+            <a href="#types" class="btn btn-secondary">갈등유형 바로가기</a>
+            <a href="#process" class="btn btn-secondary">해결절차 바로가기</a>
+            <a href="#checklist" class="btn btn-secondary">체크리스트 바로가기</a>
+        </div>
+
+        <h2>1. 목적 및 적용범위</h2>
+        <p><strong>목적:</strong> 교육활동 중심 학교 운영을 위해 부서간 업무 소관 갈등을 신속하게 해결하여 업무 효율성 확보</p>
+        <p><strong>적용:</strong> 전 교직원, 부서간 업무 갈등 발생 시 즉시 적용</p>
+
+        <h2 id="types">2. 업무갈등 유형 및 판단기준</h2>
+        
+        <h3>실제 현장 갈등 유형</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 18%;">유형</th>
+                    <th style="width: 52%;">구체적 사례</th>
+                    <th style="width: 30%;">1차 판단기준</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>업무 소유권</strong></td>
+                    <td>"성폭력예방교육 학부모대상은 보건교사? 학부모회 담당교사?"<br>"디지털시민성교육은 과학정보부? 미래진로교육부?"</td>
+                    <td> 기존 선례, 전문성, 공문상의 핵심 키워드, 업무 목적과의 관계성</td>
+                </tr>
+                <tr>
+                    <td><strong>업무 회피</strong></td>
+                    <td>"바빠서 못해요" vs "원래 당신 업무"<br>어려운 업무 미루기, 책임 전가<br>"작년 공문에 보니 선생님 업무" VS"그 때도 제가 도의상 한 겁니다"</td>
+                    <td>업무분장표, 시급성, 대체 가능성, 공문상의 발신처</td>
+                </tr>
+                <tr>
+                    <td><strong>업무 중복</strong></td>
+                    <td>동일한 공문을 여러 부서에서 각각 처리<br>같은 성격 업무의 분산 처리</td>
+                    <td>효율성, 일원화 가능성, 업무 처리 주 담당자 지정, 그 외 부서는 협조</td>
+                </tr>
+                <tr>
+                    <td><strong>업무 과부하</strong></td>
+                    <td>특정 부서에만 업무가 계속 몰림<br>업무량 불균형 지속</td>
+                    <td>업무량 형평성, 처리 역량, 해당 부서 업무 분장의 세분화</td>
+                </tr>
+                <tr>
+                    <td><strong>절차 갈등</strong></td>
+                    <td>업무 처리 순서에 대한 이견<br>결재라인, 처리 방식 의견 차이</td>
+                    <td>관련 규정, 효율성, 관례, 전결규정의 확대</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>긴급도 판단 (3단계)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 15%;">단계</th>
+                    <th style="width: 25%;">처리시한</th>
+                    <th style="width: 60%;">해당 사례</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="priority-high">
+                    <td><strong>긴급</strong></td>
+                    <td>당일 처리</td>
+                    <td>수업 중단 위험, 마감 임박, 민원 확산 우려, 보고기한 임박</td>
+                </tr>
+                <tr class="priority-medium">
+                    <td><strong>보통</strong></td>
+                    <td>3일 내</td>
+                    <td>일반 학사업무, 행사 준비, 예산 관련</td>
+                </tr>
+                <tr class="priority-low">
+                    <td><strong>여유</strong></td>
+                    <td>1주일</td>
+                    <td>개선 업무, 편의 사항, 내부 조정</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 id="process">3. 단계별 해결 프로세스</h2>
+        
+        <div class="box">
+            <div class="box-title">갈등 발생 → 24시간 내 1차 해결 시도</div>
+        </div>
+
+        <h3>1단계: 당사자간 직접 협의 (30분 투자)</h3>
+        <div class="do-dont">
+            <div class="do">
+                <div class="do-title">✓ 해야 할 것</div>
+                <ul>
+                    <li>업무분장표 함께 확인</li>
+                    <li>타 학교 유사 사례 조회</li>
+                    <li>서로의 업무량/일정 솔직하게 공유</li>
+                    <li>윈-윈 방안 모색 (업무 나누기, 순서 조정 등)</li>
+                </ul>
+            </div>
+            <div class="dont">
+                <div class="dont-title">✗ 하지 말 것</div>
+                <ul>
+                    <li>"원래 당신이 하던 거잖아"</li>
+                    <li>"나는 바빠서 안 돼"</li>
+                    <li>감정적 대응</li>
+                    <li>제3자에게 일방적 하소연</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>2단계: 부서장 중재 (1일 내)</h3>
+        <ul>
+            <li><strong>해당 부서장</strong>이 중재</li>
+            <li>온라인 연구실에 '갈등조정 요청' 간단 기록</li>
+            <li>업무분장 근거와 합리적 분담 방안 제시</li>
+        </ul>
+
+        <h3>3단계: 교무행정업무팀 조정 (3일 내)</h3>
+        <ul>
+            <li>복잡하거나 반복되는 갈등의 경우</li>
+            <li>업무분장 자체의 수정이 필요한 경우</li>
+            <li>새로운 업무 배정 원칙 필요한 경우</li>
+        </ul>
+
+        <h2>4. 갈등 유형별 해결 가이드</h2>
+
+        <h3>가. 업무 소유권 갈등</h3>
+        <h4>판단 순서</h4>
+        <ol>
+            <li><strong>법령·지침 확인:</strong> 반드시 특정 부서가 해야 하는지</li>
+            <li><strong>전문성 검토:</strong> 어느 부서가 더 전문적으로 처리 가능한지</li>
+            <li><strong>연관성 분석:</strong> 기존 업무와의 연계성이 높은 부서</li>
+            <li><strong>효율성 고려:</strong> 가장 효과적으로 처리할 수 있는 부서</li>
+        </ol>
+        <p><strong>해결 방식:</strong> 명확한 소유권 배정 + 업무분장표 즉시 수정</p>
+
+        <h3>나. 업무 회피 갈등</h3>
+        <h4>확인 사항</h4>
+        <ol>
+            <li><strong>실제 업무량:</strong> 문서 처리 건수, 회의 참석 횟수 등 객관적 비교</li>
+            <li><strong>전문성 요구:</strong> 특별한 기술이나 경험이 필요한지</li>
+            <li><strong>시급성:</strong> 정말 미룰 수 없는 업무인지</li>
+            <li><strong>대안 가능성:</strong> 다른 방법이나 시기 조정 가능한지</li>
+        </ol>
+        <p><strong>해결 방식:</strong> 업무량 재조정 또는 일시적 지원 방안 마련</p>
+
+        <h3>다. 업무 중복 갈등</h3>
+        <h4>분석 포인트</h4>
+        <ol>
+            <li><strong>중복의 원인:</strong> 시스템 문제인지, 소통 부족인지</li>
+            <li><strong>통합 가능성:</strong> 하나의 부서에서 일원화할 수 있는지</li>
+            <li><strong>전문성 손실:</strong> 통합 시 전문성이 떨어질 위험은 없는지</li>
+        </ol>
+        <p><strong>해결 방식:</strong> 주관 부서 지정 + 협조 부서 역할 명확화</p>
+
+        <h3>라. 업무 과부하 갈등</h3>
+        <h4>형평성 검토</h4>
+        <ol>
+            <li><strong>정량적 분석:</strong> 처리 공문 수, 담당 업무 건수 비교</li>
+            <li><strong>난이도 고려:</strong> 단순 반복 vs 고도의 판단 필요 업무</li>
+            <li><strong>시기적 집중:</strong> 특정 시기에만 몰리는지 상시인지</li>
+        </ol>
+        <p><strong>해결 방식:</strong> 업무 재분배 또는 순환 담당제 도입</p>
+
+        <h3>마. 절차 갈등</h3>
+        <h4>효율성 원칙</h4>
+        <ol>
+            <li><strong>최소 단계:</strong> 불필요한 경유 부서 최소화</li>
+            <li><strong>병렬 처리:</strong> 동시 진행 가능한 업무는 병렬로</li>
+            <li><strong>명확성:</strong> 각 단계별 역할과 기한 명시</li>
+        </ol>
+
+        <h2>5. 회의 운영 (1.1.1.1 원칙)</h2>
+
+        <h3>갈등조정 회의 진행법</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 20%;">단계</th>
+                    <th style="width: 80%;">세부 내용</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>사전 준비</strong></td>
+                    <td>갈등 상황 정리서 1쪽 (배경, 쟁점, 대안)<br>관련 데이터 준비 (업무량, 선례, 규정 등)<br>회의 목표 명확화</td>
+                </tr>
+                <tr>
+                    <td><strong>회의 중</strong></td>
+                    <td>30분 집중 (장시간 논의 금지)<br>실시간 기록 (결정사항과 근거 즉시 문서화)</td>
+                </tr>
+                <tr>
+                    <td><strong>회의 후</strong></td>
+                    <td>당일 공유 (온라인 연구실에 결과 즉시 공지)<br>이행 확인 (1주일 후 처리 결과 점검)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>6. 예방 및 사후관리</h2>
+
+        <h3>갈등 예방책</h3>
+        <ul>
+            <li><strong>명확한 업무분장:</strong> 경계 업무는 사전에 담당 부서 명시</li>
+            <li><strong>정기적 업무량 점검:</strong> 월 1회 부서별 업무량 모니터링</li>
+            <li><strong>신규 업무 배정 원칙:</strong> 새 업무 발생 시 즉시 소속 부서 지정</li>
+            <li><strong>소통 채널 상시 개방:</strong> 온라인 연구실 통한 수시 의견 교환</li>
+        </ul>
+
+        <h2>7. 핵심 원칙 및 체크리스트</h2>
+
+        <div class="principles">
+            <h3>갈등 해결 6원칙</h3>
+            <ol>
+                <li><strong>교육활동 우선:</strong> 학생 교육에 미치는 영향을 최우선 고려</li>
+                <li><strong>신속 처리:</strong> 갈등이 길어질수록 업무 효율성 저하</li>
+                <li><strong>공정성:</strong> 특정 부서나 개인에게만 부담 집중 금지</li>
+                <li><strong>투명성:</strong> 결정 과정과 근거를 명확히 공개</li>
+                <li><strong>상호 배려:</strong> 교육공동체 구성원으로서 서로를 존중하고 협력</li>
+                <li><strong>학습:</strong> 동일 갈등 재발 방지를 위한 시스템 개선</li>
+            </ol>
+        </div>
+
+        <div id="checklist" class="checklist">
+            <h3>갈등 해결 체크리스트</h3>
+            <ul style="list-style: none; padding-left: 0;">
+                <li>☐ 갈등 유형을 정확히 파악했는가?</li>
+                <li>☐ 관련 규정과 선례를 충분히 검토했는가?</li>
+                <li>☐ 당사자들의 의견을 골고루 들었는가?</li>
+                <li>☐ 교육활동에 미치는 영향을 고려했는가?</li>
+                <li>☐ 실현 가능한 해결책인가?</li>
+                <li>☐ 향후 동일 갈등 예방책도 마련했는가?</li>
+            </ul>
+        </div>
+
+        <h2>8. 갈등 조정 신청서 양식</h2>
+
+        <div class="box">
+            <div class="box-title">갈등 조정 신청서</div>
+            <table style="margin-top: 10px;">
+                <tr>
+                    <th style="width: 20%; background-color: #f8f9fa;">신청일</th>
+                    <td style="width: 30%;">2025년 ___월 ___일</td>
+                    <th style="width: 20%; background-color: #f8f9fa;">신청자</th>
+                    <td style="width: 30%;">________________</td>
+                </tr>
+                <tr>
+                    <th style="background-color: #f8f9fa;">갈등 유형</th>
+                    <td colspan="3">
+                        ☐ 업무 소유권 &nbsp;&nbsp; ☐ 업무 회피 &nbsp;&nbsp; ☐ 업무 중복 &nbsp;&nbsp; ☐ 업무 과부하 &nbsp;&nbsp; ☐ 절차 갈등
+                    </td>
+                </tr>
+                <tr>
+                    <th style="background-color: #f8f9fa;">긴급도</th>
+                    <td colspan="3">
+                        ☐ 긴급(당일) &nbsp;&nbsp; ☐ 보통(3일 내) &nbsp;&nbsp; ☐ 여유(1주일)
+                    </td>
+                </tr>
+                <tr>
+                    <th style="background-color: #f8f9fa;">관련 부서</th>
+                    <td colspan="3">__________________ 부 ↔ __________________ 부</td>
+                </tr>
+                <tr>
+                    <th style="background-color: #f8f9fa;">갈등 배경<br>(200자 이내)</th>
+                    <td colspan="3" style="height: 80px; vertical-align: top; padding: 8px;">
+                        <br><br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="background-color: #f8f9fa;">희망 해결방안</th>
+                    <td colspan="3" style="height: 60px; vertical-align: top; padding: 8px;">
+                        <br><br>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="background-color: #f8f9fa;">처리 희망일</th>
+                    <td colspan="3">2025년 ___월 ___일까지</td>
+                </tr>
+            </table>
+            <p style="margin-top: 15px; font-size: 12px; color: #666;">
+                ※ 작성 후 온라인 연구실에 업로드하거나 해당 부서장에게 제출
+            </p>
+        </div>
+
+        <div class="footer">
+            <p><strong>기억하세요:</strong> 갈등은 조직 발전의 기회입니다. 신속하고 공정한 해결을 통해 더 효율적인 업무 체계를 만들어 갑시다.</p>
+            <p>와석초등학교 학교업무협의체 | 2025학년도 연구학교 운영 | S.O.S 모델 적용</p>
+            <div style="margin-top: 20px;">
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn">🔝 맨 위로</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
