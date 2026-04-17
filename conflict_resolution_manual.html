@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>와석초등학교 업무갈등 조정 실무 매뉴얼 통합판</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif; background: #f4f3ff; color: #1d1d2e; line-height: 1.7; }
+    .container { max-width: 1060px; margin: 20px auto 42px; background: #fff; border-radius: 16px; box-shadow: 0 10px 32px rgba(69, 58, 168, 0.14); overflow: hidden; }
+    .hero { background: linear-gradient(135deg, #6c5ce7, #8f84ff 60%, #15c0bb); color: #fff; padding: 34px 24px; text-align: center; }
+    .hero h1 { margin: 0; font-size: 28px; }
+    .hero p { margin: 10px 0 0; opacity: 0.95; font-size: 14px; }
+    .content { padding: 24px 24px 36px; }
+    .quick-nav { display: flex; flex-wrap: wrap; gap: 8px; background: #f8f7ff; border: 1px solid #e4dfff; padding: 10px; border-radius: 12px; margin-bottom: 16px; }
+    .quick-nav a { text-decoration: none; color: #4f41c8; background: #fff; border: 1px solid #d2ccff; border-radius: 999px; padding: 7px 11px; font-size: 13px; font-weight: 700; }
+    h2 { margin: 28px 0 12px; padding: 10px 12px; background: #f1efff; border-left: 4px solid #6c5ce7; border-radius: 0 10px 10px 0; font-size: 20px; }
+    h3 { margin: 18px 0 10px; color: #5648ce; border-bottom: 2px dashed #d8d2ff; padding-bottom: 5px; font-size: 17px; }
+    .box { border: 1px solid #e2ddff; border-radius: 11px; background: #faf9ff; padding: 13px 14px; margin: 10px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
+    th, td { border: 1px solid #e8e4ff; padding: 9px 10px; vertical-align: top; }
+    th { background: #6c5ce7; color: #fff; text-align: left; }
+    tr:nth-child(even) td { background: #fcfbff; }
+    .do-dont { display: flex; gap: 12px; }
+    .do, .dont { flex: 1; border-radius: 10px; padding: 12px; font-size: 14px; }
+    .do { background: #ebfff6; border: 1px solid #bdeed8; }
+    .dont { background: #fff3f3; border: 1px solid #ffd3d3; }
+    .case-tools { background: #f8f7ff; border: 1px solid #e1dcff; border-radius: 12px; padding: 12px; margin-bottom: 12px; }
+    .case-tools .row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+    .case-tools input, .case-tools select { border: 1px solid #cdc6ff; border-radius: 8px; padding: 8px 10px; font-size: 14px; font-family: inherit; }
+    .case-tools input { min-width: 220px; flex: 1; }
+    details.case { border: 1px solid #e5e1ff; border-radius: 12px; margin: 10px 0; overflow: hidden; }
+    details.case summary { list-style: none; cursor: pointer; padding: 12px 14px; background: #f8f7ff; font-weight: 700; color: #372f89; display: flex; justify-content: space-between; }
+    details.case summary::-webkit-details-marker { display: none; }
+    .case-body { padding: 10px 14px 12px; }
+    .label { color: #6c5ce7; font-weight: 800; margin-right: 8px; font-size: 13px; }
+    .copy-btn { margin-left: 8px; border: 1px solid #cfc8ff; background: #fff; color: #4d41be; border-radius: 8px; font-size: 12px; font-weight: 700; padding: 3px 8px; cursor: pointer; }
+    .hidden-case { display: none; }
+    .ops-checklist { border: 1px solid #d5f0e6; border-left: 5px solid #20b57d; background: #f4fff9; border-radius: 0 12px 12px 0; padding: 12px 14px; margin: 14px 0; }
+    .ops-checklist label { display: block; margin: 6px 0; font-size: 14px; }
+    .ops-checklist button { border: 1px solid #33ba89; background: #20b57d; color: #fff; border-radius: 8px; font-size: 13px; font-weight: 700; padding: 7px 11px; cursor: pointer; margin-top: 6px; }
+    .summary-box { width: 100%; min-height: 110px; margin-top: 10px; border: 1px solid #c7e8dc; border-radius: 8px; font-family: inherit; font-size: 14px; padding: 9px 10px; }
+    .footer { margin-top: 24px; text-align: center; font-size: 13px; color: #707070; border-top: 1px solid #ece9ff; padding-top: 16px; }
+    .toast { position: fixed; right: 14px; bottom: 14px; background: #2d2a55; color: #fff; padding: 8px 11px; border-radius: 8px; font-size: 12px; opacity: 0; transform: translateY(8px); transition: all .2s ease; pointer-events: none; }
+    .toast.show { opacity: .96; transform: translateY(0); }
+    @media (max-width: 760px) { .do-dont { flex-direction: column; } .hero h1 { font-size: 24px; } .content { padding: 14px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <h1>와석초등학교 업무갈등 조정 실무 매뉴얼 통합판</h1>
+      <p>기존 실무 매뉴얼 + 확장 사례/도구를 조화롭게 반영한 버전</p>
+    </header>
+    <main class="content">
+      <nav class="quick-nav">
+        <a href="#core">기존 실무 핵심</a><a href="#types">갈등유형</a><a href="#process">해결 프로세스</a>
+        <a href="#comparison">확장 사례 비교</a><a href="#cases">사례 카드</a><a href="#check">체크형 점검표</a>
+      </nav>
+      <section id="core"><h2>1. 목적 및 적용범위 (기존 내용 보존)</h2><div class="box">
+        <p><strong>목적:</strong> 교육활동 중심 학교 운영을 위해 부서 간 업무 갈등을 신속하게 해결해 업무 효율성을 높인다.</p>
+        <p><strong>적용:</strong> 전 교직원, 부서 간 업무 갈등 발생 시 즉시 적용한다.</p>
+        <p><strong>통합 원칙:</strong> 기존 운영 매뉴얼의 실무 절차를 유지하면서 확장 사례와 문안 도구를 추가한다.</p></div></section>
+      <section id="types"><h2>2. 업무갈등 유형 및 판단기준 (기존 구조 유지)</h2>
+        <table><thead><tr><th style="width:18%;">유형</th><th style="width:52%;">구체적 사례</th><th style="width:30%;">1차 판단기준</th></tr></thead>
+          <tbody>
+            <tr><td><strong>업무 소유권</strong></td><td>"학부모 대상 성폭력예방교육은 보건부인가, 관련 부서인가?"</td><td>관련 규정, 선례, 전문성</td></tr>
+            <tr><td><strong>업무 회피</strong></td><td>"바빠서 못한다" vs "원래 네 업무다" 형태의 책임 전가</td><td>업무분장표, 시급성, 대체 가능성</td></tr>
+            <tr><td><strong>업무 중복</strong></td><td>동일 공문을 여러 부서에서 각각 처리</td><td>일원화 가능성, 효율성</td></tr>
+            <tr><td><strong>업무 과부하</strong></td><td>특정 부서에 업무가 지속적으로 집중</td><td>업무량 형평성, 처리 역량</td></tr>
+            <tr><td><strong>절차 갈등</strong></td><td>협조·결재 순서에 대한 이견</td><td>규정, 관례, 처리 효율</td></tr>
+          </tbody></table></section>
+      <section id="process"><h2>3. 단계별 해결 프로세스 (기존 내용 + 확장 보강)</h2><div class="box"><strong>갈등 인지 → 24시간 내 1차 협의 → 합의 실패 시 관리자 중재 → 공식 절차</strong></div>
+        <h3>1단계: 당사자 직접 협의</h3><div class="do-dont"><div class="do"><strong>해야 할 것</strong><ul><li>업무분장표/기존 선례 확인</li><li>업무량·일정을 공개적으로 공유</li><li>대체안(역할 분담/기한 조정) 제시</li></ul></div><div class="dont"><strong>하지 말 것</strong><ul><li>감정적 표현</li><li>근거 없는 책임 전가</li><li>제3자에게 일방적 전달</li></ul></div></div>
+        <h3>2단계: 부서장 또는 교감 중재</h3><ul><li>쟁점을 1쪽으로 정리해 중재회의 진행</li><li>최종결정권자·실무담당자·안내담당자(RACI)를 명확화</li></ul>
+        <h3>3단계: 공식 조정 및 문서화</h3><ul><li>반복 갈등은 업무분장표 수정으로 구조적 해결</li><li>결정사항은 회의록과 공지문으로 남긴다.</li></ul></section>
+      <section id="comparison"><h2>4. 확장 사례 비교표 (최신 내용 반영)</h2>
+        <table><thead><tr><th>사례</th><th>갈등 유형</th><th>핵심 처방</th><th>난이도</th></tr></thead><tbody>
+          <tr><td>늘봄 배정선 혼선</td><td>운영·배정</td><td>RACI 재설계, 단일 안내</td><td>상</td></tr>
+          <tr><td>학교폭력 자체해결 오판</td><td>학생보호·안전</td><td>보호조치 우선, 전담기구 선검토</td><td>상</td></tr>
+          <tr><td>민원 단일창구 부재</td><td>운영·배정</td><td>교감 중심 단일창구</td><td>상</td></tr>
+          <tr><td>정서행동검사 공유범위</td><td>학생보호·안전</td><td>최소 접근권한, 비공개 협의체</td><td>상</td></tr>
+          <tr><td>근무성적평정 갈등</td><td>인사·책임</td><td>근거 설명, 이의신청 절차</td><td>중상</td></tr>
+          <tr><td>내부신고 후 보복 의심</td><td>인사·책임</td><td>인사 변경 유보, 보호절차 병행</td><td>상</td></tr>
+        </tbody></table></section>
+      <section id="cases"><h2>5. 사례 카드 (검색/필터/문안 복사)</h2>
+        <div class="case-tools"><div class="row"><input id="caseSearchInput" type="text" placeholder="사례 검색 (예: 민원, 학교폭력, RACI)" oninput="applyCaseFilters()"></div>
+          <div class="row"><select id="typeFilter" onchange="applyCaseFilters()"><option value="전체">유형 전체</option><option value="운영·배정">운영·배정</option><option value="학생보호·안전">학생보호·안전</option><option value="인사·책임">인사·책임</option></select><select id="difficultyFilter" onchange="applyCaseFilters()"><option value="전체">난이도 전체</option><option value="상">상</option><option value="중상">중상</option></select></div>
+          <small id="caseCount">표시 사례: 6건</small></div>
+        <details class="case case-item" data-type="운영·배정" data-difficulty="상" data-keywords="늘봄 RACI 배정 학부모"><summary><span>사례 1. 늘봄 배정 혼선</span><span>▼</span></summary><div class="case-body"><p><span class="label">권고</span>배정권자와 안내권자를 분리하지 말고 RACI를 확정한다.</p><p><span class="label">예시 문안</span>“늘봄 배정은 교감이 총괄하고 문의는 전담실이 일괄 접수합니다.”<button type="button" class="copy-btn" data-copy="늘봄 배정은 교감이 총괄하고 문의는 전담실이 일괄 접수합니다." onclick="copyExample(this)">복사</button></p></div></details>
+        <details class="case case-item" data-type="학생보호·안전" data-difficulty="상" data-keywords="학교폭력 보호조치 전담기구"><summary><span>사례 2. 학교폭력 자체해결 오판</span><span>▼</span></summary><div class="case-body"><p><span class="label">권고</span>피해학생 보호를 즉시 시행하고 전담기구 사실확인을 선행한다.</p><p><span class="label">예시 문안</span>“생활지도와 별개로 전담기구 검토 절차를 진행하며 보호조치는 즉시 시행합니다.”<button type="button" class="copy-btn" data-copy="생활지도와 별개로 전담기구 검토 절차를 진행하며 보호조치는 즉시 시행합니다." onclick="copyExample(this)">복사</button></p></div></details>
+        <details class="case case-item" data-type="운영·배정" data-difficulty="상" data-keywords="민원 단일창구 반복민원"><summary><span>사례 3. 민원 단일창구 부재</span><span>▼</span></summary><div class="case-body"><p><span class="label">권고</span>교사 개인 연락 경로를 차단하고 학교 대표 창구로 통합한다.</p><p><span class="label">예시 문안</span>“본 사안은 학교 대표 민원창구로 일원화하며 개인 연락에는 응답하지 않습니다.”<button type="button" class="copy-btn" data-copy="본 사안은 학교 대표 민원창구로 일원화하며 개인 연락에는 응답하지 않습니다." onclick="copyExample(this)">복사</button></p></div></details>
+        <details class="case case-item" data-type="학생보호·안전" data-difficulty="상" data-keywords="정서행동검사 개인정보 공유범위"><summary><span>사례 4. 정서행동검사 공유범위 갈등</span><span>▼</span></summary><div class="case-body"><p><span class="label">권고</span>열람권한 최소화, 단체 메신저 공유 금지.</p><p><span class="label">예시 문안</span>“검사 결과는 지정 인원만 열람하며 대화방 공유를 금지합니다.”<button type="button" class="copy-btn" data-copy="검사 결과는 지정 인원만 열람하며 대화방 공유를 금지합니다." onclick="copyExample(this)">복사</button></p></div></details>
+        <details class="case case-item" data-type="인사·책임" data-difficulty="중상" data-keywords="근무성적평정 성과상여금"><summary><span>사례 5. 근무성적평정·성과상여금 갈등</span><span>▼</span></summary><div class="case-body"><p><span class="label">권고</span>등급 통보와 근거 설명을 분리하고 이의신청 절차를 명확히 한다.</p><p><span class="label">예시 문안</span>“제출자료를 평정기준과 대조해 재검토하고 결과를 서면 회신하겠습니다.”<button type="button" class="copy-btn" data-copy="제출자료를 평정기준과 대조해 재검토하고 결과를 서면 회신하겠습니다." onclick="copyExample(this)">복사</button></p></div></details>
+        <details class="case case-item" data-type="인사·책임" data-difficulty="상" data-keywords="내부신고 보복 인사평가 보호"><summary><span>사례 6. 내부신고 후 보복 의심</span><span>▼</span></summary><div class="case-body"><p><span class="label">권고</span>신고 직후 인사·평가 변경은 관련성 검토 전 유보한다.</p><p><span class="label">예시 문안</span>“신고 이후 인사·평가 변경은 관련성 검토 완료 시까지 유보합니다.”<button type="button" class="copy-btn" data-copy="신고 이후 인사·평가 변경은 관련성 검토 완료 시까지 유보합니다." onclick="copyExample(this)">복사</button></p></div></details>
+      </section>
+      <section id="check"><h2>6. 체크형 실무 점검표 (최신 도구)</h2><div class="ops-checklist">
+        <label><input type="checkbox" class="ops-item"> 갈등 인지 시각과 최초 보고자를 기록했다.</label>
+        <label><input type="checkbox" class="ops-item"> 24시간 내 직접협의 또는 중재 일정을 확정했다.</label>
+        <label><input type="checkbox" class="ops-item"> 최종결정권자/실무담당/안내담당을 지정했다.</label>
+        <label><input type="checkbox" class="ops-item"> 결과 문서화와 공지를 완료했다.</label>
+        <label><input type="checkbox" class="ops-item"> 2주 또는 4주 후속점검 일정을 잡았다.</label>
+        <button type="button" onclick="buildChecklistSummary()">체크 결과 요약 생성</button>
+        <textarea id="checklistSummary" class="summary-box" placeholder="버튼을 누르면 체크 결과 요약이 생성됩니다."></textarea></div></section>
+      <footer class="footer">와석초등학교 학교업무협의체 | 기존 실무 매뉴얼 + 확장 사례 통합판</footer>
+    </main>
+  </div>
+  <div id="toast" class="toast">복사되었습니다.</div>
+  <script>
+    function applyCaseFilters(){var q=document.getElementById("caseSearchInput").value.trim().toLowerCase();var t=document.getElementById("typeFilter").value;var d=document.getElementById("difficultyFilter").value;var items=document.querySelectorAll(".case-item");var v=0;items.forEach(function(i){var text=(i.textContent+" "+i.getAttribute("data-keywords")).toLowerCase();var okQ=!q||text.indexOf(q)!==-1;var okT=(t==="전체")||(i.getAttribute("data-type")===t);var okD=(d==="전체")||(i.getAttribute("data-difficulty")===d);var show=okQ&&okT&&okD;i.classList.toggle("hidden-case",!show);if(show)v+=1;});document.getElementById("caseCount").textContent="표시 사례: "+v+"건";}
+    function showToast(m){var t=document.getElementById("toast");t.textContent=m;t.classList.add("show");window.setTimeout(function(){t.classList.remove("show");},1500);}
+    function copyExample(btn){var text=btn.getAttribute("data-copy");navigator.clipboard.writeText(text).then(function(){showToast("예시 문안을 복사했습니다.");}).catch(function(){showToast("복사에 실패했습니다.");});}
+    function buildChecklistSummary(){var c=document.querySelectorAll(".ops-item:checked");var total=document.querySelectorAll(".ops-item").length;var lines=[];lines.push("[갈등 조정 점검 요약]");lines.push("- 점검일: "+new Date().toLocaleDateString("ko-KR"));lines.push("- 완료 항목: "+c.length+"/"+total);lines.push("");c.forEach(function(i,idx){lines.push((idx+1)+". "+i.parentElement.textContent.trim());});if(c.length===0)lines.push("완료된 항목이 없습니다.");document.getElementById("checklistSummary").value=lines.join("\n");}
+  </script>
+</body>
+</html>
