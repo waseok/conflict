@@ -470,7 +470,109 @@
             </ul>
         </div>
 
-        <h2>8. 갈등 조정 신청서 양식</h2>
+        <h2>8. 키워드 클라우드</h2>
+        <p style="font-size: 14px; color: #7f8c8d;">갈등 조정 주요 키워드를 시각화합니다. 버튼을 눌러 새 클라우드를 생성하세요.</p>
+        <div style="text-align: center; margin: 20px 0;">
+            <canvas id="wordCloudCanvas" style="width: 100%; max-width: 800px; height: 350px; background-color: #f8f9fa; border-radius: 8px; border: 1px solid #ecf0f1;"></canvas>
+        </div>
+        <div style="text-align: center; margin-bottom: 10px;">
+            <button onclick="createNewCloud()" class="btn">새 클라우드 만들기</button>
+        </div>
+
+        <script>
+            var cloudWords = [
+                { text: '갈등조정', weight: 10 },
+                { text: '업무분장', weight: 9 },
+                { text: '업무소유권', weight: 9 },
+                { text: '해결', weight: 9 },
+                { text: '교육활동', weight: 8 },
+                { text: '업무회피', weight: 8 },
+                { text: '업무중복', weight: 8 },
+                { text: '조정', weight: 8 },
+                { text: '협의', weight: 7 },
+                { text: '부서장', weight: 7 },
+                { text: '업무과부하', weight: 7 },
+                { text: '절차갈등', weight: 7 },
+                { text: '소통', weight: 7 },
+                { text: '전문성', weight: 6 },
+                { text: '효율성', weight: 6 },
+                { text: '공정성', weight: 6 },
+                { text: '상호배려', weight: 6 },
+                { text: '협력', weight: 6 },
+                { text: '예방', weight: 6 },
+                { text: '원칙', weight: 6 },
+                { text: '신속처리', weight: 5 },
+                { text: '투명성', weight: 5 },
+                { text: '체크리스트', weight: 5 },
+                { text: '긴급', weight: 5 },
+                { text: '학습', weight: 4 },
+            ];
+
+            var cloudColors = ['#3498db','#e74c3c','#27ae60','#f39c12','#9b59b6','#1abc9c','#e67e22','#2980b9'];
+
+            function drawWordCloud() {
+                var canvas = document.getElementById('wordCloudCanvas');
+                var rect = canvas.getBoundingClientRect();
+                canvas.width = rect.width || 800;
+                canvas.height = rect.height || 350;
+                var ctx = canvas.getContext('2d');
+                var W = canvas.width, H = canvas.height;
+
+                ctx.clearRect(0, 0, W, H);
+                ctx.fillStyle = '#f8f9fa';
+                ctx.fillRect(0, 0, W, H);
+
+                var sorted = cloudWords.slice().sort(function(a, b) { return b.weight - a.weight; });
+                var placed = [];
+
+                for (var i = 0; i < sorted.length; i++) {
+                    var word = sorted[i];
+                    var fontSize = Math.round(10 + word.weight * (W / 120));
+                    ctx.font = 'bold ' + fontSize + 'px "맑은 고딕", Arial';
+                    var tw = ctx.measureText(word.text).width;
+                    var th = fontSize;
+
+                    var ok = false;
+                    var angle = Math.random() * Math.PI * 2;
+                    var radius = 0;
+
+                    for (var attempt = 0; attempt < 600 && !ok; attempt++) {
+                        var cx = W / 2 + radius * Math.cos(angle) - tw / 2;
+                        var cy = H / 2 + radius * Math.sin(angle) + th / 2;
+
+                        if (cx >= 4 && cx + tw <= W - 4 && cy - th >= 4 && cy <= H - 4) {
+                            var nr = { x: cx, y: cy - th, w: tw, h: th + 4 };
+                            var overlap = false;
+                            for (var j = 0; j < placed.length; j++) {
+                                var p = placed[j];
+                                if (!(nr.x + nr.w < p.x || nr.x > p.x + p.w || nr.y + nr.h < p.y || nr.y > p.y + p.h)) {
+                                    overlap = true;
+                                    break;
+                                }
+                            }
+                            if (!overlap) {
+                                ok = true;
+                                placed.push(nr);
+                                ctx.fillStyle = cloudColors[Math.floor(Math.random() * cloudColors.length)];
+                                ctx.font = 'bold ' + fontSize + 'px "맑은 고딕", Arial';
+                                ctx.fillText(word.text, cx, cy);
+                            }
+                        }
+                        angle += 0.5;
+                        radius += 1.2;
+                    }
+                }
+            }
+
+            function createNewCloud() {
+                drawWordCloud();
+            }
+
+            window.addEventListener('load', function() { drawWordCloud(); });
+            window.addEventListener('resize', function() { drawWordCloud(); });
+        </script>
+
+        <h2>9. 갈등 조정 신청서 양식</h2>
 
         <div class="box">
             <div class="box-title">갈등 조정 신청서</div>
