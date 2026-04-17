@@ -1,835 +1,460 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>와석초등학교 업무갈등 조정 실무 매뉴얼</title>
-    <style>
-        *, *::before, *::after { box-sizing: border-box; }
-
-        body {
-            font-family: "맑은 고딕", "Malgun Gothic", "Apple SD Gothic Neo", Arial, sans-serif;
-            line-height: 1.7;
-            color: #1d1d2e;
-            max-width: 1020px;
-            margin: 0 auto;
-            padding: 24px 16px 60px;
-            background: #f0edff;
-        }
-
-        .container {
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 8px 40px rgba(108,92,231,0.14);
-            padding: 0;
-        }
-
-        /* ===== HEADER ===== */
-        .header {
-            background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 60%, #00cec9 100%);
-            padding: 44px 36px 44px;
-            text-align: center;
-            border-radius: 20px 20px 0 0;
-        }
-        .header h1 {
-            font-size: 25px;
-            font-weight: 800;
-            color: #fff;
-            margin: 0;
-            letter-spacing: -0.5px;
-        }
-        .subtitle {
-            font-size: 13px;
-            color: rgba(255,255,255,0.88);
-            margin-top: 8px;
-        }
-
-        /* ===== CONTENT WRAP ===== */
-        .content-wrap {
-            padding: 28px 36px 40px;
-        }
-
-        /* ===== NAVIGATION ===== */
-        .btn-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            margin: 0 0 28px;
-            padding: 18px 14px;
-            background: #f8f7ff;
-            border-radius: 14px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 9px 17px;
-            background: #6c5ce7;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 13px;
-            border: none;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-            font-family: inherit;
-        }
-        .btn:hover { background: #5a4bd1; transform: translateY(-1px); }
-        .btn-secondary {
-            background: #fff;
-            color: #6c5ce7;
-            border: 2px solid #c5b8ff;
-        }
-        .btn-secondary:hover { background: #f0edff; }
-
-        /* ===== HEADINGS ===== */
-        h2 {
-            font-size: 17px;
-            font-weight: 800;
-            color: #1d1d2e;
-            margin: 36px 0 14px;
-            padding: 12px 18px;
-            background: #f0edff;
-            border-left: 5px solid #6c5ce7;
-            border-radius: 0 10px 10px 0;
-        }
-        h3 {
-            font-size: 15px;
-            font-weight: 700;
-            color: #6c5ce7;
-            margin: 20px 0 10px;
-            padding-bottom: 5px;
-            border-bottom: 2px dashed #ddd8ff;
-        }
-        h4 {
-            font-size: 13px;
-            font-weight: 700;
-            color: #555;
-            margin: 14px 0 8px;
-        }
-
-        /* ===== TABLES ===== */
-        table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            margin: 14px 0;
-            font-size: 14px;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid #e8e3ff;
-        }
-        th, td {
-            padding: 12px 14px;
-            text-align: left;
-            vertical-align: top;
-            border-bottom: 1px solid #eee8ff;
-        }
-        th {
-            background: #6c5ce7;
-            color: #fff;
-            font-weight: 700;
-            font-size: 13px;
-            text-align: center;
-            border-bottom: none;
-        }
-        td { color: #1d1d2e; }
-        tr:last-child td { border-bottom: none; }
-        tr:nth-child(even) td { background: #faf8ff; }
-        .priority-high { background: #fff5f3; }
-        .priority-high td { border-left: 3px solid #e17055; }
-        .priority-medium { background: #fffdf0; }
-        .priority-medium td { border-left: 3px solid #fdcb6e; }
-        .priority-low { background: #f0fff8; }
-        .priority-low td { border-left: 3px solid #00b894; }
-
-        /* ===== BOX ===== */
-        .box {
-            padding: 20px 24px;
-            margin: 14px 0;
-            background: #f8f7ff;
-            border: 2px solid #e0dbff;
-            border-radius: 14px;
-        }
-        .box-title {
-            font-weight: 800;
-            margin-bottom: 12px;
-            color: #6c5ce7;
-            font-size: 15px;
-        }
-
-        /* ===== DO / DONT ===== */
-        .do-dont { display: flex; gap: 14px; margin: 14px 0; }
-        .do, .dont { flex: 1; padding: 16px 18px; border-radius: 12px; }
-        .do { background: #e8f8f2; border: 2px solid #00b894; }
-        .dont { background: #fff5f3; border: 2px solid #e17055; }
-        .do-title { font-weight: 800; color: #00956f; margin-bottom: 8px; font-size: 14px; }
-        .dont-title { font-weight: 800; color: #c0392b; margin-bottom: 8px; font-size: 14px; }
-        .do li, .dont li { color: #1d1d2e; font-size: 14px; }
-
-        /* ===== PRINCIPLES ===== */
-        .principles {
-            background: #f0edff;
-            border: 2px solid #c5b8ff;
-            padding: 22px 26px;
-            margin: 18px 0;
-            border-radius: 14px;
-        }
-        .principles h3 { color: #6c5ce7; }
-        .principles li { color: #1d1d2e; font-size: 14px; }
-
-        /* ===== CHECKLIST ===== */
-        .checklist {
-            background: #f0fff8;
-            border-left: 5px solid #00b894;
-            padding: 18px 22px;
-            margin: 18px 0;
-            border-radius: 0 14px 14px 0;
-            border-top: 1px solid #c8f4e4;
-            border-bottom: 1px solid #c8f4e4;
-            border-right: 1px solid #c8f4e4;
-        }
-        .checklist h3 { color: #00956f; border-bottom-color: #b2f0dc; }
-        .checklist li { color: #1d1d2e; font-size: 14px; padding: 4px 0; }
-
-        /* ===== CASE CARDS ===== */
-        .case-card {
-            border-radius: 14px;
-            margin: 12px 0;
-            overflow: hidden;
-            border: 2px solid #e8e3ff;
-            transition: box-shadow 0.2s;
-        }
-        .case-card:hover { box-shadow: 0 6px 22px rgba(108,92,231,0.14); }
-        .case-card:nth-of-type(1) .case-header { background: #6c5ce7; }
-        .case-card:nth-of-type(2) .case-header { background: #00a381; }
-        .case-card:nth-of-type(3) .case-header { background: #d35400; }
-        .case-card:nth-of-type(4) .case-header { background: #0984e3; }
-        .case-card:nth-of-type(5) .case-header { background: #5d4037; }
-        .case-card .case-header { background: #6c5ce7; }
-        .case-card.color-green .case-header { background: #00a381; }
-        .case-card.color-orange .case-header { background: #d35400; }
-        .case-card.color-blue .case-header { background: #0984e3; }
-        .case-card.color-brown .case-header { background: #5d4037; }
-        .case-header {
-            color: #fff;
-            padding: 15px 18px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 700;
-            font-size: 14px;
-            user-select: none;
-        }
-        .case-header:hover { filter: brightness(1.1); }
-        .case-header .case-type-badge {
-            font-size: 11px;
-            background: rgba(255,255,255,0.25);
-            color: #fff;
-            padding: 2px 9px;
-            border-radius: 10px;
-            margin-left: 8px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        .case-toggle { font-size: 14px; transition: transform 0.28s; color: #fff; }
-        .case-toggle.open { transform: rotate(180deg); }
-        .case-body { display: none; padding: 18px 22px; background: #fafafe; }
-        .case-body.open { display: block; animation: fadeSlide 0.22s ease; }
-        @keyframes fadeSlide { from { opacity:0; transform:translateY(-5px); } to { opacity:1; transform:none; } }
-        .case-step {
-            display: flex;
-            gap: 12px;
-            margin: 7px 0;
-            padding: 10px 14px;
-            background: #fff;
-            border-radius: 9px;
-            font-size: 14px;
-            border: 1px solid #eee8ff;
-            color: #1d1d2e;
-        }
-        .case-step-label {
-            min-width: 56px;
-            font-weight: 800;
-            font-size: 11px;
-            color: #6c5ce7;
-            padding-top: 1px;
-            flex-shrink: 0;
-        }
-        .case-law-ref {
-            margin-top: 10px;
-            padding: 9px 14px;
-            background: #f0edff;
-            border-left: 4px solid #6c5ce7;
-            font-size: 13px;
-            color: #5a4fcf;
-            border-radius: 0 9px 9px 0;
-            font-weight: 600;
-        }
-
-        /* ===== LAW SEARCH ===== */
-        .search-wrap { margin: 16px 0; }
-        .search-row { margin-bottom: 10px; }
-        .search-input {
-            width: 100%;
-            padding: 12px 18px;
-            border: 2px solid #c5b8ff;
-            border-radius: 30px;
-            font-size: 14px;
-            font-family: inherit;
-            color: #1d1d2e;
-            background: #faf8ff;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .search-input:focus { border-color: #6c5ce7; outline: none; background: #fff; box-shadow: 0 3px 14px rgba(108,92,231,0.15); }
-        .filter-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
-        .filter-btn {
-            padding: 6px 16px;
-            border: 2px solid #c5b8ff;
-            border-radius: 20px;
-            background: #fff;
-            cursor: pointer;
-            font-size: 13px;
-            font-family: inherit;
-            font-weight: 700;
-            color: #6c5ce7;
-            transition: all 0.18s;
-        }
-        .filter-btn:hover { background: #f0edff; }
-        .filter-btn.active { background: #6c5ce7; color: #fff; border-color: #6c5ce7; }
-        .law-item {
-            border: 2px solid #eee8ff;
-            border-radius: 12px;
-            padding: 14px 17px;
-            margin: 9px 0;
-            background: #fff;
-            transition: border-color 0.18s;
-        }
-        .law-item:hover { border-color: #a29bfe; }
-        .law-item-header { display: flex; align-items: center; flex-wrap: wrap; gap: 7px; margin-bottom: 8px; }
-        .law-name { font-weight: 800; color: #1d1d2e; font-size: 14px; }
-        .law-article { color: #636e72; font-size: 13px; }
-        .law-badge { font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 10px; }
-        .badge-law { background: #ffe5e5; color: #c0392b; }
-        .badge-manual { background: #dcfff2; color: #00956f; }
-        .law-content { font-size: 13px; line-height: 1.9; color: #2d2d2d; white-space: pre-line; }
-        .no-results { text-align: center; padding: 40px; color: #aaa; font-size: 14px; }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            margin-top: 44px;
-            text-align: center;
-            font-size: 13px;
-            color: #888;
-            padding: 24px 20px;
-            background: #f8f7ff;
-            border-radius: 12px;
-        }
-        .footer strong { color: #6c5ce7; }
-
-        /* ===== MISC ===== */
-        ul { margin: 10px 0; padding-left: 20px; }
-        li { margin: 6px 0; color: #1d1d2e; }
-        ol { margin: 10px 0; padding-left: 20px; }
-        p { margin: 10px 0; color: #1d1d2e; }
-        strong { color: inherit; }
-
-        @media print {
-            .btn, .btn-group, .search-wrap, .filter-btns { display: none !important; }
-            body { background: #fff; padding: 0; }
-            .container { box-shadow: none; border-radius: 0; }
-            .content-wrap { padding: 16px; }
-            .header { border-radius: 0; }
-            .case-body { display: block !important; }
-        }
-        @media (max-width: 640px) {
-            .do-dont { flex-direction: column; }
-            .content-wrap { padding: 18px 16px 30px; }
-            .header { padding: 32px 18px 36px; border-radius: 14px 14px 0 0; }
-            h2 { font-size: 15px; }
-            .btn-group { gap: 6px; padding: 12px 8px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>초등학교 업무갈등 조정 실무 매뉴얼 사례 확장판</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif;
+      background: #f4f3ff;
+      color: #1d1d2e;
+      line-height: 1.72;
+    }
+    .container {
+      max-width: 1040px;
+      margin: 24px auto 44px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 10px 36px rgba(69, 58, 168, 0.15);
+      overflow: hidden;
+    }
+    .hero {
+      background: linear-gradient(135deg, #6c5ce7, #8f84ff 60%, #15c0bb);
+      color: #fff;
+      padding: 40px 28px;
+      text-align: center;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+    .hero p {
+      margin: 12px 0 0;
+      opacity: 0.94;
+      font-size: 14px;
+    }
+    .content { padding: 26px 28px 40px; }
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      background: #f8f7ff;
+      border: 1px solid #e6e2ff;
+      padding: 12px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .quick-nav a {
+      text-decoration: none;
+      background: #fff;
+      border: 1px solid #d4ceff;
+      color: #5a4cd6;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .quick-nav a:hover { background: #f0edff; }
+    h2 {
+      margin: 30px 0 12px;
+      padding: 10px 14px;
+      background: #f2f0ff;
+      border-left: 4px solid #6c5ce7;
+      border-radius: 0 10px 10px 0;
+      font-size: 20px;
+    }
+    h3 {
+      margin: 20px 0 10px;
+      color: #5a4cd6;
+      border-bottom: 2px dashed #d7d1ff;
+      padding-bottom: 6px;
+      font-size: 17px;
+    }
+    .box {
+      background: #f8f7ff;
+      border: 1px solid #e1dcff;
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin: 12px 0;
+    }
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+      min-width: 760px;
+    }
+    th, td {
+      border: 1px solid #ebe8ff;
+      padding: 10px 11px;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    th {
+      background: #6c5ce7;
+      color: #fff;
+      font-weight: 700;
+      text-align: left;
+    }
+    tr:nth-child(even) td { background: #fbfaff; }
+    .pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      background: #6c5ce7;
+    }
+    .pill.mid { background: #f39c12; }
+    details.case {
+      border: 1px solid #e5e1ff;
+      border-radius: 12px;
+      background: #fff;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+    details.case summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 13px 15px;
+      background: #f8f7ff;
+      font-weight: 700;
+      color: #372f89;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    details.case summary::-webkit-details-marker { display: none; }
+    .case-body { padding: 12px 15px 14px; }
+    .label {
+      color: #6c5ce7;
+      font-weight: 800;
+      margin-right: 8px;
+      font-size: 13px;
+    }
+    .flow {
+      border: 1px solid #d7d1ff;
+      border-radius: 12px;
+      background: #faf9ff;
+      padding: 12px 14px;
+      margin: 10px 0;
+    }
+    .flow ol { margin: 0; padding-left: 20px; }
+    .template {
+      border: 1px solid #d7f2e8;
+      border-left: 5px solid #19b57a;
+      background: #f2fff9;
+      border-radius: 0 10px 10px 0;
+      padding: 10px 12px;
+      margin: 8px 0;
+      font-size: 14px;
+      white-space: pre-line;
+    }
+    .footer {
+      margin-top: 28px;
+      text-align: center;
+      color: #666;
+      font-size: 13px;
+      border-top: 1px solid #ece9ff;
+      padding-top: 18px;
+    }
+    @media (max-width: 760px) {
+      .hero h1 { font-size: 24px; }
+      .content { padding: 16px 14px 28px; }
+      table { min-width: 640px; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>와석초등학교 업무갈등 조정 실무 매뉴얼</h1>
-            <div class="subtitle">2025학년도 연구학교 운영 결과물 | 와석초 학교업무협의체</div>
-        </div>
-        <div class="content-wrap">
+  <div class="container">
+    <header class="hero">
+      <h1>초등학교 업무갈등 조정 실무 매뉴얼 사례 확장판</h1>
+      <p>집행요약 + 12개 사례 + 단계형 조정절차 + 현장 템플릿</p>
+    </header>
 
-        <div class="btn-group">
-            <button onclick="window.print()" class="btn">📄 PDF로 저장</button>
-            <a href="#types" class="btn btn-secondary">갈등유형 바로가기</a>
-            <a href="#process" class="btn btn-secondary">해결절차 바로가기</a>
-            <a href="#cases" class="btn btn-secondary">실제 사례 바로가기</a>
-            <a href="#lawsearch" class="btn btn-secondary">법령 검색 바로가기</a>
-            <a href="#checklist" class="btn btn-secondary">체크리스트 바로가기</a>
-        </div>
+    <main class="content">
+      <nav class="quick-nav">
+        <a href="#summary">집행요약</a>
+        <a href="#principles">사례 설계 원칙</a>
+        <a href="#comparison">사례 비교표</a>
+        <a href="#cases">12개 사례 카드</a>
+        <a href="#flow">대표 조정 흐름</a>
+        <a href="#appendix">부록 템플릿</a>
+      </nav>
 
-        <h2>1. 목적 및 적용범위</h2>
-        <p><strong>목적:</strong> 교육활동 중심 학교 운영을 위해 부서간 업무 소관 갈등을 신속하게 해결하여 업무 효율성 확보</p>
-        <p><strong>적용:</strong> 전 교직원, 부서간 업무 갈등 발생 시 즉시 적용</p>
-
-        <h2 id="types">2. 업무갈등 유형 및 판단기준</h2>
-        
-        <h3>실제 현장 갈등 유형</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 18%;">유형</th>
-                    <th style="width: 52%;">구체적 사례</th>
-                    <th style="width: 30%;">1차 판단기준</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>업무 소유권</strong></td>
-                    <td>"성폭력예방교육 학부모대상은 보건교사? 학부모회 담당교사?"<br>"디지털시민성교육은 과학정보부? 미래진로교육부?"</td>
-                    <td> 기존 선례, 전문성, 공문상의 핵심 키워드, 업무 목적과의 관계성</td>
-                </tr>
-                <tr>
-                    <td><strong>업무 회피</strong></td>
-                    <td>"바빠서 못해요" vs "원래 당신 업무"<br>어려운 업무 미루기, 책임 전가<br>"작년 공문에 보니 선생님 업무" VS"그 때도 제가 도의상 한 겁니다"</td>
-                    <td>업무분장표, 시급성, 대체 가능성, 공문상의 발신처</td>
-                </tr>
-                <tr>
-                    <td><strong>업무 중복</strong></td>
-                    <td>동일한 공문을 여러 부서에서 각각 처리<br>같은 성격 업무의 분산 처리</td>
-                    <td>효율성, 일원화 가능성, 업무 처리 주 담당자 지정, 그 외 부서는 협조</td>
-                </tr>
-                <tr>
-                    <td><strong>업무 과부하</strong></td>
-                    <td>특정 부서에만 업무가 계속 몰림<br>업무량 불균형 지속</td>
-                    <td>업무량 형평성, 처리 역량, 해당 부서 업무 분장의 세분화</td>
-                </tr>
-                <tr>
-                    <td><strong>절차 갈등</strong></td>
-                    <td>업무 처리 순서에 대한 이견<br>결재라인, 처리 방식 의견 차이</td>
-                    <td>관련 규정, 효율성, 관례, 전결규정의 확대</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>긴급도 판단 (3단계)</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 15%;">단계</th>
-                    <th style="width: 25%;">처리시한</th>
-                    <th style="width: 60%;">해당 사례</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="priority-high">
-                    <td><strong>긴급</strong></td>
-                    <td>당일 처리</td>
-                    <td>수업 중단 위험, 마감 임박, 민원 확산 우려, 보고기한 임박</td>
-                </tr>
-                <tr class="priority-medium">
-                    <td><strong>보통</strong></td>
-                    <td>3일 내</td>
-                    <td>일반 학사업무, 행사 준비, 예산 관련</td>
-                </tr>
-                <tr class="priority-low">
-                    <td><strong>여유</strong></td>
-                    <td>1주일</td>
-                    <td>개선 업무, 편의 사항, 내부 조정</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2 id="process">3. 단계별 해결 프로세스</h2>
-        
+      <section id="summary">
+        <h2>1. 집행요약</h2>
         <div class="box">
-            <div class="box-title">갈등 발생 → 24시간 내 1차 해결 시도</div>
+          제공된 매뉴얼의 기본 틀인 <strong>직접 협의 → 부서장 중재 → 조정위원회(공식 절차)</strong>를 유지하면서, 초등학교 현장에 필요한 법적 근거, 공식 지침, 조정 문안, 후속 점검표를 확장 반영했다.
         </div>
-
-        <h3>1단계: 당사자간 직접 협의 (30분 투자)</h3>
-        <div class="do-dont">
-            <div class="do">
-                <div class="do-title">✓ 해야 할 것</div>
-                <ul>
-                    <li>업무분장표 함께 확인</li>
-                    <li>타 학교 유사 사례 조회</li>
-                    <li>서로의 업무량/일정 솔직하게 공유</li>
-                    <li>윈-윈 방안 모색 (업무 나누기, 순서 조정 등)</li>
-                </ul>
-            </div>
-            <div class="dont">
-                <div class="dont-title">✗ 하지 말 것</div>
-                <ul>
-                    <li>"원래 당신이 하던 거잖아"</li>
-                    <li>"나는 바빠서 안 돼"</li>
-                    <li>감정적 대응</li>
-                    <li>제3자에게 일방적 하소연</li>
-                </ul>
-            </div>
+        <div class="box">
+          초등학교 실무에서 반복적으로 갈등이 커지는 영역은 다음 네 가지다.
+          <ul>
+            <li>주관 부서와 최종 책임선이 겹치는 업무(늘봄, 학교폭력, 감염병, 체험학습)</li>
+            <li>감정 대응이 앞서기 쉬운 갈등(민원, 괴롭힘, 근평·성과급)</li>
+            <li>학생 지원과 개인정보 보호가 충돌하는 사안(정서행동검사, 비대면 수업)</li>
+            <li>문서·결재·계약 책임이 분리된 사안(급식 검수, 보조금, 회계)</li>
+          </ul>
         </div>
+        <div class="box">
+          사전 예방용 최소 문서 3종:
+          <ul>
+            <li><strong>업무분장 RACI표</strong> (결정·실행·협조·통지 책임 구분)</li>
+            <li><strong>민원 단일창구 운영표</strong> (접수·분류·회신 라인 고정)</li>
+            <li><strong>사안별 초기기록지</strong> (최초 인지·조치·보고 시각 문서화)</li>
+          </ul>
+        </div>
+      </section>
 
-        <h3>2단계: 부서장 중재 (1일 내)</h3>
-        <ul>
-            <li><strong>해당 부서장</strong>이 중재</li>
-            <li>온라인 연구실에 '갈등조정 요청' 간단 기록</li>
-            <li>업무분장 근거와 합리적 분담 방안 제시</li>
-        </ul>
+      <section id="principles">
+        <h2>2. 사례 설계 원칙</h2>
+        <div class="box">
+          각 사례는 <strong>상황 파악 → 갈등 분류 → 근거 확인 → 조정 절차 → 결과 관리</strong> 흐름으로 정리했다.
+          바로 회의자료나 협의록 초안으로 전환할 수 있도록 모든 사례에 다음 항목을 포함했다.
+          <ul>
+            <li>법적·행정적 근거</li>
+            <li>권고 조정 절차</li>
+            <li>현장 적용용 예시 문안</li>
+            <li>리스크와 후속 체크리스트</li>
+          </ul>
+        </div>
+      </section>
 
-        <h3>3단계: 교무행정업무팀 조정 (3일 내)</h3>
-        <ul>
-            <li>복잡하거나 반복되는 갈등의 경우</li>
-            <li>업무분장 자체의 수정이 필요한 경우</li>
-            <li>새로운 업무 배정 원칙 필요한 경우</li>
-        </ul>
-
-        <h2>4. 갈등 유형별 해결 가이드</h2>
-
-        <h3>가. 업무 소유권 갈등</h3>
-        <h4>판단 순서</h4>
-        <ol>
-            <li><strong>법령·지침 확인:</strong> 반드시 특정 부서가 해야 하는지</li>
-            <li><strong>전문성 검토:</strong> 어느 부서가 더 전문적으로 처리 가능한지</li>
-            <li><strong>연관성 분석:</strong> 기존 업무와의 연계성이 높은 부서</li>
-            <li><strong>효율성 고려:</strong> 가장 효과적으로 처리할 수 있는 부서</li>
-        </ol>
-        <p><strong>해결 방식:</strong> 명확한 소유권 배정 + 업무분장표 즉시 수정</p>
-
-        <h3>나. 업무 회피 갈등</h3>
-        <h4>확인 사항</h4>
-        <ol>
-            <li><strong>실제 업무량:</strong> 문서 처리 건수, 회의 참석 횟수 등 객관적 비교</li>
-            <li><strong>전문성 요구:</strong> 특별한 기술이나 경험이 필요한지</li>
-            <li><strong>시급성:</strong> 정말 미룰 수 없는 업무인지</li>
-            <li><strong>대안 가능성:</strong> 다른 방법이나 시기 조정 가능한지</li>
-        </ol>
-        <p><strong>해결 방식:</strong> 업무량 재조정 또는 일시적 지원 방안 마련</p>
-
-        <h3>다. 업무 중복 갈등</h3>
-        <h4>분석 포인트</h4>
-        <ol>
-            <li><strong>중복의 원인:</strong> 시스템 문제인지, 소통 부족인지</li>
-            <li><strong>통합 가능성:</strong> 하나의 부서에서 일원화할 수 있는지</li>
-            <li><strong>전문성 손실:</strong> 통합 시 전문성이 떨어질 위험은 없는지</li>
-        </ol>
-        <p><strong>해결 방식:</strong> 주관 부서 지정 + 협조 부서 역할 명확화</p>
-
-        <h3>라. 업무 과부하 갈등</h3>
-        <h4>형평성 검토</h4>
-        <ol>
-            <li><strong>정량적 분석:</strong> 처리 공문 수, 담당 업무 건수 비교</li>
-            <li><strong>난이도 고려:</strong> 단순 반복 vs 고도의 판단 필요 업무</li>
-            <li><strong>시기적 집중:</strong> 특정 시기에만 몰리는지 상시인지</li>
-        </ol>
-        <p><strong>해결 방식:</strong> 업무 재분배 또는 순환 담당제 도입</p>
-
-        <h3>마. 절차 갈등</h3>
-        <h4>효율성 원칙</h4>
-        <ol>
-            <li><strong>최소 단계:</strong> 불필요한 경유 부서 최소화</li>
-            <li><strong>병렬 처리:</strong> 동시 진행 가능한 업무는 병렬로</li>
-            <li><strong>명확성:</strong> 각 단계별 역할과 기한 명시</li>
-        </ol>
-
-        <h2>5. 회의 운영 (1.1.1.1 원칙)</h2>
-
-        <h3>갈등조정 회의 진행법</h3>
-        <table>
+      <section id="comparison">
+        <h2>3. 사례 비교표 (12건)</h2>
+        <div class="table-wrap">
+          <table>
             <thead>
-                <tr>
-                    <th style="width: 20%;">단계</th>
-                    <th style="width: 80%;">세부 내용</th>
-                </tr>
+              <tr>
+                <th>사례 제목</th>
+                <th>갈등 유형</th>
+                <th>핵심 처방</th>
+                <th>난이도</th>
+              </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><strong>사전 준비</strong></td>
-                    <td>갈등 상황 정리서 1쪽 (배경, 쟁점, 대안)<br>관련 데이터 준비 (업무량, 선례, 규정 등)<br>회의 목표 명확화</td>
-                </tr>
-                <tr>
-                    <td><strong>회의 중</strong></td>
-                    <td>30분 집중 (장시간 논의 금지)<br>실시간 기록 (결정사항과 근거 즉시 문서화)</td>
-                </tr>
-                <tr>
-                    <td><strong>회의 후</strong></td>
-                    <td>당일 공유 (온라인 연구실에 결과 즉시 공지)<br>이행 확인 (1주일 후 처리 결과 점검)</td>
-                </tr>
+              <tr><td>늘봄 수요 폭증으로 배정선 혼선</td><td>역할 모호성·자원배분</td><td>RACI 재설계, 학부모 단일 안내</td><td><span class="pill">상</span></td></tr>
+              <tr><td>학교폭력 자체해결 오판</td><td>절차 갈등·부서 조정</td><td>전담기구 선심의, 즉시 보호·보고</td><td><span class="pill">상</span></td></tr>
+              <tr><td>학부모 민원 단일창구 부재</td><td>위계 갈등·민원조정</td><td>교감 중심 단일창구, 반복민원 통합</td><td><span class="pill">상</span></td></tr>
+              <tr><td>정서행동검사 공유범위 갈등</td><td>개인정보·지원조정</td><td>최소 접근권한, 비공개 회의체</td><td><span class="pill">상</span></td></tr>
+              <tr><td>감염병 대응 판단 지연</td><td>안전·보건 의사결정</td><td>보건 권고 우선, 결정 당일 문서화</td><td><span class="pill">중상</span></td></tr>
+              <tr><td>특수교육 IEP 인력배치 갈등</td><td>역할 모호성·특수교육 자원</td><td>IEP 조기소집, 추가지원 요청</td><td><span class="pill">상</span></td></tr>
+              <tr><td>현장체험학습 인솔·안전계획 충돌</td><td>안전·계약·협업</td><td>구두변경 금지, 통합 점검회의</td><td><span class="pill">상</span></td></tr>
+              <tr><td>급식실 퇴근 후 지시·모욕</td><td>위계 갈등·괴롭힘</td><td>즉시 중단, 접촉규칙 재설계</td><td><span class="pill">상</span></td></tr>
+              <tr><td>식재료 대체납품 검수·대금 분쟁</td><td>계약 분쟁·책임선 충돌</td><td>격리검수, 서면변경, 대금보류 검토</td><td><span class="pill">상</span></td></tr>
+              <tr><td>근무성적평정·성과상여금 갈등</td><td>성과 분쟁·위계 갈등</td><td>근거자료 설명, 이의신청·재검토</td><td><span class="pill">중상</span></td></tr>
+              <tr><td>회계·보조금 내부신고 후 보복 의심</td><td>공익신고·보복 갈등</td><td>불이익 조치 유보, 보호절차 병행</td><td><span class="pill">상</span></td></tr>
+              <tr><td>비대면 수업 메신저 지시선 충돌</td><td>원격업무·개인정보·업무시간</td><td>플랫폼 통일, 응답시간 규칙화</td><td><span class="pill mid">중</span></td></tr>
             </tbody>
-        </table>
+          </table>
+        </div>
+      </section>
 
-        <h2>6. 예방 및 사후관리</h2>
+      <section id="cases">
+        <h2>4. 사례 카드 상세</h2>
 
-        <h3>갈등 예방책</h3>
-        <ul>
-            <li><strong>명확한 업무분장:</strong> 경계 업무는 사전에 담당 부서 명시</li>
-            <li><strong>정기적 업무량 점검:</strong> 월 1회 부서별 업무량 모니터링</li>
-            <li><strong>신규 업무 배정 원칙:</strong> 새 업무 발생 시 즉시 소속 부서 지정</li>
-            <li><strong>소통 채널 상시 개방:</strong> 온라인 연구실 통한 수시 의견 교환</li>
-        </ul>
+        <details class="case">
+          <summary><span>사례 1. 늘봄 수요 폭증으로 배정선이 꼬인 사례</span><span>▼</span></summary>
+          <div class="case-body">
+            <p><span class="label">핵심 갈등</span>최종 배정권자·학부모 안내자가 불명확해 배정 기준이 부서별로 분리됨.</p>
+            <p><span class="label">권고 조정</span>당일 쟁점표 작성 후 신규배정 24시간 보류, 교감 주재로 RACI 확정, 3일 내 학교장 결재 후 단일 공지.</p>
+            <p><span class="label">예시 문안</span>“늘봄 배정 및 대기순위는 학교 운영기준에 따라 교감이 총괄하고, 문의는 늘봄전담실이 일괄 회신합니다.”</p>
+          </div>
+        </details>
 
-        <h2>7. 핵심 원칙 및 체크리스트</h2>
+        <details class="case">
+          <summary><span>사례 2. 학교폭력 자체해결 오판 사례</span><span>▼</span></summary>
+          <div class="case-body">
+            <p><span class="label">핵심 갈등</span>담임 중심의 조기 종결 시도와 전담기구 정식처리 요구가 충돌.</p>
+            <p><span class="label">권고 조정</span>피해학생 보호조치 우선, 보호자 1차 통보 후 전담기구 사실확인, 자체해결 이견 시 교육지원청 라인 이관.</p>
+            <p><span class="label">예시 문안</span>“학급 생활지도와 별개로 전담기구 검토 절차를 진행하며, 보호조치는 즉시 시행합니다.”</p>
+          </div>
+        </details>
 
-        <div class="principles">
-            <h3>갈등 해결 6원칙</h3>
-            <ol>
-                <li><strong>교육활동 우선:</strong> 학생 교육에 미치는 영향을 최우선 고려</li>
-                <li><strong>신속 처리:</strong> 갈등이 길어질수록 업무 효율성 저하</li>
-                <li><strong>공정성:</strong> 특정 부서나 개인에게만 부담 집중 금지</li>
-                <li><strong>투명성:</strong> 결정 과정과 근거를 명확히 공개</li>
-                <li><strong>상호 배려:</strong> 교육공동체 구성원으로서 서로를 존중하고 협력</li>
-                <li><strong>학습:</strong> 동일 갈등 재발 방지를 위한 시스템 개선</li>
-            </ol>
+        <details class="case">
+          <summary><span>사례 3. 학부모 민원 단일창구 부재 사례</span><span>▼</span></summary>
+          <div class="case-body">
+            <p><span class="label">핵심 갈등</span>교사 개인 연락 경로로 민원이 분산돼 동일 사안이 증폭.</p>
+            <p><span class="label">권고 조정</span>교감이 단일창구 전환 선언, 담임은 사실확인서 중심 대응, 반복민원 통합번호 부여 및 회신기한 고지.</p>
+            <p><span class="label">예시 문안</span>“본 사안은 학교 대표 민원창구로 일원화하며 담임 개인 연락에는 응답하지 않습니다.”</p>
+          </div>
+        </details>
+
+        <details class="case">
+          <summary><span>사례 4. 정서행동검사 결과 공유범위 갈등</span><span>▼</span></summary>
+          <div class="case-body">
+            <p><span class="label">핵심 갈등</span>학생 지원 필요성과 민감정보 최소공유 원칙 간 충돌.</p>
+            <p><span class="label">권고 조정</span>열람권한 최소화(학교장·담임·상담·보건), 비공개 협의체 운영, 메신저·회람 금지.</p>
+            <p><span class="label">예시 문안</span>“검사 결과는 지정 인원만 열람하며 대화방 공유 및 출력물 회람을 금지합니다.”</p>
+          </div>
+        </details>
+
+        <details class="case">
+          <summary><span>사례 5. 감염병 대응 판단 갈등</span><span>▼</span></summary>
+          <div class="case-body">
+            <p><span class="label">핵심 갈등</span>보건 권고와 학사운영 부담이 충돌하면서 결정을 지연.</p>
+            <p><span class="label">권고 조정</span>보건 권고 우선, 결석률·접촉범위·돌봄영향 통합표 작성, 당일 결재 및 이중 공지(보건/학사 분리).</p>
+            <p><span class="label">예시 문안</span>“학생 안전을 우선해 등교조정을 시행하며 수업 대체안은 별도 안내드립니다.”</p>
+          </div>
+        </details>
+
+        <details class="case">
+          <summary><span>사례 6. 특수교육 IEP와 지원인력 배치 갈등</span><span>▼</span></summary>
+          <div class="case-body">
+            <p><span class="label">핵심 갈등</span>담임 요구(상시지원)와 특수교사 자원 한계가 충돌.</p>
+            <p><span class="label">권고 조정</span>지시가 아닌 IEP 회의로 의사결정, 수업·쉬는시간·급식시간 분리배치, 부족인력은 교육지원청 추가지원 검토.</p>
+            <p><span class="label">예시 문안</span>“지원시간 확대는 IEP 회의록과 교육지원청 지원 가능 범위를 반영해 확정합니다.”</p>
+          </div>
+        </details>
+
+        <details class="case">
+          <summary><span>사례 7. 현장체험학습 인솔·안전계획 충돌</span><span>▼</span></summary>
+          <div class="case-body">
+            <p><span class="label">핵심 갈등</span>안전책임과 계약책임이 분리돼 구두변경 관행이 발생.</p>
+            <p><span class="label">권고 조정</span>학년부 안전계획과 행정실 계약서류를 통합검토, 일정·차량 변경은 서면변경 전 승인 금지.</p>
+            <p><span class="label">예시 문안</span>“안전계획 재검토와 서면 계약변경 확인 전에는 일정 변경을 승인하지 않습니다.”</p>
+          </div>
+        </details>
+
+        <details class="case">
+          <summary><span>사례 8. 급식실 퇴근 후 지시·모욕 갈등</span><span>▼</span></summary>
+          <div class="case-body">
+            <p><span class="label">핵심 갈등</span>근무시간 외 반복 지시와 공개 모욕이 괴롭힘 분쟁으로 확대.</p>
+            <p><span class="label">권고 조정</span>퇴근 후 과제·사진전송 즉시 중단, 지시 채널 단일화, 직무지도는 근무시간 내 표준절차로 전환.</p>
+            <p><span class="label">예시 문안</span>“퇴근 후 메신저 지시와 공개적 인격비하는 즉시 중단하며 모든 직무지도는 근무시간 내 절차를 따릅니다.”</p>
+          </div>
+        </details>
+
+        <details class="case">
+          <summary><span>사례 9. 식재료 대체납품과 검수·대금 분쟁</span><span>▼</span></summary>
+          <div class="case-body">
+            <p><span class="label">핵심 갈등</span>급식 연속성 압박 때문에 대체납품을 무리하게 수용하려는 상황.</p>
+            <p><span class="label">권고 조정</span>물품을 조건부 격리하고 동일성·안전성 확인 후 처리, 서면 소명·변경절차 없으면 대금보류 검토.</p>
+            <p><span class="label">예시 문안</span>“대체납품 물품은 계약적합성 확인 전 검수 완료로 보지 않으며 대금지급은 서면 확인 후 결정합니다.”</p>
+          </div>
+        </details>
+
+        <details class="case">
+          <summary><span>사례 10. 근무성적평정·성과상여금 갈등</span><span>▼</span></summary>
+          <div class="case-body">
+            <p><span class="label">핵심 갈등</span>평정 재량은 있으나 설명 부족으로 인사 불신이 누적.</p>
+            <p><span class="label">권고 조정</span>등급 통보와 근거 설명 분리, 당사자 추가증빙 접수, 필요 시 고충심사 라인 연계.</p>
+            <p><span class="label">예시 문안</span>“제출자료를 평정 기준과 대조해 재검토하고 결과를 서면으로 회신하겠습니다.”</p>
+          </div>
+        </details>
+
+        <details class="case">
+          <summary><span>사례 11. 회계·보조금 내부신고 후 보복 의심 사례</span><span>▼</span></summary>
+          <div class="case-body">
+            <p><span class="label">핵심 갈등</span>신고 이후 인사·평가 변동이 보복으로 의심되는 상황.</p>
+            <p><span class="label">권고 조정</span>신고 직후 인사·평가 변경 유보, 인사결정 라인과 신고 인지 라인 분리, 외부 보호신청 안내 병행.</p>
+            <p><span class="label">예시 문안</span>“신고 이후 예정된 인사·평가 변경은 관련성 검토 완료 시까지 유보하며 필요 시 보호절차를 병행합니다.”</p>
+          </div>
+        </details>
+
+        <details class="case">
+          <summary><span>사례 12. 비대면 수업·메신저 지시선 충돌</span><span>▼</span></summary>
+          <div class="case-body">
+            <p><span class="label">핵심 갈등</span>긴급 상황에서 야간 지시와 학생 영상정보 처리기준이 동시에 무너짐.</p>
+            <p><span class="label">권고 조정</span>승인 플랫폼·발송권자·응답시간 규칙을 선확정하고 예외 승인기록 의무화.</p>
+            <p><span class="label">예시 문안</span>“학생 영상·사진은 승인된 플랫폼에서 교육목적 범위로만 사용하며 공지 응답은 운영시간 원칙을 따릅니다.”</p>
+          </div>
+        </details>
+      </section>
+
+      <section id="flow">
+        <h2>5. 대표 조정 절차 흐름</h2>
+
+        <h3>흐름 A: 역할·배정 갈등</h3>
+        <div class="flow">
+          <ol>
+            <li>갈등 인지 및 당일 사실표 작성</li>
+            <li>24시간 내 직접 협의</li>
+            <li>합의 시 업무분장표 수정 및 단일 안내</li>
+            <li>불합의 시 교감 중재회의 + RACI 확정</li>
+            <li>자원추가가 필요하면 학교장 승인 후 시행</li>
+            <li>4주 후 이행 점검</li>
+          </ol>
         </div>
 
-        <div id="checklist" class="checklist">
-            <h3>갈등 해결 체크리스트</h3>
-            <ul style="list-style: none; padding-left: 0;">
-                <li>☐ 갈등 유형을 정확히 파악했는가?</li>
-                <li>☐ 관련 규정과 선례를 충분히 검토했는가?</li>
-                <li>☐ 당사자들의 의견을 골고루 들었는가?</li>
-                <li>☐ 교육활동에 미치는 영향을 고려했는가?</li>
-                <li>☐ 실현 가능한 해결책인가?</li>
-                <li>☐ 향후 동일 갈등 예방책도 마련했는가?</li>
-            </ul>
+        <h3>흐름 B: 학교폭력 절차 갈등</h3>
+        <div class="flow">
+          <ol>
+            <li>의심사안 인지 즉시 보호조치</li>
+            <li>보호자 1차 통보</li>
+            <li>전담기구 사실확인</li>
+            <li>자체해결 가능 시 서면합의 + 2주·4주 점검</li>
+            <li>자체해결 불가 시 교육지원청 심의 요청</li>
+          </ol>
         </div>
 
-        <h2 id="cases">8. 실제 사례 모음</h2>
-        <p style="font-size: 14px; color: #7f8c8d; margin-bottom: 15px;">제목을 클릭하면 상세 내용이 열립니다. 각 사례에서 관련 법령 근거를 함께 확인할 수 있습니다.</p>
-
-        <div class="case-card">
-            <div class="case-header" onclick="toggleCase(this)">
-                <span>사례 1. 성폭력예방교육 학부모 대상 담당 부서 갈등<span class="case-type-badge">업무 소유권</span></span>
-                <span class="case-toggle">▼</span>
-            </div>
-            <div class="case-body">
-                <div class="case-step"><span class="case-step-label">상황</span><span>여성가족부 공문으로 학교 성폭력예방교육 실시 및 결과 제출 요구. 보건부는 "보건교사가 담당"을, 인성부는 "학부모 대상은 학부모회 연계 업무라 인성부 소관"을 주장하며 대립.</span></div>
-                <div class="case-step"><span class="case-step-label">쟁점</span><span>성폭력방지법 제5조에 따른 교육 실시 주체가 불명확하고, 학생·교직원·학부모로 대상이 나뉘어 담당 부서 혼란 발생.</span></div>
-                <div class="case-step"><span class="case-step-label">해결과정</span><span>교무행정업무팀에서 성폭력방지법 제5조 및 공문 발신처 확인. 교직원 대상은 보건교사 단독 주관, 학생·학부모 대상은 보건부 주관 + 인성부 협조 체계로 정리.</span></div>
-                <div class="case-step"><span class="case-step-label">결과</span><span>업무분장표에 "성폭력예방교육 — 보건부 주관, 인성부 협조(학부모 연계)" 명시. 이후 동일 갈등 재발 없음.</span></div>
-                <div class="case-law-ref">📋 관련 법령: 성폭력방지 및 피해자보호 등에 관한 법률 제5조 (성폭력 예방교육)</div>
-            </div>
+        <h3>흐름 C: 공익신고 후 보복 의심 갈등</h3>
+        <div class="flow">
+          <ol>
+            <li>신고 접수기록 보존</li>
+            <li>예정 인사·평가 변경 사전점검</li>
+            <li>불이익 가능성 있으면 조치 유보</li>
+            <li>외부 보호신청 안내 + 내부조정 병행</li>
+            <li>인사결정과 신고라인 분리, 1개월·3개월 추적 점검</li>
+          </ol>
         </div>
+      </section>
 
-        <div class="case-card color-green">
-            <div class="case-header" onclick="toggleCase(this)">
-                <span>사례 2. 디지털시민성교육 소관 부서 갈등<span class="case-type-badge">업무 소유권</span></span>
-                <span class="case-toggle">▼</span>
-            </div>
-            <div class="case-body">
-                <div class="case-step"><span class="case-step-label">상황</span><span>교육청 디지털시민성교육 실시 공문 시달. 과학정보부는 "디지털(IT) 관련이므로 우리 소관", 미래진로교육부는 "시민성·인성 교육이므로 진로·생활지도 부서 소관"이라 주장.</span></div>
-                <div class="case-step"><span class="case-step-label">쟁점</span><span>'디지털'(과학정보)이냐 '시민성'(인성·진로)이냐의 관점 차이. 공문 본문 키워드 해석 차이로 갈등 심화.</span></div>
-                <div class="case-step"><span class="case-step-label">해결과정</span><span>공문 본문 분석 결과 "디지털 환경에서의 시민 윤리·책임" 강조 확인. 창의적 체험활동(자율) 교육과정 연계성 검토 후 인성·진로 측면이 핵심으로 판단. 과학정보부는 기술 지원 역할로 참여.</span></div>
-                <div class="case-step"><span class="case-step-label">결과</span><span>미래진로교육부 주관, 과학정보부 기술 지원 협력 체계 구축. 업무분장표에 반영.</span></div>
-                <div class="case-law-ref">📋 관련 법령: 초·중등교육법 제20조 (교직원의 임무), 제23조 (교육과정)</div>
-            </div>
-        </div>
+      <section id="appendix">
+        <h2>6. 부록 템플릿 (현장 즉시 활용용)</h2>
 
-        <div class="case-card color-orange">
-            <div class="case-header" onclick="toggleCase(this)">
-                <span>사례 3. 학교폭력 예방교육 업무 중복<span class="case-type-badge">업무 중복</span></span>
-                <span class="case-toggle">▼</span>
-            </div>
-            <div class="case-body">
-                <div class="case-step"><span class="case-step-label">상황</span><span>학교폭력 예방교육 공문이 생활지도부·상담부로 각각 시달. 양 부서가 독립 계획을 수립해 동일 학생이 같은 교육을 두 번 받는 상황 발생.</span></div>
-                <div class="case-step"><span class="case-step-label">쟁점</span><span>학교폭력예방법 제14조의 전담기구 운영 책임 소재 불명확. 예방교육과 사안처리 업무가 혼재.</span></div>
-                <div class="case-step"><span class="case-step-label">해결과정</span><span>전담기구(학교폭력 책임교사) 중심으로 역할 재정비. 예방교육은 생활지도부 주관, 피해학생 개별 지원은 상담부 전담으로 분리.</span></div>
-                <div class="case-step"><span class="case-step-label">결과</span><span>"학교폭력 예방교육 — 생활지도부 주관 / 피해학생 상담·지원 — 상담부"로 업무분장 수정. 중복 교육 해소.</span></div>
-                <div class="case-law-ref">📋 관련 법령: 학교폭력예방 및 대책에 관한 법률 제14조 (전담기구 구성·운영)</div>
-            </div>
-        </div>
+        <h3>가. 초등학교 업무분장 조정합의서(요약본)</h3>
+        <div class="template">[합의 대상 업무]
+- 업무명:
+- 갈등 당사 부서:
 
-        <div class="case-card color-blue">
-            <div class="case-header" onclick="toggleCase(this)">
-                <span>사례 4. 방과후학교 행정 업무 과부하<span class="case-type-badge">업무 과부하</span></span>
-                <span class="case-toggle">▼</span>
-            </div>
-            <div class="case-body">
-                <div class="case-step"><span class="case-step-label">상황</span><span>방과후학교 담당교사(교무부 소속 1인)에게 강사 채용, 수강신청 관리, 비용 수납, 결과 보고, 민원 응대 전담. 학기 초 주 평균 추가 업무 15시간 이상 발생.</span></div>
-                <div class="case-step"><span class="case-step-label">쟁점</span><span>업무분장 시 방과후 업무량 과소 평가. 행정실과의 역할 분담이 불명확하여 교사에게 행정 업무 집중.</span></div>
-                <div class="case-step"><span class="case-step-label">해결과정</span><span>업무량 실태 조사 후 행정실 협의. 수강신청·비용 수납은 행정실, 강사 섭외·교육과정 운영은 교무부 담당교사로 이원화. 학기 초 한시적 지원 인력 배치.</span></div>
-                <div class="case-step"><span class="case-step-label">결과</span><span>방과후학교 업무 11개 항목을 업무분장표에 부서별 명시. 담당교사 초과 업무 70% 경감.</span></div>
-                <div class="case-law-ref">📋 관련 법령: 국가공무원법 제56조 (성실의무), 교육부 방과후학교 운영 가이드라인</div>
-            </div>
-        </div>
+[합의 내용]
+- 최종 결정권자:
+- 실무 입력자:
+- 학부모 안내자:
+- 긴급 대체자:
 
-        <div class="case-card color-brown">
-            <div class="case-header" onclick="toggleCase(this)">
-                <span>사례 5. 학교 행사 결재 절차 갈등<span class="case-type-badge">절차 갈등</span></span>
-                <span class="case-toggle">▼</span>
-            </div>
-            <div class="case-body">
-                <div class="case-step"><span class="case-step-label">상황</span><span>체육부 주관 운동회 기안 시 교장 직결재 요청. 교무부에서 "담당부장→교감→교장 경유 원칙"을 주장. 준비 마감 임박 상황에서 결재 지연으로 준비 차질 발생.</span></div>
-                <div class="case-step"><span class="case-step-label">쟁점</span><span>전결규정 미비 및 부서 간 절차 공유 부족. 긴급 상황에서의 결재 처리 기준 없음.</span></div>
-                <div class="case-step"><span class="case-step-label">해결과정</span><span>학교 전결규정 검토 후 행사 기안은 교감 전결 가능 항목 확인. 긴급 시 교감 전결 후 교장 사후 보고 절차 신설, 전 교직원 공지.</span></div>
-                <div class="case-step"><span class="case-step-label">결과</span><span>전결규정에 행사 기안 항목 세분화. 부서장 회의에서 결재 절차 공유. 이후 동일 사례 재발 방지.</span></div>
-                <div class="case-law-ref">📋 관련 법령: 국가공무원법 제57조 (복종의 의무), 행정업무의 효율적 운영에 관한 규정 제7조</div>
-            </div>
-        </div>
+[이행 일정]
+- 시행일:
+- 1차 점검일:
+- 2차 점검일:</div>
 
-        <script>
-        function toggleCase(header) {
-            var body = header.nextElementSibling;
-            var toggle = header.querySelector('.case-toggle');
-            body.classList.toggle('open');
-            toggle.classList.toggle('open');
-        }
-        </script>
+        <h3>나. 괴롭힘 및 2차피해 조정서(요약본)</h3>
+        <div class="template">[즉시 중단 조치]
+- 중단 행위:
+- 접촉 제한 규칙:
 
-        <h2 id="lawsearch">9. 법령·매뉴얼 검색</h2>
-        <p style="font-size: 14px; color: #7f8c8d; margin-bottom: 10px;">관련 법령과 교육부 매뉴얼의 주요 조항을 검색할 수 있습니다. 키워드 입력 또는 분류를 선택하세요.</p>
-        <div class="search-wrap">
-            <div class="search-row">
-                <input type="text" id="lawSearchInput" class="search-input" placeholder="예: 성폭력예방교육, 학교폭력, 업무분장, 교감..." oninput="runLawSearch()">
-            </div>
-            <div class="filter-btns">
-                <button class="filter-btn active" onclick="setFilter('전체', this)">전체</button>
-                <button class="filter-btn" onclick="setFilter('법령', this)">법령만</button>
-                <button class="filter-btn" onclick="setFilter('매뉴얼', this)">매뉴얼만</button>
-            </div>
-        </div>
-        <div id="lawResults"></div>
+[보호 조치]
+- 피해자 보호 방식:
+- 분리 조치 여부:
 
-        <script>
-        var currentFilter = '전체';
-        var lawDB = [
-            { id:1, category:'법령', name:'초·중등교육법', article:'제20조', title:'교직원의 임무',
-              content:'① 교장은 교무를 통할하고, 소속 교직원을 지도·감독하며, 학생을 교육한다.\n② 교감은 교장을 보좌하여 교무를 관리하고, 교장이 직무를 수행할 수 없을 때 그 직무를 대행한다.\n③ 수석교사는 교사의 교수·연구 활동을 지원하며, 학생을 교육한다.\n④ 교사는 법령에서 정하는 바에 따라 학생을 교육한다.\n⑤ 행정직원 등 직원은 법령에서 정하는 바에 따라 학교의 행정사무와 그 밖의 사무를 담당한다.',
-              tags:'교장 교감 교사 직무 업무분장 지도감독' },
-            { id:2, category:'법령', name:'국가공무원법', article:'제56조', title:'성실 의무',
-              content:'모든 공무원은 법령을 준수하며 성실히 직무를 수행하여야 한다.',
-              tags:'성실의무 직무 공무원 업무회피' },
-            { id:3, category:'법령', name:'국가공무원법', article:'제57조', title:'복종의 의무',
-              content:'공무원은 직무를 수행할 때 소속 상관의 직무상 명령에 복종하여야 한다.',
-              tags:'복종 상관 명령 절차 결재' },
-            { id:4, category:'법령', name:'교육공무원법', article:'제43조', title:'교원의 신분 보장',
-              content:'① 교원은 형의 선고, 징계처분 또는 이 법에서 정하는 사유에 의하지 아니하고는 그 의사에 반하여 휴직·강임 또는 면직을 당하지 아니한다.\n② 교원은 권고에 의하여 사직을 당하지 아니한다.',
-              tags:'신분보장 교원 징계 면직' },
-            { id:5, category:'법령', name:'성폭력방지 및 피해자보호 등에 관한 법률', article:'제5조', title:'성폭력 예방교육',
-              content:'① 각급 학교의 장은 대통령령으로 정하는 바에 따라 성교육 및 성폭력 예방교육을 실시하고, 그 결과를 여성가족부장관에게 제출하여야 한다.\n② 예방교육의 실시 주체는 학교 업무분장 상 명시된 담당 부서에서 수행하며, 보건교사 등 전문 인력이 있는 경우 이를 적극 활용한다.',
-              tags:'성폭력예방교육 보건교사 학부모교육 여성가족부 결과보고' },
-            { id:6, category:'법령', name:'학교폭력예방 및 대책에 관한 법률', article:'제14조', title:'전담기구 구성·운영',
-              content:'① 학교의 장은 학교폭력문제를 담당하는 전담기구를 구성·운영하여야 한다.\n② 전담기구는 교감, 전문상담교사, 보건교사 및 책임교사, 학부모 등으로 구성한다.\n③ 전담기구는 학교폭력 실태조사, 예방 프로그램 구성·실시, 신고 접수, 피해학생 관계개선 지원 등의 업무를 담당한다.',
-              tags:'학교폭력 전담기구 교감 보건교사 상담교사 책임교사 예방교육' },
-            { id:7, category:'법령', name:'학교폭력예방 및 대책에 관한 법률', article:'제20조', title:'학교폭력의 신고의무',
-              content:'① 학교폭력 현장을 보거나 그 사실을 알게 된 자는 학교 등 관계 기관에 이를 즉시 신고하여야 한다.\n② 신고를 받은 기관은 가·피해학생의 보호자와 소속 학교의 장에게 통보하여야 한다.',
-              tags:'학교폭력 신고의무 통보 보호자' },
-            { id:8, category:'법령', name:'교원의 지위 향상 및 교육활동 보호를 위한 특별법', article:'제2조', title:'국가 및 지방자치단체의 의무',
-              content:'국가와 지방자치단체는 교원이 사회적으로 존경받고 높은 긍지와 사명감을 가지고 교육활동을 할 수 있는 여건을 조성하도록 노력하여야 한다.',
-              tags:'교원 교육활동 여건조성 교권' },
-            { id:9, category:'법령', name:'교원의 지위 향상 및 교육활동 보호를 위한 특별법', article:'제15조', title:'교육활동 침해행위에 대한 조치',
-              content:'① 학교의 장은 교육활동 중인 교원에 대하여 교육활동 침해행위가 발생한 경우 즉시 관련 교원의 치유와 교권 회복에 필요한 조치를 하여야 한다.\n② 학교의 장은 조치를 신속하게 처리하고 교육활동이 원활히 이루어질 수 있도록 지원하여야 한다.',
-              tags:'교육활동 침해 교권 보호 조치' },
-            { id:10, category:'법령', name:'행정업무의 효율적 운영에 관한 규정', article:'제7조', title:'업무처리의 기본원칙',
-              content:'① 행정기관의 업무는 신속·정확하게 처리하여야 하며, 불필요한 절차나 단계를 최소화하여야 한다.\n② 행정기관의 장은 업무 처리에 있어 권한과 책임을 명확히 하고, 소속 직원에게 적절히 분담하여야 한다.',
-              tags:'업무처리 절차 권한 책임 분담 결재' },
-            { id:11, category:'매뉴얼', name:'교육부 학교폭력 사안처리 가이드북', article:'업무 분장 기준', title:'학교폭력 담당 업무 분장 지침',
-              content:'• 학교폭력 예방교육: 생활지도부(책임교사) 주관, 전 교사 협조\n• 사안 접수 및 초기 조치: 학교폭력 책임교사\n• 피해학생 지원: 전문상담교사(없는 경우 담임교사)\n• 보호자 통지: 담임교사 → 학교장 보고\n• 전담기구 회의 소집: 교감(전담기구장)\n• 교육청 보고: 교무부(교육행정정보시스템 입력)',
-              tags:'학교폭력 담당교사 전담기구 상담교사 교감 보고 생활지도부' },
-            { id:12, category:'매뉴얼', name:'교육부 성희롱·성폭력 예방교육 업무 매뉴얼', article:'학교 내 예방교육 실시 지침', title:'예방교육 담당 부서 및 절차',
-              content:'• 학생 대상 성폭력예방교육: 보건교사 주관 (연 1회 이상)\n• 교직원 대상 성희롱예방교육: 학교장 책임 하에 실시\n• 학부모 대상 교육: 학부모회 연계, 보건교사 강의 또는 외부 강사 활용\n• 결과 보고: 보건부에서 취합하여 교육청 제출\n• 전문 강사가 없는 경우 교육청 순회강사 지원 신청 가능',
-              tags:'성폭력예방교육 보건교사 학부모교육 교직원 결과보고 강사' },
-            { id:13, category:'매뉴얼', name:'교육부 교원 행정업무 경감 지침', article:'학교 업무분장 합리화', title:'업무 경감 및 분장 효율화 방안',
-              content:'• 교사의 행정업무는 교육활동 지원 범위로 한정\n• 각종 조사·통계 업무는 행정실과 이원화 처리\n• 동일 또는 유사 업무는 단일 부서 통합 처리\n• 부서 간 업무 경계 불명확 시 교무행정팀 조정\n• 연간 업무분장은 학기 초 교직원 협의를 통해 확정\n• 신규 업무 발생 시 즉시 업무분장 회의 소집',
-              tags:'업무경감 행정실 업무분장 교무행정팀 협의 교육활동' },
-            { id:14, category:'매뉴얼', name:'교육부 방과후학교 운영 가이드라인', article:'업무 담당 기준', title:'방과후학교 부서별 업무 분장',
-              content:'• 방과후학교 운영 총괄: 교무부(방과후학교 담당교사)\n• 강사 채용 및 계약: 행정실(계약 업무) + 교무부(선정 기준)\n• 수강신청 및 수납: 행정실\n• 교육과정 편성 및 수업 관리: 방과후학교 담당교사\n• 결과 보고 및 학부모 안내: 방과후학교 담당교사\n• 안전사고 처리: 보건교사 + 담임교사 협조',
-              tags:'방과후학교 행정실 강사 수강신청 교무부 운영 담당교사' },
-            { id:15, category:'매뉴얼', name:'교육부 학교업무협의체 운영 매뉴얼', article:'갈등 조정 절차', title:'업무 갈등 조정 및 협의 절차',
-              content:'• 1단계: 당사자 간 직접 협의 (24시간 내)\n• 2단계: 부서장 중재 (3일 내)\n• 3단계: 교무행정업무팀 조정 (1주일 내)\n• 조정 결과는 반드시 문서로 기록하고 전 교직원에게 공지\n• 반복되는 갈등은 업무분장표 수정을 통해 근본적 해결\n• 해결되지 않는 경우 교육청 장학사 자문 요청 가능',
-              tags:'갈등조정 업무분장 협의 교무행정팀 문서 교육청 장학사' }
-        ];
+[재발 방지]
+- 교육 일정:
+- 사과/회복 절차:
+- 1개월 추적 점검:</div>
 
-        function setFilter(val, btn) {
-            currentFilter = val;
-            document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
-            btn.classList.add('active');
-            runLawSearch();
-        }
+        <h3>다. 민원 단일창구 통지문(요약본)</h3>
+        <div class="template">[민원 접수 원칙]
+- 동일 사안 단일 접수번호:
+- 접수 창구:
+- 중간 안내 기한:
+- 최종 회신 기한:
 
-        function runLawSearch() {
-            var query = document.getElementById('lawSearchInput').value.trim().toLowerCase();
-            var results = lawDB.filter(function(item) {
-                if (currentFilter !== '전체' && item.category !== currentFilter) return false;
-                if (!query) return true;
-                var text = (item.name + ' ' + item.article + ' ' + item.title + ' ' + item.content + ' ' + item.tags).toLowerCase();
-                return query.split(' ').every(function(w) { return text.indexOf(w) !== -1; });
-            });
-            var container = document.getElementById('lawResults');
-            if (results.length === 0) {
-                container.innerHTML = '<div class="no-results">검색 결과가 없습니다. 다른 키워드로 검색해보세요.</div>';
-                return;
-            }
-            container.innerHTML = results.map(function(item) {
-                var badge = item.category === '법령'
-                    ? '<span class="law-badge badge-law">법령</span>'
-                    : '<span class="law-badge badge-manual">매뉴얼</span>';
-                return '<div class="law-item"><div class="law-item-header">' + badge +
-                    '<span class="law-name">' + item.name + '</span>' +
-                    '<span class="law-article">' + item.article + ' ' + item.title + '</span>' +
-                    '</div><div class="law-content">' + item.content + '</div></div>';
-            }).join('');
-        }
+[유의 사항]
+- 교사 개인 연락처 직접 응대 중단
+- 반복 민원 통합 관리 원칙 안내</div>
+      </section>
 
-        window.addEventListener('load', function() { runLawSearch(); });
-        </script>
-
-        <h2>10. 갈등 조정 신청서 양식</h2>
-
-        <div class="box">
-            <div class="box-title">갈등 조정 신청서</div>
-            <table style="margin-top: 10px;">
-                <tr>
-                    <th style="width: 20%;">신청일</th>
-                    <td style="width: 30%;">2025년 ___월 ___일</td>
-                    <th style="width: 20%;">신청자</th>
-                    <td style="width: 30%;">________________</td>
-                </tr>
-                <tr>
-                    <th style="background-color: #f8f9fa;">갈등 유형</th>
-                    <td colspan="3">
-                        ☐ 업무 소유권 &nbsp;&nbsp; ☐ 업무 회피 &nbsp;&nbsp; ☐ 업무 중복 &nbsp;&nbsp; ☐ 업무 과부하 &nbsp;&nbsp; ☐ 절차 갈등
-                    </td>
-                </tr>
-                <tr>
-                    <th style="background-color: #f8f9fa;">긴급도</th>
-                    <td colspan="3">
-                        ☐ 긴급(당일) &nbsp;&nbsp; ☐ 보통(3일 내) &nbsp;&nbsp; ☐ 여유(1주일)
-                    </td>
-                </tr>
-                <tr>
-                    <th style="background-color: #f8f9fa;">관련 부서</th>
-                    <td colspan="3">__________________ 부 ↔ __________________ 부</td>
-                </tr>
-                <tr>
-                    <th style="background-color: #f8f9fa;">갈등 배경<br>(200자 이내)</th>
-                    <td colspan="3" style="height: 80px; vertical-align: top; padding: 8px;">
-                        <br><br><br>
-                    </td>
-                </tr>
-                <tr>
-                    <th style="background-color: #f8f9fa;">희망 해결방안</th>
-                    <td colspan="3" style="height: 60px; vertical-align: top; padding: 8px;">
-                        <br><br>
-                    </td>
-                </tr>
-                <tr>
-                    <th style="background-color: #f8f9fa;">처리 희망일</th>
-                    <td colspan="3">2025년 ___월 ___일까지</td>
-                </tr>
-            </table>
-            <p style="margin-top: 15px; font-size: 12px; color: #666;">
-                ※ 작성 후 온라인 연구실에 업로드하거나 해당 부서장에게 제출
-            </p>
-        </div>
-
-        <div class="footer">
-            <p><strong>기억하세요:</strong> 갈등은 조직 발전의 기회입니다. 신속하고 공정한 해결을 통해 더 효율적인 업무 체계를 만들어 갑시다.</p>
-            <p>와석초등학교 학교업무협의체 | 2025학년도 연구학교 운영 | S.O.S 모델 적용</p>
-            <div style="margin-top: 20px;">
-                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="btn">🔝 맨 위로</button>
-            </div>
-        </div>
-        </div><!-- /content-wrap -->
-    </div>
+      <footer class="footer">
+        초등학교 현장형 업무갈등 조정 실무 문서 | 사례 확장 반영본
+      </footer>
+    </main>
+  </div>
 </body>
 </html>
