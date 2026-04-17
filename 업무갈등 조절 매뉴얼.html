@@ -156,6 +156,96 @@
       font-size: 14px;
       white-space: pre-line;
     }
+    .case-tools {
+      background: #f8f7ff;
+      border: 1px solid #e1dcff;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+    .case-tools .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .case-tools input, .case-tools select {
+      border: 1px solid #cdc6ff;
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #1d1d2e;
+    }
+    .case-tools input { min-width: 220px; flex: 1; }
+    .case-tools small { color: #605f7a; }
+    .copy-btn {
+      margin-left: 8px;
+      border: 1px solid #cfc8ff;
+      background: #fff;
+      color: #4d41be;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 8px;
+      cursor: pointer;
+    }
+    .copy-btn:hover { background: #f2efff; }
+    .hidden-case { display: none; }
+    .ops-checklist {
+      border: 1px solid #d5f0e6;
+      border-left: 5px solid #20b57d;
+      background: #f4fff9;
+      border-radius: 0 12px 12px 0;
+      padding: 12px 14px;
+      margin: 16px 0;
+    }
+    .ops-checklist .group { margin: 10px 0; }
+    .ops-checklist label {
+      display: block;
+      margin: 6px 0;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .ops-checklist button {
+      border: 1px solid #33ba89;
+      background: #20b57d;
+      color: #fff;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 12px;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+    .ops-checklist button:hover { filter: brightness(1.05); }
+    .summary-box {
+      width: 100%;
+      min-height: 120px;
+      margin-top: 10px;
+      border: 1px solid #c7e8dc;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 9px 10px;
+      color: #1d1d2e;
+      background: #fff;
+    }
+    .toast {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      background: #2d2a55;
+      color: #fff;
+      padding: 8px 11px;
+      border-radius: 8px;
+      font-size: 12px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.2s ease;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 0.96; transform: translateY(0); }
     .footer {
       margin-top: 28px;
       text-align: center;
@@ -258,112 +348,144 @@
 
       <section id="cases">
         <h2>4. 사례 카드 상세</h2>
+        <div class="case-tools">
+          <div class="row">
+            <input id="caseSearchInput" type="text" placeholder="사례 검색 (예: 민원, 학교폭력, RACI)" oninput="applyCaseFilters()">
+          </div>
+          <div class="row">
+            <select id="typeFilter" onchange="applyCaseFilters()">
+              <option value="전체">유형 전체</option>
+              <option value="운영·배정">운영·배정</option>
+              <option value="학생보호·안전">학생보호·안전</option>
+              <option value="인사·책임">인사·책임</option>
+            </select>
+            <select id="difficultyFilter" onchange="applyCaseFilters()">
+              <option value="전체">난이도 전체</option>
+              <option value="상">상</option>
+              <option value="중상">중상</option>
+              <option value="중">중</option>
+            </select>
+          </div>
+          <small id="caseCount">표시 사례: 12건</small>
+        </div>
 
-        <details class="case">
+        <details class="case case-item" data-type="운영·배정" data-difficulty="상" data-keywords="늘봄 배정 RACI 학부모 안내">
           <summary><span>사례 1. 늘봄 수요 폭증으로 배정선이 꼬인 사례</span><span>▼</span></summary>
           <div class="case-body">
             <p><span class="label">핵심 갈등</span>최종 배정권자·학부모 안내자가 불명확해 배정 기준이 부서별로 분리됨.</p>
             <p><span class="label">권고 조정</span>당일 쟁점표 작성 후 신규배정 24시간 보류, 교감 주재로 RACI 확정, 3일 내 학교장 결재 후 단일 공지.</p>
-            <p><span class="label">예시 문안</span>“늘봄 배정 및 대기순위는 학교 운영기준에 따라 교감이 총괄하고, 문의는 늘봄전담실이 일괄 회신합니다.”</p>
+            <p><span class="label">예시 문안</span>“늘봄 배정 및 대기순위는 학교 운영기준에 따라 교감이 총괄하고, 문의는 늘봄전담실이 일괄 회신합니다.”
+              <button type="button" class="copy-btn" data-copy="늘봄 배정 및 대기순위는 학교 운영기준에 따라 교감이 총괄하고, 문의는 늘봄전담실이 일괄 회신합니다." onclick="copyExample(this)">복사</button></p>
           </div>
         </details>
 
-        <details class="case">
+        <details class="case case-item" data-type="학생보호·안전" data-difficulty="상" data-keywords="학교폭력 전담기구 보호조치 교육지원청">
           <summary><span>사례 2. 학교폭력 자체해결 오판 사례</span><span>▼</span></summary>
           <div class="case-body">
             <p><span class="label">핵심 갈등</span>담임 중심의 조기 종결 시도와 전담기구 정식처리 요구가 충돌.</p>
             <p><span class="label">권고 조정</span>피해학생 보호조치 우선, 보호자 1차 통보 후 전담기구 사실확인, 자체해결 이견 시 교육지원청 라인 이관.</p>
-            <p><span class="label">예시 문안</span>“학급 생활지도와 별개로 전담기구 검토 절차를 진행하며, 보호조치는 즉시 시행합니다.”</p>
+            <p><span class="label">예시 문안</span>“학급 생활지도와 별개로 전담기구 검토 절차를 진행하며, 보호조치는 즉시 시행합니다.”
+              <button type="button" class="copy-btn" data-copy="학급 생활지도와 별개로 전담기구 검토 절차를 진행하며, 보호조치는 즉시 시행합니다." onclick="copyExample(this)">복사</button></p>
           </div>
         </details>
 
-        <details class="case">
+        <details class="case case-item" data-type="운영·배정" data-difficulty="상" data-keywords="민원 단일창구 반복민원 교감">
           <summary><span>사례 3. 학부모 민원 단일창구 부재 사례</span><span>▼</span></summary>
           <div class="case-body">
             <p><span class="label">핵심 갈등</span>교사 개인 연락 경로로 민원이 분산돼 동일 사안이 증폭.</p>
             <p><span class="label">권고 조정</span>교감이 단일창구 전환 선언, 담임은 사실확인서 중심 대응, 반복민원 통합번호 부여 및 회신기한 고지.</p>
-            <p><span class="label">예시 문안</span>“본 사안은 학교 대표 민원창구로 일원화하며 담임 개인 연락에는 응답하지 않습니다.”</p>
+            <p><span class="label">예시 문안</span>“본 사안은 학교 대표 민원창구로 일원화하며 담임 개인 연락에는 응답하지 않습니다.”
+              <button type="button" class="copy-btn" data-copy="본 사안은 학교 대표 민원창구로 일원화하며 담임 개인 연락에는 응답하지 않습니다." onclick="copyExample(this)">복사</button></p>
           </div>
         </details>
 
-        <details class="case">
+        <details class="case case-item" data-type="학생보호·안전" data-difficulty="상" data-keywords="정서행동검사 개인정보 비공개 협의체">
           <summary><span>사례 4. 정서행동검사 결과 공유범위 갈등</span><span>▼</span></summary>
           <div class="case-body">
             <p><span class="label">핵심 갈등</span>학생 지원 필요성과 민감정보 최소공유 원칙 간 충돌.</p>
             <p><span class="label">권고 조정</span>열람권한 최소화(학교장·담임·상담·보건), 비공개 협의체 운영, 메신저·회람 금지.</p>
-            <p><span class="label">예시 문안</span>“검사 결과는 지정 인원만 열람하며 대화방 공유 및 출력물 회람을 금지합니다.”</p>
+            <p><span class="label">예시 문안</span>“검사 결과는 지정 인원만 열람하며 대화방 공유 및 출력물 회람을 금지합니다.”
+              <button type="button" class="copy-btn" data-copy="검사 결과는 지정 인원만 열람하며 대화방 공유 및 출력물 회람을 금지합니다." onclick="copyExample(this)">복사</button></p>
           </div>
         </details>
 
-        <details class="case">
+        <details class="case case-item" data-type="학생보호·안전" data-difficulty="중상" data-keywords="감염병 보건 등교조정 학사운영">
           <summary><span>사례 5. 감염병 대응 판단 갈등</span><span>▼</span></summary>
           <div class="case-body">
             <p><span class="label">핵심 갈등</span>보건 권고와 학사운영 부담이 충돌하면서 결정을 지연.</p>
             <p><span class="label">권고 조정</span>보건 권고 우선, 결석률·접촉범위·돌봄영향 통합표 작성, 당일 결재 및 이중 공지(보건/학사 분리).</p>
-            <p><span class="label">예시 문안</span>“학생 안전을 우선해 등교조정을 시행하며 수업 대체안은 별도 안내드립니다.”</p>
+            <p><span class="label">예시 문안</span>“학생 안전을 우선해 등교조정을 시행하며 수업 대체안은 별도 안내드립니다.”
+              <button type="button" class="copy-btn" data-copy="학생 안전을 우선해 등교조정을 시행하며 수업 대체안은 별도 안내드립니다." onclick="copyExample(this)">복사</button></p>
           </div>
         </details>
 
-        <details class="case">
+        <details class="case case-item" data-type="학생보호·안전" data-difficulty="상" data-keywords="특수교육 IEP 지원인력 교육지원청">
           <summary><span>사례 6. 특수교육 IEP와 지원인력 배치 갈등</span><span>▼</span></summary>
           <div class="case-body">
             <p><span class="label">핵심 갈등</span>담임 요구(상시지원)와 특수교사 자원 한계가 충돌.</p>
             <p><span class="label">권고 조정</span>지시가 아닌 IEP 회의로 의사결정, 수업·쉬는시간·급식시간 분리배치, 부족인력은 교육지원청 추가지원 검토.</p>
-            <p><span class="label">예시 문안</span>“지원시간 확대는 IEP 회의록과 교육지원청 지원 가능 범위를 반영해 확정합니다.”</p>
+            <p><span class="label">예시 문안</span>“지원시간 확대는 IEP 회의록과 교육지원청 지원 가능 범위를 반영해 확정합니다.”
+              <button type="button" class="copy-btn" data-copy="지원시간 확대는 IEP 회의록과 교육지원청 지원 가능 범위를 반영해 확정합니다." onclick="copyExample(this)">복사</button></p>
           </div>
         </details>
 
-        <details class="case">
+        <details class="case case-item" data-type="학생보호·안전" data-difficulty="상" data-keywords="현장체험학습 인솔 안전계획 계약변경">
           <summary><span>사례 7. 현장체험학습 인솔·안전계획 충돌</span><span>▼</span></summary>
           <div class="case-body">
             <p><span class="label">핵심 갈등</span>안전책임과 계약책임이 분리돼 구두변경 관행이 발생.</p>
             <p><span class="label">권고 조정</span>학년부 안전계획과 행정실 계약서류를 통합검토, 일정·차량 변경은 서면변경 전 승인 금지.</p>
-            <p><span class="label">예시 문안</span>“안전계획 재검토와 서면 계약변경 확인 전에는 일정 변경을 승인하지 않습니다.”</p>
+            <p><span class="label">예시 문안</span>“안전계획 재검토와 서면 계약변경 확인 전에는 일정 변경을 승인하지 않습니다.”
+              <button type="button" class="copy-btn" data-copy="안전계획 재검토와 서면 계약변경 확인 전에는 일정 변경을 승인하지 않습니다." onclick="copyExample(this)">복사</button></p>
           </div>
         </details>
 
-        <details class="case">
+        <details class="case case-item" data-type="인사·책임" data-difficulty="상" data-keywords="급식실 괴롭힘 퇴근 후 지시 모욕">
           <summary><span>사례 8. 급식실 퇴근 후 지시·모욕 갈등</span><span>▼</span></summary>
           <div class="case-body">
             <p><span class="label">핵심 갈등</span>근무시간 외 반복 지시와 공개 모욕이 괴롭힘 분쟁으로 확대.</p>
             <p><span class="label">권고 조정</span>퇴근 후 과제·사진전송 즉시 중단, 지시 채널 단일화, 직무지도는 근무시간 내 표준절차로 전환.</p>
-            <p><span class="label">예시 문안</span>“퇴근 후 메신저 지시와 공개적 인격비하는 즉시 중단하며 모든 직무지도는 근무시간 내 절차를 따릅니다.”</p>
+            <p><span class="label">예시 문안</span>“퇴근 후 메신저 지시와 공개적 인격비하는 즉시 중단하며 모든 직무지도는 근무시간 내 절차를 따릅니다.”
+              <button type="button" class="copy-btn" data-copy="퇴근 후 메신저 지시와 공개적 인격비하는 즉시 중단하며 모든 직무지도는 근무시간 내 절차를 따릅니다." onclick="copyExample(this)">복사</button></p>
           </div>
         </details>
 
-        <details class="case">
+        <details class="case case-item" data-type="인사·책임" data-difficulty="상" data-keywords="식재료 대체납품 검수 대금보류">
           <summary><span>사례 9. 식재료 대체납품과 검수·대금 분쟁</span><span>▼</span></summary>
           <div class="case-body">
             <p><span class="label">핵심 갈등</span>급식 연속성 압박 때문에 대체납품을 무리하게 수용하려는 상황.</p>
             <p><span class="label">권고 조정</span>물품을 조건부 격리하고 동일성·안전성 확인 후 처리, 서면 소명·변경절차 없으면 대금보류 검토.</p>
-            <p><span class="label">예시 문안</span>“대체납품 물품은 계약적합성 확인 전 검수 완료로 보지 않으며 대금지급은 서면 확인 후 결정합니다.”</p>
+            <p><span class="label">예시 문안</span>“대체납품 물품은 계약적합성 확인 전 검수 완료로 보지 않으며 대금지급은 서면 확인 후 결정합니다.”
+              <button type="button" class="copy-btn" data-copy="대체납품 물품은 계약적합성 확인 전 검수 완료로 보지 않으며 대금지급은 서면 확인 후 결정합니다." onclick="copyExample(this)">복사</button></p>
           </div>
         </details>
 
-        <details class="case">
+        <details class="case case-item" data-type="인사·책임" data-difficulty="중상" data-keywords="근무성적평정 성과상여금 이의신청">
           <summary><span>사례 10. 근무성적평정·성과상여금 갈등</span><span>▼</span></summary>
           <div class="case-body">
             <p><span class="label">핵심 갈등</span>평정 재량은 있으나 설명 부족으로 인사 불신이 누적.</p>
             <p><span class="label">권고 조정</span>등급 통보와 근거 설명 분리, 당사자 추가증빙 접수, 필요 시 고충심사 라인 연계.</p>
-            <p><span class="label">예시 문안</span>“제출자료를 평정 기준과 대조해 재검토하고 결과를 서면으로 회신하겠습니다.”</p>
+            <p><span class="label">예시 문안</span>“제출자료를 평정 기준과 대조해 재검토하고 결과를 서면으로 회신하겠습니다.”
+              <button type="button" class="copy-btn" data-copy="제출자료를 평정 기준과 대조해 재검토하고 결과를 서면으로 회신하겠습니다." onclick="copyExample(this)">복사</button></p>
           </div>
         </details>
 
-        <details class="case">
+        <details class="case case-item" data-type="인사·책임" data-difficulty="상" data-keywords="내부신고 보복의심 인사평가 보호절차">
           <summary><span>사례 11. 회계·보조금 내부신고 후 보복 의심 사례</span><span>▼</span></summary>
           <div class="case-body">
             <p><span class="label">핵심 갈등</span>신고 이후 인사·평가 변동이 보복으로 의심되는 상황.</p>
             <p><span class="label">권고 조정</span>신고 직후 인사·평가 변경 유보, 인사결정 라인과 신고 인지 라인 분리, 외부 보호신청 안내 병행.</p>
-            <p><span class="label">예시 문안</span>“신고 이후 예정된 인사·평가 변경은 관련성 검토 완료 시까지 유보하며 필요 시 보호절차를 병행합니다.”</p>
+            <p><span class="label">예시 문안</span>“신고 이후 예정된 인사·평가 변경은 관련성 검토 완료 시까지 유보하며 필요 시 보호절차를 병행합니다.”
+              <button type="button" class="copy-btn" data-copy="신고 이후 예정된 인사·평가 변경은 관련성 검토 완료 시까지 유보하며 필요 시 보호절차를 병행합니다." onclick="copyExample(this)">복사</button></p>
           </div>
         </details>
 
-        <details class="case">
+        <details class="case case-item" data-type="인사·책임" data-difficulty="중" data-keywords="비대면 수업 메신저 지시선 플랫폼 응답시간">
           <summary><span>사례 12. 비대면 수업·메신저 지시선 충돌</span><span>▼</span></summary>
           <div class="case-body">
             <p><span class="label">핵심 갈등</span>긴급 상황에서 야간 지시와 학생 영상정보 처리기준이 동시에 무너짐.</p>
             <p><span class="label">권고 조정</span>승인 플랫폼·발송권자·응답시간 규칙을 선확정하고 예외 승인기록 의무화.</p>
-            <p><span class="label">예시 문안</span>“학생 영상·사진은 승인된 플랫폼에서 교육목적 범위로만 사용하며 공지 응답은 운영시간 원칙을 따릅니다.”</p>
+            <p><span class="label">예시 문안</span>“학생 영상·사진은 승인된 플랫폼에서 교육목적 범위로만 사용하며 공지 응답은 운영시간 원칙을 따릅니다.”
+              <button type="button" class="copy-btn" data-copy="학생 영상·사진은 승인된 플랫폼에서 교육목적 범위로만 사용하며 공지 응답은 운영시간 원칙을 따릅니다." onclick="copyExample(this)">복사</button></p>
           </div>
         </details>
       </section>
@@ -406,8 +528,33 @@
         </div>
       </section>
 
+      <section id="practical-checklist">
+        <h2>6. 체크형 실무 점검표</h2>
+        <div class="ops-checklist">
+          <div class="group">
+            <strong>초기 대응</strong>
+            <label><input type="checkbox" class="ops-item"> 갈등 발생 시각과 최초 인지자를 기록했다.</label>
+            <label><input type="checkbox" class="ops-item"> 24시간 내 직접 협의 일정을 잡았다.</label>
+            <label><input type="checkbox" class="ops-item"> 관련 문서(업무분장표/공문/회의록)를 확보했다.</label>
+          </div>
+          <div class="group">
+            <strong>중재 절차</strong>
+            <label><input type="checkbox" class="ops-item"> 단일 의사결정권자와 안내 책임자를 지정했다.</label>
+            <label><input type="checkbox" class="ops-item"> 합의 실패 시 관리자 중재회의를 소집했다.</label>
+            <label><input type="checkbox" class="ops-item"> 조정 결과를 문서화하고 공유했다.</label>
+          </div>
+          <div class="group">
+            <strong>사후 관리</strong>
+            <label><input type="checkbox" class="ops-item"> 2주 또는 4주 후 후속 점검 일정을 확정했다.</label>
+            <label><input type="checkbox" class="ops-item"> 재발 방지용 규칙(안내문/절차)을 업데이트했다.</label>
+          </div>
+          <button type="button" onclick="buildChecklistSummary()">체크 결과 요약 생성</button>
+          <textarea id="checklistSummary" class="summary-box" placeholder="버튼을 누르면 체크 결과 요약이 생성됩니다."></textarea>
+        </div>
+      </section>
+
       <section id="appendix">
-        <h2>6. 부록 템플릿 (현장 즉시 활용용)</h2>
+        <h2>7. 부록 템플릿 (현장 즉시 활용용)</h2>
 
         <h3>가. 초등학교 업무분장 조정합의서(요약본)</h3>
         <div class="template">[합의 대상 업무]
@@ -456,5 +603,67 @@
       </footer>
     </main>
   </div>
+  <div id="toast" class="toast">복사되었습니다.</div>
+  <script>
+    function applyCaseFilters() {
+      var query = document.getElementById("caseSearchInput").value.trim().toLowerCase();
+      var type = document.getElementById("typeFilter").value;
+      var difficulty = document.getElementById("difficultyFilter").value;
+      var cases = document.querySelectorAll(".case-item");
+      var visibleCount = 0;
+
+      cases.forEach(function (item) {
+        var itemType = item.getAttribute("data-type");
+        var itemDifficulty = item.getAttribute("data-difficulty");
+        var text = (item.textContent + " " + item.getAttribute("data-keywords")).toLowerCase();
+        var matchesQuery = !query || text.indexOf(query) !== -1;
+        var matchesType = (type === "전체") || (itemType === type);
+        var matchesDifficulty = (difficulty === "전체") || (itemDifficulty === difficulty);
+        var show = matchesQuery && matchesType && matchesDifficulty;
+        item.classList.toggle("hidden-case", !show);
+        if (show) visibleCount += 1;
+      });
+
+      document.getElementById("caseCount").textContent = "표시 사례: " + visibleCount + "건";
+    }
+
+    function copyExample(button) {
+      var text = button.getAttribute("data-copy");
+      navigator.clipboard.writeText(text).then(function () {
+        showToast("예시 문안을 복사했습니다.");
+      }).catch(function () {
+        showToast("복사에 실패했습니다.");
+      });
+    }
+
+    function showToast(message) {
+      var toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.setTimeout(function () {
+        toast.classList.remove("show");
+      }, 1500);
+    }
+
+    function buildChecklistSummary() {
+      var checked = document.querySelectorAll(".ops-item:checked");
+      var total = document.querySelectorAll(".ops-item").length;
+      var lines = [];
+      lines.push("[갈등 조정 점검 요약]");
+      lines.push("- 점검일: " + new Date().toLocaleDateString("ko-KR"));
+      lines.push("- 완료 항목: " + checked.length + "/" + total);
+      lines.push("");
+      if (checked.length > 0) {
+        lines.push("[완료 항목]");
+        checked.forEach(function (item, idx) {
+          var text = item.parentElement.textContent.trim();
+          lines.push((idx + 1) + ". " + text);
+        });
+      } else {
+        lines.push("완료된 항목이 없습니다.");
+      }
+      document.getElementById("checklistSummary").value = lines.join("\n");
+    }
+  </script>
 </body>
 </html>
