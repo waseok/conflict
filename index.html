@@ -218,8 +218,116 @@
             padding-left: 20px;
         }
         
+        .case-card {
+            border: 1px solid #bdc3c7;
+            border-radius: 6px;
+            margin: 12px 0;
+            overflow: hidden;
+        }
+        .case-header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px 16px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            font-size: 14px;
+            user-select: none;
+        }
+        .case-header:hover { background-color: #34495e; }
+        .case-header .case-type-badge {
+            font-size: 11px;
+            background-color: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 8px;
+            font-weight: normal;
+        }
+        .case-toggle { font-size: 18px; transition: transform 0.2s; }
+        .case-toggle.open { transform: rotate(180deg); }
+        .case-body {
+            display: none;
+            padding: 16px;
+            background-color: #fdfdfd;
+        }
+        .case-body.open { display: block; }
+        .case-step {
+            display: flex;
+            gap: 12px;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+        .case-step-label {
+            min-width: 72px;
+            font-weight: bold;
+            color: #5d6d7e;
+            font-size: 12px;
+            padding-top: 1px;
+        }
+        .case-law-ref {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #eaf4fb;
+            border-left: 3px solid #3498db;
+            font-size: 13px;
+            color: #2980b9;
+        }
+        .search-wrap { margin: 16px 0; }
+        .search-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .search-input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 2px solid #bdc3c7;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: "맑은 고딕", "Malgun Gothic", Arial, sans-serif;
+        }
+        .search-input:focus { border-color: #3498db; outline: none; }
+        .filter-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+        .filter-btn {
+            padding: 6px 14px;
+            border: 2px solid #bdc3c7;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: "맑은 고딕", "Malgun Gothic", Arial, sans-serif;
+            transition: all 0.2s;
+        }
+        .filter-btn.active { background-color: #3498db; color: white; border-color: #3498db; }
+        .law-item {
+            border: 1px solid #ecf0f1;
+            border-radius: 6px;
+            padding: 14px 16px;
+            margin: 8px 0;
+            background-color: #fdfefe;
+        }
+        .law-item-header { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+        .law-name { font-weight: bold; color: #2c3e50; font-size: 14px; }
+        .law-article { color: #7f8c8d; font-size: 13px; }
+        .law-badge {
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+        .badge-law { background-color: #fadbd8; color: #c0392b; }
+        .badge-manual { background-color: #d5f5e3; color: #1e8449; }
+        .law-content {
+            font-size: 13px;
+            line-height: 1.8;
+            color: #444;
+            white-space: pre-line;
+        }
+        .no-results { text-align: center; padding: 30px; color: #7f8c8d; font-size: 14px; }
         @media print {
-            .btn, .btn-group {
+            .btn, .btn-group, .search-wrap, .filter-btns {
                 display: none !important;
             }
             body {
@@ -229,6 +337,7 @@
                 box-shadow: none;
                 padding: 0;
             }
+            .case-body { display: block !important; }
         }
     </style>
 </head>
@@ -243,6 +352,8 @@
             <button onclick="window.print()" class="btn">📄 PDF로 저장</button>
             <a href="#types" class="btn btn-secondary">갈등유형 바로가기</a>
             <a href="#process" class="btn btn-secondary">해결절차 바로가기</a>
+            <a href="#cases" class="btn btn-secondary">실제 사례 바로가기</a>
+            <a href="#lawsearch" class="btn btn-secondary">법령 검색 바로가기</a>
             <a href="#checklist" class="btn btn-secondary">체크리스트 바로가기</a>
         </div>
 
@@ -470,109 +581,187 @@
             </ul>
         </div>
 
-        <h2>8. 키워드 클라우드</h2>
-        <p style="font-size: 14px; color: #7f8c8d;">갈등 조정 주요 키워드를 시각화합니다. 버튼을 눌러 새 클라우드를 생성하세요.</p>
-        <div style="text-align: center; margin: 20px 0;">
-            <canvas id="wordCloudCanvas" style="width: 100%; max-width: 800px; height: 350px; background-color: #f8f9fa; border-radius: 8px; border: 1px solid #ecf0f1;"></canvas>
+        <h2 id="cases">8. 실제 사례 모음</h2>
+        <p style="font-size: 14px; color: #7f8c8d; margin-bottom: 15px;">제목을 클릭하면 상세 내용이 열립니다. 각 사례에서 관련 법령 근거를 함께 확인할 수 있습니다.</p>
+
+        <div class="case-card">
+            <div class="case-header" onclick="toggleCase(this)">
+                <span>사례 1. 성폭력예방교육 학부모 대상 담당 부서 갈등<span class="case-type-badge">업무 소유권</span></span>
+                <span class="case-toggle">▼</span>
+            </div>
+            <div class="case-body">
+                <div class="case-step"><span class="case-step-label">상황</span><span>여성가족부 공문으로 학교 성폭력예방교육 실시 및 결과 제출 요구. 보건부는 "보건교사가 담당"을, 인성부는 "학부모 대상은 학부모회 연계 업무라 인성부 소관"을 주장하며 대립.</span></div>
+                <div class="case-step"><span class="case-step-label">쟁점</span><span>성폭력방지법 제5조에 따른 교육 실시 주체가 불명확하고, 학생·교직원·학부모로 대상이 나뉘어 담당 부서 혼란 발생.</span></div>
+                <div class="case-step"><span class="case-step-label">해결과정</span><span>교무행정업무팀에서 성폭력방지법 제5조 및 공문 발신처 확인. 교직원 대상은 보건교사 단독 주관, 학생·학부모 대상은 보건부 주관 + 인성부 협조 체계로 정리.</span></div>
+                <div class="case-step"><span class="case-step-label">결과</span><span>업무분장표에 "성폭력예방교육 — 보건부 주관, 인성부 협조(학부모 연계)" 명시. 이후 동일 갈등 재발 없음.</span></div>
+                <div class="case-law-ref">📋 관련 법령: 성폭력방지 및 피해자보호 등에 관한 법률 제5조 (성폭력 예방교육)</div>
+            </div>
         </div>
-        <div style="text-align: center; margin-bottom: 10px;">
-            <button onclick="createNewCloud()" class="btn">새 클라우드 만들기</button>
+
+        <div class="case-card">
+            <div class="case-header" onclick="toggleCase(this)">
+                <span>사례 2. 디지털시민성교육 소관 부서 갈등<span class="case-type-badge">업무 소유권</span></span>
+                <span class="case-toggle">▼</span>
+            </div>
+            <div class="case-body">
+                <div class="case-step"><span class="case-step-label">상황</span><span>교육청 디지털시민성교육 실시 공문 시달. 과학정보부는 "디지털(IT) 관련이므로 우리 소관", 미래진로교육부는 "시민성·인성 교육이므로 진로·생활지도 부서 소관"이라 주장.</span></div>
+                <div class="case-step"><span class="case-step-label">쟁점</span><span>'디지털'(과학정보)이냐 '시민성'(인성·진로)이냐의 관점 차이. 공문 본문 키워드 해석 차이로 갈등 심화.</span></div>
+                <div class="case-step"><span class="case-step-label">해결과정</span><span>공문 본문 분석 결과 "디지털 환경에서의 시민 윤리·책임" 강조 확인. 창의적 체험활동(자율) 교육과정 연계성 검토 후 인성·진로 측면이 핵심으로 판단. 과학정보부는 기술 지원 역할로 참여.</span></div>
+                <div class="case-step"><span class="case-step-label">결과</span><span>미래진로교육부 주관, 과학정보부 기술 지원 협력 체계 구축. 업무분장표에 반영.</span></div>
+                <div class="case-law-ref">📋 관련 법령: 초·중등교육법 제20조 (교직원의 임무), 제23조 (교육과정)</div>
+            </div>
+        </div>
+
+        <div class="case-card">
+            <div class="case-header" onclick="toggleCase(this)">
+                <span>사례 3. 학교폭력 예방교육 업무 중복<span class="case-type-badge">업무 중복</span></span>
+                <span class="case-toggle">▼</span>
+            </div>
+            <div class="case-body">
+                <div class="case-step"><span class="case-step-label">상황</span><span>학교폭력 예방교육 공문이 생활지도부·상담부로 각각 시달. 양 부서가 독립 계획을 수립해 동일 학생이 같은 교육을 두 번 받는 상황 발생.</span></div>
+                <div class="case-step"><span class="case-step-label">쟁점</span><span>학교폭력예방법 제14조의 전담기구 운영 책임 소재 불명확. 예방교육과 사안처리 업무가 혼재.</span></div>
+                <div class="case-step"><span class="case-step-label">해결과정</span><span>전담기구(학교폭력 책임교사) 중심으로 역할 재정비. 예방교육은 생활지도부 주관, 피해학생 개별 지원은 상담부 전담으로 분리.</span></div>
+                <div class="case-step"><span class="case-step-label">결과</span><span>"학교폭력 예방교육 — 생활지도부 주관 / 피해학생 상담·지원 — 상담부"로 업무분장 수정. 중복 교육 해소.</span></div>
+                <div class="case-law-ref">📋 관련 법령: 학교폭력예방 및 대책에 관한 법률 제14조 (전담기구 구성·운영)</div>
+            </div>
+        </div>
+
+        <div class="case-card">
+            <div class="case-header" onclick="toggleCase(this)">
+                <span>사례 4. 방과후학교 행정 업무 과부하<span class="case-type-badge">업무 과부하</span></span>
+                <span class="case-toggle">▼</span>
+            </div>
+            <div class="case-body">
+                <div class="case-step"><span class="case-step-label">상황</span><span>방과후학교 담당교사(교무부 소속 1인)에게 강사 채용, 수강신청 관리, 비용 수납, 결과 보고, 민원 응대 전담. 학기 초 주 평균 추가 업무 15시간 이상 발생.</span></div>
+                <div class="case-step"><span class="case-step-label">쟁점</span><span>업무분장 시 방과후 업무량 과소 평가. 행정실과의 역할 분담이 불명확하여 교사에게 행정 업무 집중.</span></div>
+                <div class="case-step"><span class="case-step-label">해결과정</span><span>업무량 실태 조사 후 행정실 협의. 수강신청·비용 수납은 행정실, 강사 섭외·교육과정 운영은 교무부 담당교사로 이원화. 학기 초 한시적 지원 인력 배치.</span></div>
+                <div class="case-step"><span class="case-step-label">결과</span><span>방과후학교 업무 11개 항목을 업무분장표에 부서별 명시. 담당교사 초과 업무 70% 경감.</span></div>
+                <div class="case-law-ref">📋 관련 법령: 국가공무원법 제56조 (성실의무), 교육부 방과후학교 운영 가이드라인</div>
+            </div>
+        </div>
+
+        <div class="case-card">
+            <div class="case-header" onclick="toggleCase(this)">
+                <span>사례 5. 학교 행사 결재 절차 갈등<span class="case-type-badge">절차 갈등</span></span>
+                <span class="case-toggle">▼</span>
+            </div>
+            <div class="case-body">
+                <div class="case-step"><span class="case-step-label">상황</span><span>체육부 주관 운동회 기안 시 교장 직결재 요청. 교무부에서 "담당부장→교감→교장 경유 원칙"을 주장. 준비 마감 임박 상황에서 결재 지연으로 준비 차질 발생.</span></div>
+                <div class="case-step"><span class="case-step-label">쟁점</span><span>전결규정 미비 및 부서 간 절차 공유 부족. 긴급 상황에서의 결재 처리 기준 없음.</span></div>
+                <div class="case-step"><span class="case-step-label">해결과정</span><span>학교 전결규정 검토 후 행사 기안은 교감 전결 가능 항목 확인. 긴급 시 교감 전결 후 교장 사후 보고 절차 신설, 전 교직원 공지.</span></div>
+                <div class="case-step"><span class="case-step-label">결과</span><span>전결규정에 행사 기안 항목 세분화. 부서장 회의에서 결재 절차 공유. 이후 동일 사례 재발 방지.</span></div>
+                <div class="case-law-ref">📋 관련 법령: 국가공무원법 제57조 (복종의 의무), 행정업무의 효율적 운영에 관한 규정 제7조</div>
+            </div>
         </div>
 
         <script>
-            var cloudWords = [
-                { text: '갈등조정', weight: 10 },
-                { text: '업무분장', weight: 9 },
-                { text: '업무소유권', weight: 9 },
-                { text: '해결', weight: 9 },
-                { text: '교육활동', weight: 8 },
-                { text: '업무회피', weight: 8 },
-                { text: '업무중복', weight: 8 },
-                { text: '조정', weight: 8 },
-                { text: '협의', weight: 7 },
-                { text: '부서장', weight: 7 },
-                { text: '업무과부하', weight: 7 },
-                { text: '절차갈등', weight: 7 },
-                { text: '소통', weight: 7 },
-                { text: '전문성', weight: 6 },
-                { text: '효율성', weight: 6 },
-                { text: '공정성', weight: 6 },
-                { text: '상호배려', weight: 6 },
-                { text: '협력', weight: 6 },
-                { text: '예방', weight: 6 },
-                { text: '원칙', weight: 6 },
-                { text: '신속처리', weight: 5 },
-                { text: '투명성', weight: 5 },
-                { text: '체크리스트', weight: 5 },
-                { text: '긴급', weight: 5 },
-                { text: '학습', weight: 4 },
-            ];
-
-            var cloudColors = ['#3498db','#e74c3c','#27ae60','#f39c12','#9b59b6','#1abc9c','#e67e22','#2980b9'];
-
-            function drawWordCloud() {
-                var canvas = document.getElementById('wordCloudCanvas');
-                var rect = canvas.getBoundingClientRect();
-                canvas.width = rect.width || 800;
-                canvas.height = rect.height || 350;
-                var ctx = canvas.getContext('2d');
-                var W = canvas.width, H = canvas.height;
-
-                ctx.clearRect(0, 0, W, H);
-                ctx.fillStyle = '#f8f9fa';
-                ctx.fillRect(0, 0, W, H);
-
-                var sorted = cloudWords.slice().sort(function(a, b) { return b.weight - a.weight; });
-                var placed = [];
-
-                for (var i = 0; i < sorted.length; i++) {
-                    var word = sorted[i];
-                    var fontSize = Math.round(10 + word.weight * (W / 120));
-                    ctx.font = 'bold ' + fontSize + 'px "맑은 고딕", Arial';
-                    var tw = ctx.measureText(word.text).width;
-                    var th = fontSize;
-
-                    var ok = false;
-                    var angle = Math.random() * Math.PI * 2;
-                    var radius = 0;
-
-                    for (var attempt = 0; attempt < 600 && !ok; attempt++) {
-                        var cx = W / 2 + radius * Math.cos(angle) - tw / 2;
-                        var cy = H / 2 + radius * Math.sin(angle) + th / 2;
-
-                        if (cx >= 4 && cx + tw <= W - 4 && cy - th >= 4 && cy <= H - 4) {
-                            var nr = { x: cx, y: cy - th, w: tw, h: th + 4 };
-                            var overlap = false;
-                            for (var j = 0; j < placed.length; j++) {
-                                var p = placed[j];
-                                if (!(nr.x + nr.w < p.x || nr.x > p.x + p.w || nr.y + nr.h < p.y || nr.y > p.y + p.h)) {
-                                    overlap = true;
-                                    break;
-                                }
-                            }
-                            if (!overlap) {
-                                ok = true;
-                                placed.push(nr);
-                                ctx.fillStyle = cloudColors[Math.floor(Math.random() * cloudColors.length)];
-                                ctx.font = 'bold ' + fontSize + 'px "맑은 고딕", Arial';
-                                ctx.fillText(word.text, cx, cy);
-                            }
-                        }
-                        angle += 0.5;
-                        radius += 1.2;
-                    }
-                }
-            }
-
-            function createNewCloud() {
-                drawWordCloud();
-            }
-
-            window.addEventListener('load', function() { drawWordCloud(); });
-            window.addEventListener('resize', function() { drawWordCloud(); });
+        function toggleCase(header) {
+            var body = header.nextElementSibling;
+            var toggle = header.querySelector('.case-toggle');
+            body.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
         </script>
 
-        <h2>9. 갈등 조정 신청서 양식</h2>
+        <h2 id="lawsearch">9. 법령·매뉴얼 검색</h2>
+        <p style="font-size: 14px; color: #7f8c8d; margin-bottom: 10px;">관련 법령과 교육부 매뉴얼의 주요 조항을 검색할 수 있습니다. 키워드 입력 또는 분류를 선택하세요.</p>
+        <div class="search-wrap">
+            <div class="search-row">
+                <input type="text" id="lawSearchInput" class="search-input" placeholder="예: 성폭력예방교육, 학교폭력, 업무분장, 교감..." oninput="runLawSearch()">
+            </div>
+            <div class="filter-btns">
+                <button class="filter-btn active" onclick="setFilter('전체', this)">전체</button>
+                <button class="filter-btn" onclick="setFilter('법령', this)">법령만</button>
+                <button class="filter-btn" onclick="setFilter('매뉴얼', this)">매뉴얼만</button>
+            </div>
+        </div>
+        <div id="lawResults"></div>
+
+        <script>
+        var currentFilter = '전체';
+        var lawDB = [
+            { id:1, category:'법령', name:'초·중등교육법', article:'제20조', title:'교직원의 임무',
+              content:'① 교장은 교무를 통할하고, 소속 교직원을 지도·감독하며, 학생을 교육한다.\n② 교감은 교장을 보좌하여 교무를 관리하고, 교장이 직무를 수행할 수 없을 때 그 직무를 대행한다.\n③ 수석교사는 교사의 교수·연구 활동을 지원하며, 학생을 교육한다.\n④ 교사는 법령에서 정하는 바에 따라 학생을 교육한다.\n⑤ 행정직원 등 직원은 법령에서 정하는 바에 따라 학교의 행정사무와 그 밖의 사무를 담당한다.',
+              tags:'교장 교감 교사 직무 업무분장 지도감독' },
+            { id:2, category:'법령', name:'국가공무원법', article:'제56조', title:'성실 의무',
+              content:'모든 공무원은 법령을 준수하며 성실히 직무를 수행하여야 한다.',
+              tags:'성실의무 직무 공무원 업무회피' },
+            { id:3, category:'법령', name:'국가공무원법', article:'제57조', title:'복종의 의무',
+              content:'공무원은 직무를 수행할 때 소속 상관의 직무상 명령에 복종하여야 한다.',
+              tags:'복종 상관 명령 절차 결재' },
+            { id:4, category:'법령', name:'교육공무원법', article:'제43조', title:'교원의 신분 보장',
+              content:'① 교원은 형의 선고, 징계처분 또는 이 법에서 정하는 사유에 의하지 아니하고는 그 의사에 반하여 휴직·강임 또는 면직을 당하지 아니한다.\n② 교원은 권고에 의하여 사직을 당하지 아니한다.',
+              tags:'신분보장 교원 징계 면직' },
+            { id:5, category:'법령', name:'성폭력방지 및 피해자보호 등에 관한 법률', article:'제5조', title:'성폭력 예방교육',
+              content:'① 각급 학교의 장은 대통령령으로 정하는 바에 따라 성교육 및 성폭력 예방교육을 실시하고, 그 결과를 여성가족부장관에게 제출하여야 한다.\n② 예방교육의 실시 주체는 학교 업무분장 상 명시된 담당 부서에서 수행하며, 보건교사 등 전문 인력이 있는 경우 이를 적극 활용한다.',
+              tags:'성폭력예방교육 보건교사 학부모교육 여성가족부 결과보고' },
+            { id:6, category:'법령', name:'학교폭력예방 및 대책에 관한 법률', article:'제14조', title:'전담기구 구성·운영',
+              content:'① 학교의 장은 학교폭력문제를 담당하는 전담기구를 구성·운영하여야 한다.\n② 전담기구는 교감, 전문상담교사, 보건교사 및 책임교사, 학부모 등으로 구성한다.\n③ 전담기구는 학교폭력 실태조사, 예방 프로그램 구성·실시, 신고 접수, 피해학생 관계개선 지원 등의 업무를 담당한다.',
+              tags:'학교폭력 전담기구 교감 보건교사 상담교사 책임교사 예방교육' },
+            { id:7, category:'법령', name:'학교폭력예방 및 대책에 관한 법률', article:'제20조', title:'학교폭력의 신고의무',
+              content:'① 학교폭력 현장을 보거나 그 사실을 알게 된 자는 학교 등 관계 기관에 이를 즉시 신고하여야 한다.\n② 신고를 받은 기관은 가·피해학생의 보호자와 소속 학교의 장에게 통보하여야 한다.',
+              tags:'학교폭력 신고의무 통보 보호자' },
+            { id:8, category:'법령', name:'교원의 지위 향상 및 교육활동 보호를 위한 특별법', article:'제2조', title:'국가 및 지방자치단체의 의무',
+              content:'국가와 지방자치단체는 교원이 사회적으로 존경받고 높은 긍지와 사명감을 가지고 교육활동을 할 수 있는 여건을 조성하도록 노력하여야 한다.',
+              tags:'교원 교육활동 여건조성 교권' },
+            { id:9, category:'법령', name:'교원의 지위 향상 및 교육활동 보호를 위한 특별법', article:'제15조', title:'교육활동 침해행위에 대한 조치',
+              content:'① 학교의 장은 교육활동 중인 교원에 대하여 교육활동 침해행위가 발생한 경우 즉시 관련 교원의 치유와 교권 회복에 필요한 조치를 하여야 한다.\n② 학교의 장은 조치를 신속하게 처리하고 교육활동이 원활히 이루어질 수 있도록 지원하여야 한다.',
+              tags:'교육활동 침해 교권 보호 조치' },
+            { id:10, category:'법령', name:'행정업무의 효율적 운영에 관한 규정', article:'제7조', title:'업무처리의 기본원칙',
+              content:'① 행정기관의 업무는 신속·정확하게 처리하여야 하며, 불필요한 절차나 단계를 최소화하여야 한다.\n② 행정기관의 장은 업무 처리에 있어 권한과 책임을 명확히 하고, 소속 직원에게 적절히 분담하여야 한다.',
+              tags:'업무처리 절차 권한 책임 분담 결재' },
+            { id:11, category:'매뉴얼', name:'교육부 학교폭력 사안처리 가이드북', article:'업무 분장 기준', title:'학교폭력 담당 업무 분장 지침',
+              content:'• 학교폭력 예방교육: 생활지도부(책임교사) 주관, 전 교사 협조\n• 사안 접수 및 초기 조치: 학교폭력 책임교사\n• 피해학생 지원: 전문상담교사(없는 경우 담임교사)\n• 보호자 통지: 담임교사 → 학교장 보고\n• 전담기구 회의 소집: 교감(전담기구장)\n• 교육청 보고: 교무부(교육행정정보시스템 입력)',
+              tags:'학교폭력 담당교사 전담기구 상담교사 교감 보고 생활지도부' },
+            { id:12, category:'매뉴얼', name:'교육부 성희롱·성폭력 예방교육 업무 매뉴얼', article:'학교 내 예방교육 실시 지침', title:'예방교육 담당 부서 및 절차',
+              content:'• 학생 대상 성폭력예방교육: 보건교사 주관 (연 1회 이상)\n• 교직원 대상 성희롱예방교육: 학교장 책임 하에 실시\n• 학부모 대상 교육: 학부모회 연계, 보건교사 강의 또는 외부 강사 활용\n• 결과 보고: 보건부에서 취합하여 교육청 제출\n• 전문 강사가 없는 경우 교육청 순회강사 지원 신청 가능',
+              tags:'성폭력예방교육 보건교사 학부모교육 교직원 결과보고 강사' },
+            { id:13, category:'매뉴얼', name:'교육부 교원 행정업무 경감 지침', article:'학교 업무분장 합리화', title:'업무 경감 및 분장 효율화 방안',
+              content:'• 교사의 행정업무는 교육활동 지원 범위로 한정\n• 각종 조사·통계 업무는 행정실과 이원화 처리\n• 동일 또는 유사 업무는 단일 부서 통합 처리\n• 부서 간 업무 경계 불명확 시 교무행정팀 조정\n• 연간 업무분장은 학기 초 교직원 협의를 통해 확정\n• 신규 업무 발생 시 즉시 업무분장 회의 소집',
+              tags:'업무경감 행정실 업무분장 교무행정팀 협의 교육활동' },
+            { id:14, category:'매뉴얼', name:'교육부 방과후학교 운영 가이드라인', article:'업무 담당 기준', title:'방과후학교 부서별 업무 분장',
+              content:'• 방과후학교 운영 총괄: 교무부(방과후학교 담당교사)\n• 강사 채용 및 계약: 행정실(계약 업무) + 교무부(선정 기준)\n• 수강신청 및 수납: 행정실\n• 교육과정 편성 및 수업 관리: 방과후학교 담당교사\n• 결과 보고 및 학부모 안내: 방과후학교 담당교사\n• 안전사고 처리: 보건교사 + 담임교사 협조',
+              tags:'방과후학교 행정실 강사 수강신청 교무부 운영 담당교사' },
+            { id:15, category:'매뉴얼', name:'교육부 학교업무협의체 운영 매뉴얼', article:'갈등 조정 절차', title:'업무 갈등 조정 및 협의 절차',
+              content:'• 1단계: 당사자 간 직접 협의 (24시간 내)\n• 2단계: 부서장 중재 (3일 내)\n• 3단계: 교무행정업무팀 조정 (1주일 내)\n• 조정 결과는 반드시 문서로 기록하고 전 교직원에게 공지\n• 반복되는 갈등은 업무분장표 수정을 통해 근본적 해결\n• 해결되지 않는 경우 교육청 장학사 자문 요청 가능',
+              tags:'갈등조정 업무분장 협의 교무행정팀 문서 교육청 장학사' }
+        ];
+
+        function setFilter(val, btn) {
+            currentFilter = val;
+            document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            runLawSearch();
+        }
+
+        function runLawSearch() {
+            var query = document.getElementById('lawSearchInput').value.trim().toLowerCase();
+            var results = lawDB.filter(function(item) {
+                if (currentFilter !== '전체' && item.category !== currentFilter) return false;
+                if (!query) return true;
+                var text = (item.name + ' ' + item.article + ' ' + item.title + ' ' + item.content + ' ' + item.tags).toLowerCase();
+                return query.split(' ').every(function(w) { return text.indexOf(w) !== -1; });
+            });
+            var container = document.getElementById('lawResults');
+            if (results.length === 0) {
+                container.innerHTML = '<div class="no-results">검색 결과가 없습니다. 다른 키워드로 검색해보세요.</div>';
+                return;
+            }
+            container.innerHTML = results.map(function(item) {
+                var badge = item.category === '법령'
+                    ? '<span class="law-badge badge-law">법령</span>'
+                    : '<span class="law-badge badge-manual">매뉴얼</span>';
+                return '<div class="law-item"><div class="law-item-header">' + badge +
+                    '<span class="law-name">' + item.name + '</span>' +
+                    '<span class="law-article">' + item.article + ' ' + item.title + '</span>' +
+                    '</div><div class="law-content">' + item.content + '</div></div>';
+            }).join('');
+        }
+
+        window.addEventListener('load', function() { runLawSearch(); });
+        </script>
+
+        <h2>10. 갈등 조정 신청서 양식</h2>
 
         <div class="box">
             <div class="box-title">갈등 조정 신청서</div>
