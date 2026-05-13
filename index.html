@@ -3,667 +3,579 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>초등학교 업무갈등 조정 실무 매뉴얼 사례 확장판</title>
+  <title>초등학교 업무갈등 조정 실무 매뉴얼 | 와석초등학교 학교업무협의체</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif;
-      background: #f4f3ff;
-      color: #1d1d2e;
-      line-height: 1.72;
-    }
-    .container {
-      max-width: 1040px;
-      margin: 24px auto 44px;
-      background: #fff;
-      border-radius: 18px;
-      box-shadow: 0 10px 36px rgba(69, 58, 168, 0.15);
-      overflow: hidden;
-    }
-    .hero {
-      background: linear-gradient(135deg, #6c5ce7, #8f84ff 60%, #15c0bb);
-      color: #fff;
-      padding: 40px 28px;
-      text-align: center;
-    }
-    .hero h1 {
-      margin: 0;
-      font-size: 30px;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-    }
-    .hero p {
-      margin: 12px 0 0;
-      opacity: 0.94;
-      font-size: 14px;
-    }
-    .content { padding: 26px 28px 40px; }
-    .quick-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      background: #f8f7ff;
-      border: 1px solid #e6e2ff;
-      padding: 12px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-    .quick-nav a {
-      text-decoration: none;
-      background: #fff;
-      border: 1px solid #d4ceff;
-      color: #5a4cd6;
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-    }
-    .quick-nav a:hover { background: #f0edff; }
-    h2 {
-      margin: 30px 0 12px;
-      padding: 10px 14px;
-      background: #f2f0ff;
-      border-left: 4px solid #6c5ce7;
-      border-radius: 0 10px 10px 0;
-      font-size: 20px;
-    }
-    h3 {
-      margin: 20px 0 10px;
-      color: #5a4cd6;
-      border-bottom: 2px dashed #d7d1ff;
-      padding-bottom: 6px;
-      font-size: 17px;
-    }
-    .box {
-      background: #f8f7ff;
-      border: 1px solid #e1dcff;
-      border-radius: 12px;
-      padding: 16px 18px;
-      margin: 12px 0;
-    }
-    .table-wrap { overflow-x: auto; }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 10px 0;
-      min-width: 760px;
-    }
-    th, td {
-      border: 1px solid #ebe8ff;
-      padding: 10px 11px;
-      vertical-align: top;
-      font-size: 14px;
-    }
-    th {
-      background: #6c5ce7;
-      color: #fff;
-      font-weight: 700;
-      text-align: left;
-    }
-    tr:nth-child(even) td { background: #fbfaff; }
-    .pill {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #fff;
-      background: #6c5ce7;
-    }
-    .pill.mid { background: #f39c12; }
-    details.case {
-      border: 1px solid #e5e1ff;
-      border-radius: 12px;
-      background: #fff;
-      margin: 10px 0;
-      overflow: hidden;
-    }
-    details.case summary {
-      list-style: none;
-      cursor: pointer;
-      padding: 13px 15px;
-      background: #f8f7ff;
-      font-weight: 700;
-      color: #372f89;
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-    }
-    details.case summary::-webkit-details-marker { display: none; }
-    .case-body { padding: 12px 15px 14px; }
-    .label {
-      color: #6c5ce7;
-      font-weight: 800;
-      margin-right: 8px;
-      font-size: 13px;
-    }
-    .flow {
-      border: 1px solid #d7d1ff;
-      border-radius: 12px;
-      background: #faf9ff;
-      padding: 12px 14px;
-      margin: 10px 0;
-    }
-    .flow ol { margin: 0; padding-left: 20px; }
-    .template {
-      border: 1px solid #d7f2e8;
-      border-left: 5px solid #19b57a;
-      background: #f2fff9;
-      border-radius: 0 10px 10px 0;
-      padding: 10px 12px;
-      margin: 8px 0;
-      font-size: 14px;
-      white-space: pre-line;
-    }
-    .case-tools {
-      background: #f8f7ff;
-      border: 1px solid #e1dcff;
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 12px;
-    }
-    .case-tools .row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-    .case-tools input, .case-tools select {
-      border: 1px solid #cdc6ff;
-      border-radius: 8px;
-      padding: 8px 10px;
-      font-size: 14px;
-      font-family: inherit;
-      color: #1d1d2e;
-    }
-    .case-tools input { min-width: 220px; flex: 1; }
-    .case-tools small { color: #605f7a; }
-    .copy-btn {
-      margin-left: 8px;
-      border: 1px solid #cfc8ff;
-      background: #fff;
-      color: #4d41be;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 3px 8px;
-      cursor: pointer;
-    }
-    .copy-btn:hover { background: #f2efff; }
-    .hidden-case { display: none; }
-    .ops-checklist {
-      border: 1px solid #d5f0e6;
-      border-left: 5px solid #20b57d;
-      background: #f4fff9;
-      border-radius: 0 12px 12px 0;
-      padding: 12px 14px;
-      margin: 16px 0;
-    }
-    .ops-checklist .group { margin: 10px 0; }
-    .ops-checklist label {
-      display: block;
-      margin: 6px 0;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    .ops-checklist button {
-      border: 1px solid #33ba89;
-      background: #20b57d;
-      color: #fff;
-      border-radius: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 8px 12px;
-      cursor: pointer;
-      margin-top: 6px;
-    }
-    .ops-checklist button:hover { filter: brightness(1.05); }
-    .summary-box {
-      width: 100%;
-      min-height: 120px;
-      margin-top: 10px;
-      border: 1px solid #c7e8dc;
-      border-radius: 8px;
-      font-family: inherit;
-      font-size: 14px;
-      padding: 9px 10px;
-      color: #1d1d2e;
-      background: #fff;
-    }
-    .toast {
-      position: fixed;
-      right: 14px;
-      bottom: 14px;
-      background: #2d2a55;
-      color: #fff;
-      padding: 8px 11px;
-      border-radius: 8px;
-      font-size: 12px;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: all 0.2s ease;
-      pointer-events: none;
-    }
-    .toast.show { opacity: 0.96; transform: translateY(0); }
-    .footer {
-      margin-top: 28px;
-      text-align: center;
-      color: #666;
-      font-size: 13px;
-      border-top: 1px solid #ece9ff;
-      padding-top: 18px;
-    }
-    @media (max-width: 760px) {
-      .hero h1 { font-size: 24px; }
-      .content { padding: 16px 14px 28px; }
-      table { min-width: 640px; }
-    }
+    body { font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif; }
+    html { scroll-behavior: smooth; }
+    .section-anchor { scroll-margin-top: 56px; }
+    .case-body { display: none; }
+    .case-body.open { display: block; }
+    .case-toggle { display: inline-block; transition: transform 0.22s; }
+    .case-toggle.open { transform: rotate(180deg); }
+    .law-content { white-space: pre-line; font-size: 13px; color: #475569; line-height: 1.75; }
+    @media print { .no-print { display: none !important; } }
   </style>
 </head>
-<body>
-  <div class="container">
-    <header class="hero">
-      <h1>초등학교 업무갈등 조정 실무 매뉴얼 사례 확장판</h1>
-      <p>집행요약 + 12개 사례 + 단계형 조정절차 + 현장 템플릿</p>
-    </header>
+<body class="bg-slate-50 text-slate-900">
 
-    <main class="content">
-      <nav class="quick-nav">
-        <a href="#summary">집행요약</a>
-        <a href="#principles">사례 설계 원칙</a>
-        <a href="#comparison">사례 비교표</a>
-        <a href="#cases">12개 사례 카드</a>
-        <a href="#flow">대표 조정 흐름</a>
-        <a href="#appendix">부록 템플릿</a>
-      </nav>
+<!-- Top bar -->
+<div class="bg-slate-800 text-slate-300 text-xs py-2 px-6 no-print">
+  <div class="max-w-5xl mx-auto flex items-center gap-2">
+    <span class="font-semibold text-white">와석초등학교 학교업무협의체</span>
+    <span class="opacity-40 mx-1">|</span>
+    <span>초등학교 업무갈등 조정 실무 매뉴얼</span>
+    <span class="opacity-40 mx-1">|</span>
+    <span class="opacity-60">2025 연구학교 일반화 자료</span>
+  </div>
+</div>
 
-      <section id="summary">
-        <h2>1. 집행요약</h2>
-        <div class="box">
-          제공된 매뉴얼의 기본 틀인 <strong>직접 협의 → 부서장 중재 → 조정위원회(공식 절차)</strong>를 유지하면서, 초등학교 현장에 필요한 법적 근거, 공식 지침, 조정 문안, 후속 점검표를 확장 반영했다.
-        </div>
-        <div class="box">
-          초등학교 실무에서 반복적으로 갈등이 커지는 영역은 다음 네 가지다.
-          <ul>
-            <li>주관 부서와 최종 책임선이 겹치는 업무(늘봄, 학교폭력, 감염병, 체험학습)</li>
-            <li>감정 대응이 앞서기 쉬운 갈등(민원, 괴롭힘, 근평·성과급)</li>
-            <li>학생 지원과 개인정보 보호가 충돌하는 사안(정서행동검사, 비대면 수업)</li>
-            <li>문서·결재·계약 책임이 분리된 사안(급식 검수, 보조금, 회계)</li>
-          </ul>
-        </div>
-        <div class="box">
-          사전 예방용 최소 문서 3종:
-          <ul>
-            <li><strong>업무분장 RACI표</strong> (결정·실행·협조·통지 책임 구분)</li>
-            <li><strong>민원 단일창구 운영표</strong> (접수·분류·회신 라인 고정)</li>
-            <li><strong>사안별 초기기록지</strong> (최초 인지·조치·보고 시각 문서화)</li>
-          </ul>
-        </div>
-      </section>
+<!-- Header -->
+<header class="bg-white border-b border-slate-200 py-10 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="flex items-center gap-2 mb-5">
+      <span class="bg-blue-900 text-white text-xs font-bold px-3 py-1 rounded tracking-wide">와석초등학교 학교업무협의체</span>
+      <span class="text-xs text-slate-400 border border-slate-200 px-2 py-1 rounded">연구학교 일반화 자료</span>
+    </div>
+    <h1 class="text-3xl font-black text-slate-900 leading-tight mb-3">
+      초등학교 업무갈등 조정<br>실무 매뉴얼
+    </h1>
+    <p class="text-slate-600 text-sm max-w-xl mb-4">
+      업무를 분석하고, 역할을 조정하며, 교육활동에 집중하는 학교를 위한 현장형 안내서
+    </p>
+    <p class="text-slate-400 text-xs max-w-2xl leading-relaxed">
+      본 자료는 와석초등학교 학교업무협의체 운영 경험을 바탕으로 초등학교에서 자주 발생하는 업무 갈등을 민주적으로 조정하기 위한 절차와 도구를 정리한 실무 매뉴얼입니다.
+    </p>
+    <div class="grid grid-cols-3 gap-3 mt-8 max-w-2xl">
+      <div class="border border-slate-200 rounded-lg p-4 bg-slate-50">
+        <p class="text-xs font-bold text-blue-900 mb-1">STEP 1</p>
+        <h3 class="font-bold text-slate-800 text-sm mb-1">업무 확인</h3>
+        <p class="text-xs text-slate-500">갈등 업무의 범위와 관련자를 정리합니다.</p>
+      </div>
+      <div class="border border-slate-200 rounded-lg p-4 bg-slate-50">
+        <p class="text-xs font-bold text-teal-700 mb-1">STEP 2</p>
+        <h3 class="font-bold text-slate-800 text-sm mb-1">역할 조정</h3>
+        <p class="text-xs text-slate-500">담당·협조 역할을 명확히 나눕니다.</p>
+      </div>
+      <div class="border border-slate-200 rounded-lg p-4 bg-slate-50">
+        <p class="text-xs font-bold text-slate-500 mb-1">STEP 3</p>
+        <h3 class="font-bold text-slate-800 text-sm mb-1">협의 기록</h3>
+        <p class="text-xs text-slate-500">결정 과정을 기록하고 공유합니다.</p>
+      </div>
+    </div>
+  </div>
+</header>
 
-      <section id="principles">
-        <h2>2. 사례 설계 원칙</h2>
-        <div class="box">
-          각 사례는 <strong>상황 파악 → 갈등 분류 → 근거 확인 → 조정 절차 → 결과 관리</strong> 흐름으로 정리했다.
-          바로 회의자료나 협의록 초안으로 전환할 수 있도록 모든 사례에 다음 항목을 포함했다.
-          <ul>
-            <li>법적·행정적 근거</li>
-            <li>권고 조정 절차</li>
-            <li>현장 적용용 예시 문안</li>
-            <li>리스크와 후속 체크리스트</li>
-          </ul>
-        </div>
-      </section>
+<!-- Navigation -->
+<nav class="bg-white border-b border-slate-200 sticky top-0 z-40 no-print">
+  <div class="max-w-5xl mx-auto px-6 flex overflow-x-auto">
+    <a href="#understanding" class="px-4 py-3 text-slate-600 hover:text-blue-900 hover:bg-slate-50 whitespace-nowrap border-b-2 border-transparent hover:border-blue-900 transition-colors text-xs font-medium">업무갈등 이해</a>
+    <a href="#procedure" class="px-4 py-3 text-slate-600 hover:text-blue-900 hover:bg-slate-50 whitespace-nowrap border-b-2 border-transparent hover:border-blue-900 transition-colors text-xs font-medium">갈등 조정 절차</a>
+    <a href="#tools" class="px-4 py-3 text-slate-600 hover:text-blue-900 hover:bg-slate-50 whitespace-nowrap border-b-2 border-transparent hover:border-blue-900 transition-colors text-xs font-medium">업무 분석 도구</a>
+    <a href="#roletable" class="px-4 py-3 text-slate-600 hover:text-blue-900 hover:bg-slate-50 whitespace-nowrap border-b-2 border-transparent hover:border-blue-900 transition-colors text-xs font-medium">역할 조정표</a>
+    <a href="#cases" class="px-4 py-3 text-slate-600 hover:text-blue-900 hover:bg-slate-50 whitespace-nowrap border-b-2 border-transparent hover:border-blue-900 transition-colors text-xs font-medium">학교 적용 사례</a>
+    <a href="#lawsearch" class="px-4 py-3 text-slate-600 hover:text-blue-900 hover:bg-slate-50 whitespace-nowrap border-b-2 border-transparent hover:border-blue-900 transition-colors text-xs font-medium">법령 검색</a>
+    <a href="#form" class="px-4 py-3 text-slate-600 hover:text-blue-900 hover:bg-slate-50 whitespace-nowrap border-b-2 border-transparent hover:border-blue-900 transition-colors text-xs font-medium">신청 서식</a>
+  </div>
+</nav>
 
-      <section id="comparison">
-        <h2>3. 사례 비교표 (12건)</h2>
-        <div class="table-wrap">
-          <table>
+<!-- Main -->
+<main class="max-w-5xl mx-auto px-6 py-10 space-y-10">
+
+  <!-- SECTION 1 -->
+  <section id="understanding" class="section-anchor">
+    <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+      <div class="border-l-4 border-blue-900 p-6">
+        <p class="text-xs font-bold text-blue-900 mb-1 tracking-widest">SECTION 01</p>
+        <h2 class="text-lg font-black text-slate-900 mb-1">업무갈등은 왜 생길까요?</h2>
+        <p class="text-slate-500 text-sm">업무 갈등은 사람의 문제가 아니라 구조와 소통의 문제에서 비롯됩니다.</p>
+      </div>
+      <div class="p-6 pt-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+          <div class="flex gap-4 p-4 border border-slate-100 rounded-lg hover:bg-slate-50">
+            <div class="text-3xl font-black text-slate-100 leading-none flex-shrink-0 select-none">01</div>
+            <div><h3 class="font-bold text-slate-800 text-sm mb-1">업무 중복</h3><p class="text-xs text-slate-600 leading-relaxed">같은 업무를 두 부서가 동시에 담당하거나, 공문이 여러 부서로 중복 시달됩니다.</p></div>
+          </div>
+          <div class="flex gap-4 p-4 border border-slate-100 rounded-lg hover:bg-slate-50">
+            <div class="text-3xl font-black text-slate-100 leading-none flex-shrink-0 select-none">02</div>
+            <div><h3 class="font-bold text-slate-800 text-sm mb-1">역할 불명확</h3><p class="text-xs text-slate-600 leading-relaxed">업무분장표에 담당자나 범위가 구체적으로 명시되지 않아 책임 소재가 모호합니다.</p></div>
+          </div>
+          <div class="flex gap-4 p-4 border border-slate-100 rounded-lg hover:bg-slate-50">
+            <div class="text-3xl font-black text-slate-100 leading-none flex-shrink-0 select-none">03</div>
+            <div><h3 class="font-bold text-slate-800 text-sm mb-1">업무 편중</h3><p class="text-xs text-slate-600 leading-relaxed">특정 부서나 교사에게 업무가 집중되어 과부하가 발생합니다.</p></div>
+          </div>
+          <div class="flex gap-4 p-4 border border-slate-100 rounded-lg hover:bg-slate-50">
+            <div class="text-3xl font-black text-slate-100 leading-none flex-shrink-0 select-none">04</div>
+            <div><h3 class="font-bold text-slate-800 text-sm mb-1">소통 부재</h3><p class="text-xs text-slate-600 leading-relaxed">공문·안내가 누락되거나 늦게 전달되어 협조 체계가 무너집니다.</p></div>
+          </div>
+        </div>
+        <div class="border-t border-slate-100 pt-6">
+          <h3 class="font-bold text-slate-800 mb-4 text-sm">학교업무협의체는 무엇을 하나요?</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="text-sm text-slate-600 leading-relaxed">
+              <p class="mb-3">학교업무협의체는 교원과 행정 직원이 함께 참여하여 업무 구조를 분석하고, 갈등을 민주적으로 조정하는 학교 내 협의 기구입니다.</p>
+              <p>일방적인 지시가 아닌 <strong class="text-slate-800">협의와 기록</strong>을 통해 지속 가능한 업무 분장을 만들어 나갑니다.</p>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="border-l-4 border-blue-900 pl-3 py-0.5"><strong class="text-slate-800">업무 실태 분석</strong> <span class="text-slate-500">— 현재 업무분장의 문제점 파악</span></div>
+              <div class="border-l-4 border-blue-900 pl-3 py-0.5"><strong class="text-slate-800">의견 수렴</strong> <span class="text-slate-500">— 관련 교직원의 입장 경청</span></div>
+              <div class="border-l-4 border-teal-600 pl-3 py-0.5"><strong class="text-slate-800">역할 조정 협의</strong> <span class="text-slate-500">— 담당·협조 역할 재분배</span></div>
+              <div class="border-l-4 border-teal-600 pl-3 py-0.5"><strong class="text-slate-800">갈등 중재</strong> <span class="text-slate-500">— 절차에 따른 공정한 조정</span></div>
+              <div class="border-l-4 border-slate-300 pl-3 py-0.5"><strong class="text-slate-800">결과 공유</strong> <span class="text-slate-500">— 조정 결과 문서화 및 전 교직원 안내</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="procedure" class="section-anchor">
+    <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+      <div class="border-l-4 border-teal-700 p-6">
+        <p class="text-xs font-bold text-teal-700 mb-1 tracking-widest">SECTION 02</p>
+        <h2 class="text-lg font-black text-slate-900 mb-1">갈등 조정 절차</h2>
+        <p class="text-slate-500 text-sm">다음 5단계에 따라 순서대로 조정합니다.</p>
+      </div>
+      <div class="px-6 pb-6 space-y-2">
+        <div class="flex gap-4 items-start p-4 bg-blue-50 border border-blue-100 rounded-lg">
+          <div class="w-7 h-7 rounded-full bg-blue-900 text-white text-xs font-black flex items-center justify-center flex-shrink-0 mt-0.5">1</div>
+          <div><h3 class="font-bold text-slate-900 text-sm">갈등 상황 확인</h3><p class="text-xs text-slate-600 mt-0.5 leading-relaxed">업무 갈등이 발생한 상황과 관련자를 파악합니다. 공문, 업무분장표, 관련 지침을 먼저 확인합니다.</p></div>
+        </div>
+        <div class="flex gap-4 items-start p-4 border border-slate-100 rounded-lg">
+          <div class="w-7 h-7 rounded-full bg-slate-600 text-white text-xs font-black flex items-center justify-center flex-shrink-0 mt-0.5">2</div>
+          <div><h3 class="font-bold text-slate-900 text-sm">관련 업무와 역할 정리</h3><p class="text-xs text-slate-600 mt-0.5 leading-relaxed">해당 업무의 범위를 정리하고, 현재 담당과 협조 역할이 어떻게 되어 있는지 확인합니다.</p></div>
+        </div>
+        <div class="flex gap-4 items-start p-4 border border-slate-100 rounded-lg">
+          <div class="w-7 h-7 rounded-full bg-slate-600 text-white text-xs font-black flex items-center justify-center flex-shrink-0 mt-0.5">3</div>
+          <div><h3 class="font-bold text-slate-900 text-sm">관련자 의견 듣기</h3><p class="text-xs text-slate-600 mt-0.5 leading-relaxed">갈등 당사자 양쪽의 의견을 각각 경청합니다. 비난보다는 업무 구조 관점에서 이야기를 나눕니다.</p></div>
+        </div>
+        <div class="flex gap-4 items-start p-4 border border-slate-100 rounded-lg">
+          <div class="w-7 h-7 rounded-full bg-teal-700 text-white text-xs font-black flex items-center justify-center flex-shrink-0 mt-0.5">4</div>
+          <div><h3 class="font-bold text-slate-900 text-sm">조정안 협의</h3><p class="text-xs text-slate-600 mt-0.5 leading-relaxed">역할 나누기 표를 활용하여 조정안을 함께 만듭니다. 관련 법령과 학교 규정을 근거로 확인합니다.</p></div>
+        </div>
+        <div class="flex gap-4 items-start p-4 border border-slate-100 rounded-lg">
+          <div class="w-7 h-7 rounded-full bg-teal-700 text-white text-xs font-black flex items-center justify-center flex-shrink-0 mt-0.5">5</div>
+          <div><h3 class="font-bold text-slate-900 text-sm">결과 기록 및 공유</h3><p class="text-xs text-slate-600 mt-0.5 leading-relaxed">조정 결과를 문서로 기록하고 전 교직원에게 공유합니다. 업무분장표에 반영하여 재발을 예방합니다.</p></div>
+        </div>
+        <div class="mt-4 p-4 bg-amber-50 border border-amber-100 rounded-lg text-xs text-amber-800">
+          <strong>참고:</strong> 당사자 간 협의가 어려운 경우, 부서장 중재 → 교무행정업무팀 조정 → 교육청 장학사 자문 순서로 단계를 높입니다.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="tools" class="section-anchor">
+    <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+      <div class="border-l-4 border-slate-600 p-6">
+        <p class="text-xs font-bold text-slate-500 mb-1 tracking-widest">SECTION 03</p>
+        <h2 class="text-lg font-black text-slate-900 mb-1">업무 분석 도구</h2>
+        <p class="text-slate-500 text-sm">관련자가 맡은 역할을 함께 확인하고, 업무가 어디에서 겹치거나 비어 있는지 살펴봅니다.</p>
+      </div>
+      <div class="px-6 pb-6">
+        <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">역할 나누기 표 (작성 예시)</h3>
+        <div class="overflow-x-auto mb-8">
+          <table class="w-full text-xs border-collapse">
             <thead>
-              <tr>
-                <th>사례 제목</th>
-                <th>갈등 유형</th>
-                <th>핵심 처방</th>
-                <th>난이도</th>
+              <tr class="bg-slate-800 text-white">
+                <th class="text-left px-3 py-2.5 font-semibold">업무 항목</th>
+                <th class="text-center px-3 py-2.5 font-semibold w-20">담당</th>
+                <th class="text-center px-3 py-2.5 font-semibold w-20">협조</th>
+                <th class="text-center px-3 py-2.5 font-semibold w-20">확인</th>
+                <th class="text-center px-3 py-2.5 font-semibold w-24">공유 대상</th>
+                <th class="text-left px-3 py-2.5 font-semibold">비고</th>
               </tr>
             </thead>
-            <tbody>
-              <tr><td>늘봄 수요 폭증으로 배정선 혼선</td><td>역할 모호성·자원배분</td><td>RACI 재설계, 학부모 단일 안내</td><td><span class="pill">상</span></td></tr>
-              <tr><td>학교폭력 자체해결 오판</td><td>절차 갈등·부서 조정</td><td>전담기구 선심의, 즉시 보호·보고</td><td><span class="pill">상</span></td></tr>
-              <tr><td>학부모 민원 단일창구 부재</td><td>위계 갈등·민원조정</td><td>교감 중심 단일창구, 반복민원 통합</td><td><span class="pill">상</span></td></tr>
-              <tr><td>정서행동검사 공유범위 갈등</td><td>개인정보·지원조정</td><td>최소 접근권한, 비공개 회의체</td><td><span class="pill">상</span></td></tr>
-              <tr><td>감염병 대응 판단 지연</td><td>안전·보건 의사결정</td><td>보건 권고 우선, 결정 당일 문서화</td><td><span class="pill">중상</span></td></tr>
-              <tr><td>특수교육 IEP 인력배치 갈등</td><td>역할 모호성·특수교육 자원</td><td>IEP 조기소집, 추가지원 요청</td><td><span class="pill">상</span></td></tr>
-              <tr><td>현장체험학습 인솔·안전계획 충돌</td><td>안전·계약·협업</td><td>구두변경 금지, 통합 점검회의</td><td><span class="pill">상</span></td></tr>
-              <tr><td>급식실 퇴근 후 지시·모욕</td><td>위계 갈등·괴롭힘</td><td>즉시 중단, 접촉규칙 재설계</td><td><span class="pill">상</span></td></tr>
-              <tr><td>식재료 대체납품 검수·대금 분쟁</td><td>계약 분쟁·책임선 충돌</td><td>격리검수, 서면변경, 대금보류 검토</td><td><span class="pill">상</span></td></tr>
-              <tr><td>근무성적평정·성과상여금 갈등</td><td>성과 분쟁·위계 갈등</td><td>근거자료 설명, 이의신청·재검토</td><td><span class="pill">중상</span></td></tr>
-              <tr><td>회계·보조금 내부신고 후 보복 의심</td><td>공익신고·보복 갈등</td><td>불이익 조치 유보, 보호절차 병행</td><td><span class="pill">상</span></td></tr>
-              <tr><td>비대면 수업 메신저 지시선 충돌</td><td>원격업무·개인정보·업무시간</td><td>플랫폼 통일, 응답시간 규칙화</td><td><span class="pill mid">중</span></td></tr>
+            <tbody class="text-slate-700">
+              <tr class="border-b border-slate-100 hover:bg-slate-50">
+                <td class="px-3 py-2.5">성폭력예방교육 (학생·교직원)</td>
+                <td class="px-3 py-2.5 text-center font-semibold text-blue-900">보건부</td>
+                <td class="px-3 py-2.5 text-center text-slate-500">인성부</td>
+                <td class="px-3 py-2.5 text-center text-slate-500">교감</td>
+                <td class="px-3 py-2.5 text-center text-slate-500">전 교직원</td>
+                <td class="px-3 py-2.5 text-slate-400">연 1회 이상</td>
+              </tr>
+              <tr class="border-b border-slate-100 hover:bg-slate-50 bg-slate-50">
+                <td class="px-3 py-2.5">학부모 대상 예방교육</td>
+                <td class="px-3 py-2.5 text-center font-semibold text-blue-900">보건부</td>
+                <td class="px-3 py-2.5 text-center text-slate-500">학부모회</td>
+                <td class="px-3 py-2.5 text-center text-slate-500">교장</td>
+                <td class="px-3 py-2.5 text-center text-slate-500">학부모 전원</td>
+                <td class="px-3 py-2.5 text-slate-400">인성부 협조</td>
+              </tr>
+              <tr><td class="px-3 py-2 text-slate-300 italic text-center text-xs" colspan="6">↑ 예시 행 / 실제 업무를 기입하여 활용하세요</td></tr>
             </tbody>
           </table>
         </div>
-      </section>
 
-      <section id="cases">
-        <h2>4. 사례 카드 상세</h2>
-        <div class="case-tools">
-          <div class="row">
-            <input id="caseSearchInput" type="text" placeholder="사례 검색 (예: 민원, 학교폭력, RACI)" oninput="applyCaseFilters()">
-          </div>
-          <div class="row">
-            <select id="typeFilter" onchange="applyCaseFilters()">
-              <option value="전체">유형 전체</option>
-              <option value="운영·배정">운영·배정</option>
-              <option value="학생보호·안전">학생보호·안전</option>
-              <option value="인사·책임">인사·책임</option>
-            </select>
-            <select id="difficultyFilter" onchange="applyCaseFilters()">
-              <option value="전체">난이도 전체</option>
-              <option value="상">상</option>
-              <option value="중상">중상</option>
-              <option value="중">중</option>
-            </select>
-          </div>
-          <small id="caseCount">표시 사례: 12건</small>
+        <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">조정 회의에서 활용할 수 있는 질문</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 mb-8">
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg"><p class="text-xs font-bold text-blue-900 mb-1">Q1</p><p class="text-sm text-slate-700">이 업무의 핵심 목적은 무엇인가요?</p></div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg"><p class="text-xs font-bold text-blue-900 mb-1">Q2</p><p class="text-sm text-slate-700">실제로 시간이 많이 드는 부분은 어디인가요?</p></div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg"><p class="text-xs font-bold text-teal-700 mb-1">Q3</p><p class="text-sm text-slate-700">혼자 처리하기 어려운 부분은 무엇인가요?</p></div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg"><p class="text-xs font-bold text-teal-700 mb-1">Q4</p><p class="text-sm text-slate-700">협조가 필요한 사람은 누구인가요?</p></div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg"><p class="text-xs font-bold text-slate-500 mb-1">Q5</p><p class="text-sm text-slate-700">다음에는 어떤 기준으로 나누면 좋을까요?</p></div>
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-lg"><p class="text-xs font-bold text-slate-500 mb-1">Q6</p><p class="text-sm text-slate-700">이 결정에 모두가 동의할 수 있나요?</p></div>
         </div>
 
-        <details class="case case-item" data-type="운영·배정" data-difficulty="상" data-keywords="늘봄 배정 RACI 학부모 안내">
-          <summary><span>사례 1. 늘봄 수요 폭증으로 배정선이 꼬인 사례</span><span>▼</span></summary>
-          <div class="case-body">
-            <p><span class="label">핵심 갈등</span>최종 배정권자·학부모 안내자가 불명확해 배정 기준이 부서별로 분리됨.</p>
-            <p><span class="label">권고 조정</span>당일 쟁점표 작성 후 신규배정 24시간 보류, 교감 주재로 RACI 확정, 3일 내 학교장 결재 후 단일 공지.</p>
-            <p><span class="label">예시 문안</span>“늘봄 배정 및 대기순위는 학교 운영기준에 따라 교감이 총괄하고, 문의는 늘봄전담실이 일괄 회신합니다.”
-              <button type="button" class="copy-btn" data-copy="늘봄 배정 및 대기순위는 학교 운영기준에 따라 교감이 총괄하고, 문의는 늘봄전담실이 일괄 회신합니다." onclick="copyExample(this)">복사</button></p>
+        <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">갈등 해결 체크리스트</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+          <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="checkbox" class="accent-blue-900"> 갈등 유형을 정확히 파악했는가?</label>
+          <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="checkbox" class="accent-blue-900"> 관련 규정과 선례를 검토했는가?</label>
+          <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="checkbox" class="accent-blue-900"> 당사자들의 의견을 골고루 들었는가?</label>
+          <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="checkbox" class="accent-blue-900"> 교육활동에 미치는 영향을 고려했는가?</label>
+          <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="checkbox" class="accent-blue-900"> 실현 가능한 해결책인가?</label>
+          <label class="flex items-center gap-2 text-sm text-slate-700 cursor-pointer"><input type="checkbox" class="accent-blue-900"> 동일 갈등 예방책도 마련했는가?</label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="roletable" class="section-anchor">
+    <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+      <div class="border-l-4 border-slate-400 p-6">
+        <p class="text-xs font-bold text-slate-400 mb-1 tracking-widest">SECTION 04</p>
+        <h2 class="text-lg font-black text-slate-900 mb-1">역할 조정표</h2>
+        <p class="text-slate-500 text-sm">학교 상황에 맞게 업무별 역할을 기입하여 활용하세요. 인쇄하여 회의 자료로 사용할 수 있습니다.</p>
+      </div>
+      <div class="px-6 pb-6 overflow-x-auto">
+        <table class="w-full text-xs border-collapse border border-slate-200">
+          <thead>
+            <tr class="bg-slate-100 text-slate-700">
+              <th class="border border-slate-200 px-3 py-2.5 text-left font-semibold w-8">#</th>
+              <th class="border border-slate-200 px-3 py-2.5 text-left font-semibold">업무 항목</th>
+              <th class="border border-slate-200 px-3 py-2.5 text-center font-semibold w-20">담당</th>
+              <th class="border border-slate-200 px-3 py-2.5 text-center font-semibold w-20">협조</th>
+              <th class="border border-slate-200 px-3 py-2.5 text-center font-semibold w-20">확인</th>
+              <th class="border border-slate-200 px-3 py-2.5 text-center font-semibold w-24">공유 대상</th>
+              <th class="border border-slate-200 px-3 py-2.5 text-left font-semibold">비고</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="hover:bg-slate-50"><td class="border border-slate-100 px-3 py-3 text-slate-300 text-center">1</td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td></tr>
+            <tr class="hover:bg-slate-50 bg-slate-50"><td class="border border-slate-100 px-3 py-3 text-slate-300 text-center">2</td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td></tr>
+            <tr class="hover:bg-slate-50"><td class="border border-slate-100 px-3 py-3 text-slate-300 text-center">3</td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td></tr>
+            <tr class="hover:bg-slate-50 bg-slate-50"><td class="border border-slate-100 px-3 py-3 text-slate-300 text-center">4</td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td></tr>
+            <tr class="hover:bg-slate-50"><td class="border border-slate-100 px-3 py-3 text-slate-300 text-center">5</td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td></tr>
+            <tr class="hover:bg-slate-50 bg-slate-50"><td class="border border-slate-100 px-3 py-3 text-slate-300 text-center">6</td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td></tr>
+            <tr class="hover:bg-slate-50"><td class="border border-slate-100 px-3 py-3 text-slate-300 text-center">7</td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td></tr>
+            <tr class="hover:bg-slate-50 bg-slate-50"><td class="border border-slate-100 px-3 py-3 text-slate-300 text-center">8</td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td><td class="border border-slate-100 px-3 py-3"></td></tr>
+          </tbody>
+        </table>
+        <p class="text-xs text-slate-400 mt-2">※ 이 표는 인쇄하여 회의 자료로 활용할 수 있습니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: 학교 적용 사례 -->
+  <section id="cases" class="section-anchor">
+    <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+      <div class="border-l-4 border-blue-900 p-6">
+        <p class="text-xs font-bold text-blue-900 mb-1 tracking-widest">SECTION 05</p>
+        <h2 class="text-lg font-black text-slate-900 mb-1">학교 적용 사례</h2>
+        <p class="text-slate-500 text-sm">제목을 클릭하면 세부 내용이 열립니다. 조정 과정과 관련 법령을 함께 확인하세요.</p>
+      </div>
+      <div class="px-6 pb-6">
+
+        <!-- 기존 사례 카테고리 -->
+        <div class="mb-6">
+          <div class="flex items-center gap-2 mb-3 pb-2 border-b border-slate-200">
+            <span class="w-2.5 h-2.5 rounded-full bg-blue-900 flex-shrink-0"></span>
+            <h3 class="font-bold text-slate-700 text-sm">업무 소유권·중복·과부하·절차 갈등</h3>
           </div>
-        </details>
 
-        <details class="case case-item" data-type="학생보호·안전" data-difficulty="상" data-keywords="학교폭력 전담기구 보호조치 교육지원청">
-          <summary><span>사례 2. 학교폭력 자체해결 오판 사례</span><span>▼</span></summary>
-          <div class="case-body">
-            <p><span class="label">핵심 갈등</span>담임 중심의 조기 종결 시도와 전담기구 정식처리 요구가 충돌.</p>
-            <p><span class="label">권고 조정</span>피해학생 보호조치 우선, 보호자 1차 통보 후 전담기구 사실확인, 자체해결 이견 시 교육지원청 라인 이관.</p>
-            <p><span class="label">예시 문안</span>“학급 생활지도와 별개로 전담기구 검토 절차를 진행하며, 보호조치는 즉시 시행합니다.”
-              <button type="button" class="copy-btn" data-copy="학급 생활지도와 별개로 전담기구 검토 절차를 진행하며, 보호조치는 즉시 시행합니다." onclick="copyExample(this)">복사</button></p>
+          <div class="border border-slate-200 rounded-lg mb-2 overflow-hidden">
+            <button onclick="toggleCase(this)" class="w-full flex items-center justify-between p-4 bg-slate-50 hover:bg-slate-100 text-left transition-colors gap-3">
+              <div class="flex items-center gap-3 min-w-0"><span class="text-xs font-black text-slate-300 flex-shrink-0">01</span><span class="font-semibold text-slate-800 text-sm truncate">성폭력예방교육 학부모 대상 담당 부서 갈등</span><span class="hidden sm:block text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded flex-shrink-0">업무 소유권</span></div>
+              <span class="case-toggle text-slate-400 text-xs flex-shrink-0">▼</span>
+            </button>
+            <div class="case-body px-4 pb-4 pt-3 bg-white border-t border-slate-100">
+              <div class="space-y-2">
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-blue-900 text-xs min-w-10 flex-shrink-0 pt-0.5">상황</span><span class="text-slate-700 text-xs leading-relaxed">여성가족부 공문으로 성폭력예방교육 실시 요구. 보건부는 "보건교사가 담당"을, 인성부는 "학부모 대상은 인성부 소관"을 주장하며 대립.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-amber-700 text-xs min-w-10 flex-shrink-0 pt-0.5">쟁점</span><span class="text-slate-700 text-xs leading-relaxed">성폭력방지법 제5조에 따른 교육 실시 주체가 불명확하고, 대상(학생·교직원·학부모)별 담당 부서 혼란 발생.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-teal-700 text-xs min-w-10 flex-shrink-0 pt-0.5">해결</span><span class="text-slate-700 text-xs leading-relaxed">교무행정업무팀에서 법령 및 공문 발신처 확인. 교직원 대상은 보건교사 단독, 학생·학부모 대상은 보건부 주관 + 인성부 협조 체계로 정리.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-slate-400 text-xs min-w-10 flex-shrink-0 pt-0.5">결과</span><span class="text-slate-700 text-xs leading-relaxed">업무분장표에 "성폭력예방교육 — 보건부 주관, 인성부 협조(학부모 연계)" 명시. 이후 동일 갈등 재발 없음.</span></div>
+                <div class="px-3 py-2.5 bg-blue-50 border-l-4 border-blue-900 rounded-r text-xs text-blue-800">📋 관련 법령: 성폭력방지 및 피해자보호 등에 관한 법률 제5조</div>
+              </div>
+            </div>
           </div>
-        </details>
 
-        <details class="case case-item" data-type="운영·배정" data-difficulty="상" data-keywords="민원 단일창구 반복민원 교감">
-          <summary><span>사례 3. 학부모 민원 단일창구 부재 사례</span><span>▼</span></summary>
-          <div class="case-body">
-            <p><span class="label">핵심 갈등</span>교사 개인 연락 경로로 민원이 분산돼 동일 사안이 증폭.</p>
-            <p><span class="label">권고 조정</span>교감이 단일창구 전환 선언, 담임은 사실확인서 중심 대응, 반복민원 통합번호 부여 및 회신기한 고지.</p>
-            <p><span class="label">예시 문안</span>“본 사안은 학교 대표 민원창구로 일원화하며 담임 개인 연락에는 응답하지 않습니다.”
-              <button type="button" class="copy-btn" data-copy="본 사안은 학교 대표 민원창구로 일원화하며 담임 개인 연락에는 응답하지 않습니다." onclick="copyExample(this)">복사</button></p>
+          <div class="border border-slate-200 rounded-lg mb-2 overflow-hidden">
+            <button onclick="toggleCase(this)" class="w-full flex items-center justify-between p-4 bg-slate-50 hover:bg-slate-100 text-left transition-colors gap-3">
+              <div class="flex items-center gap-3 min-w-0"><span class="text-xs font-black text-slate-300 flex-shrink-0">02</span><span class="font-semibold text-slate-800 text-sm truncate">디지털시민성교육 소관 부서 갈등</span><span class="hidden sm:block text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded flex-shrink-0">업무 소유권</span></div>
+              <span class="case-toggle text-slate-400 text-xs flex-shrink-0">▼</span>
+            </button>
+            <div class="case-body px-4 pb-4 pt-3 bg-white border-t border-slate-100">
+              <div class="space-y-2">
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-blue-900 text-xs min-w-10 flex-shrink-0 pt-0.5">상황</span><span class="text-slate-700 text-xs leading-relaxed">교육청 디지털시민성교육 공문 시달. 과학정보부는 "IT 관련이므로 우리 소관", 미래진로부는 "시민성·인성 교육이므로 진로부 소관"이라 주장.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-amber-700 text-xs min-w-10 flex-shrink-0 pt-0.5">쟁점</span><span class="text-slate-700 text-xs leading-relaxed">'디지털'(과학정보)이냐 '시민성'(인성·진로)이냐의 관점 차이로 갈등 심화.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-teal-700 text-xs min-w-10 flex-shrink-0 pt-0.5">해결</span><span class="text-slate-700 text-xs leading-relaxed">공문 본문 분석 결과 "디지털 환경에서의 시민 윤리·책임" 강조 확인. 미래진로부 주관, 과학정보부 기술 지원으로 역할 분리.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-slate-400 text-xs min-w-10 flex-shrink-0 pt-0.5">결과</span><span class="text-slate-700 text-xs leading-relaxed">미래진로부 주관, 과학정보부 기술 지원 협력 체계 구축. 업무분장표에 반영.</span></div>
+                <div class="px-3 py-2.5 bg-blue-50 border-l-4 border-blue-900 rounded-r text-xs text-blue-800">📋 관련 법령: 초·중등교육법 제20조, 제23조</div>
+              </div>
+            </div>
           </div>
-        </details>
 
-        <details class="case case-item" data-type="학생보호·안전" data-difficulty="상" data-keywords="정서행동검사 개인정보 비공개 협의체">
-          <summary><span>사례 4. 정서행동검사 결과 공유범위 갈등</span><span>▼</span></summary>
-          <div class="case-body">
-            <p><span class="label">핵심 갈등</span>학생 지원 필요성과 민감정보 최소공유 원칙 간 충돌.</p>
-            <p><span class="label">권고 조정</span>열람권한 최소화(학교장·담임·상담·보건), 비공개 협의체 운영, 메신저·회람 금지.</p>
-            <p><span class="label">예시 문안</span>“검사 결과는 지정 인원만 열람하며 대화방 공유 및 출력물 회람을 금지합니다.”
-              <button type="button" class="copy-btn" data-copy="검사 결과는 지정 인원만 열람하며 대화방 공유 및 출력물 회람을 금지합니다." onclick="copyExample(this)">복사</button></p>
+          <div class="border border-slate-200 rounded-lg mb-2 overflow-hidden">
+            <button onclick="toggleCase(this)" class="w-full flex items-center justify-between p-4 bg-slate-50 hover:bg-slate-100 text-left transition-colors gap-3">
+              <div class="flex items-center gap-3 min-w-0"><span class="text-xs font-black text-slate-300 flex-shrink-0">03</span><span class="font-semibold text-slate-800 text-sm truncate">학교폭력 예방교육 업무 중복</span><span class="hidden sm:block text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded flex-shrink-0">업무 중복</span></div>
+              <span class="case-toggle text-slate-400 text-xs flex-shrink-0">▼</span>
+            </button>
+            <div class="case-body px-4 pb-4 pt-3 bg-white border-t border-slate-100">
+              <div class="space-y-2">
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-blue-900 text-xs min-w-10 flex-shrink-0 pt-0.5">상황</span><span class="text-slate-700 text-xs leading-relaxed">학교폭력 예방교육 공문이 생활지도부·상담부로 각각 시달. 양 부서가 독립 계획을 수립해 동일 학생이 같은 교육을 두 번 받는 상황 발생.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-amber-700 text-xs min-w-10 flex-shrink-0 pt-0.5">쟁점</span><span class="text-slate-700 text-xs leading-relaxed">학교폭력예방법 제14조의 전담기구 운영 책임 소재 불명확. 예방교육과 사안처리 업무가 혼재.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-teal-700 text-xs min-w-10 flex-shrink-0 pt-0.5">해결</span><span class="text-slate-700 text-xs leading-relaxed">전담기구(학교폭력 책임교사) 중심으로 역할 재정비. 예방교육은 생활지도부 주관, 피해학생 개별 지원은 상담부 전담으로 분리.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-slate-400 text-xs min-w-10 flex-shrink-0 pt-0.5">결과</span><span class="text-slate-700 text-xs leading-relaxed">업무분장 수정 및 중복 교육 해소.</span></div>
+                <div class="px-3 py-2.5 bg-blue-50 border-l-4 border-blue-900 rounded-r text-xs text-blue-800">📋 관련 법령: 학교폭력예방 및 대책에 관한 법률 제14조</div>
+              </div>
+            </div>
           </div>
-        </details>
 
-        <details class="case case-item" data-type="학생보호·안전" data-difficulty="중상" data-keywords="감염병 보건 등교조정 학사운영">
-          <summary><span>사례 5. 감염병 대응 판단 갈등</span><span>▼</span></summary>
-          <div class="case-body">
-            <p><span class="label">핵심 갈등</span>보건 권고와 학사운영 부담이 충돌하면서 결정을 지연.</p>
-            <p><span class="label">권고 조정</span>보건 권고 우선, 결석률·접촉범위·돌봄영향 통합표 작성, 당일 결재 및 이중 공지(보건/학사 분리).</p>
-            <p><span class="label">예시 문안</span>“학생 안전을 우선해 등교조정을 시행하며 수업 대체안은 별도 안내드립니다.”
-              <button type="button" class="copy-btn" data-copy="학생 안전을 우선해 등교조정을 시행하며 수업 대체안은 별도 안내드립니다." onclick="copyExample(this)">복사</button></p>
+          <div class="border border-slate-200 rounded-lg mb-2 overflow-hidden">
+            <button onclick="toggleCase(this)" class="w-full flex items-center justify-between p-4 bg-slate-50 hover:bg-slate-100 text-left transition-colors gap-3">
+              <div class="flex items-center gap-3 min-w-0"><span class="text-xs font-black text-slate-300 flex-shrink-0">04</span><span class="font-semibold text-slate-800 text-sm truncate">방과후학교 행정 업무 과부하</span><span class="hidden sm:block text-xs bg-teal-100 text-teal-800 px-2 py-0.5 rounded flex-shrink-0">업무 과부하</span></div>
+              <span class="case-toggle text-slate-400 text-xs flex-shrink-0">▼</span>
+            </button>
+            <div class="case-body px-4 pb-4 pt-3 bg-white border-t border-slate-100">
+              <div class="space-y-2">
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-blue-900 text-xs min-w-10 flex-shrink-0 pt-0.5">상황</span><span class="text-slate-700 text-xs leading-relaxed">방과후학교 담당교사에게 강사 채용, 수강신청 관리, 비용 수납, 결과 보고, 민원 응대 전담. 학기 초 주 평균 추가 업무 15시간 이상 발생.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-amber-700 text-xs min-w-10 flex-shrink-0 pt-0.5">쟁점</span><span class="text-slate-700 text-xs leading-relaxed">업무분장 시 방과후 업무량 과소 평가. 행정실과의 역할 분담이 불명확하여 교사에게 행정 업무 집중.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-teal-700 text-xs min-w-10 flex-shrink-0 pt-0.5">해결</span><span class="text-slate-700 text-xs leading-relaxed">업무량 실태 조사 후 행정실 협의. 수강신청·비용 수납은 행정실, 강사 섭외·교육과정 운영은 교무부 담당교사로 이원화.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-slate-400 text-xs min-w-10 flex-shrink-0 pt-0.5">결과</span><span class="text-slate-700 text-xs leading-relaxed">방과후학교 업무 11개 항목을 업무분장표에 부서별 명시. 담당교사 초과 업무 70% 경감.</span></div>
+                <div class="px-3 py-2.5 bg-blue-50 border-l-4 border-blue-900 rounded-r text-xs text-blue-800">📋 관련 법령: 국가공무원법 제56조, 교육부 방과후학교 운영 가이드라인</div>
+              </div>
+            </div>
           </div>
-        </details>
 
-        <details class="case case-item" data-type="학생보호·안전" data-difficulty="상" data-keywords="특수교육 IEP 지원인력 교육지원청">
-          <summary><span>사례 6. 특수교육 IEP와 지원인력 배치 갈등</span><span>▼</span></summary>
-          <div class="case-body">
-            <p><span class="label">핵심 갈등</span>담임 요구(상시지원)와 특수교사 자원 한계가 충돌.</p>
-            <p><span class="label">권고 조정</span>지시가 아닌 IEP 회의로 의사결정, 수업·쉬는시간·급식시간 분리배치, 부족인력은 교육지원청 추가지원 검토.</p>
-            <p><span class="label">예시 문안</span>“지원시간 확대는 IEP 회의록과 교육지원청 지원 가능 범위를 반영해 확정합니다.”
-              <button type="button" class="copy-btn" data-copy="지원시간 확대는 IEP 회의록과 교육지원청 지원 가능 범위를 반영해 확정합니다." onclick="copyExample(this)">복사</button></p>
+          <div class="border border-slate-200 rounded-lg mb-2 overflow-hidden">
+            <button onclick="toggleCase(this)" class="w-full flex items-center justify-between p-4 bg-slate-50 hover:bg-slate-100 text-left transition-colors gap-3">
+              <div class="flex items-center gap-3 min-w-0"><span class="text-xs font-black text-slate-300 flex-shrink-0">05</span><span class="font-semibold text-slate-800 text-sm truncate">학교 행사 결재 절차 갈등</span><span class="hidden sm:block text-xs bg-slate-200 text-slate-600 px-2 py-0.5 rounded flex-shrink-0">절차 갈등</span></div>
+              <span class="case-toggle text-slate-400 text-xs flex-shrink-0">▼</span>
+            </button>
+            <div class="case-body px-4 pb-4 pt-3 bg-white border-t border-slate-100">
+              <div class="space-y-2">
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-blue-900 text-xs min-w-10 flex-shrink-0 pt-0.5">상황</span><span class="text-slate-700 text-xs leading-relaxed">체육부 주관 운동회 기안 시 교장 직결재 요청. 교무부에서 "담당부장→교감→교장 경유 원칙"을 주장. 준비 마감 임박으로 결재 지연 발생.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-amber-700 text-xs min-w-10 flex-shrink-0 pt-0.5">쟁점</span><span class="text-slate-700 text-xs leading-relaxed">전결규정 미비 및 부서 간 절차 공유 부족. 긴급 상황에서의 결재 처리 기준 없음.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-teal-700 text-xs min-w-10 flex-shrink-0 pt-0.5">해결</span><span class="text-slate-700 text-xs leading-relaxed">학교 전결규정 검토 후 행사 기안은 교감 전결 가능 항목 확인. 긴급 시 교감 전결 후 교장 사후 보고 절차 신설.</span></div>
+                <div class="flex gap-3 p-3 bg-slate-50 rounded border border-slate-100"><span class="font-bold text-slate-400 text-xs min-w-10 flex-shrink-0 pt-0.5">결과</span><span class="text-slate-700 text-xs leading-relaxed">전결규정에 행사 기안 항목 세분화. 이후 동일 사례 재발 방지.</span></div>
+                <div class="px-3 py-2.5 bg-blue-50 border-l-4 border-blue-900 rounded-r text-xs text-blue-800">📋 관련 법령: 국가공무원법 제57조, 행정업무의 효율적 운영에 관한 규정 제7조</div>
+              </div>
+            </div>
           </div>
-        </details>
-
-        <details class="case case-item" data-type="학생보호·안전" data-difficulty="상" data-keywords="현장체험학습 인솔 안전계획 계약변경">
-          <summary><span>사례 7. 현장체험학습 인솔·안전계획 충돌</span><span>▼</span></summary>
-          <div class="case-body">
-            <p><span class="label">핵심 갈등</span>안전책임과 계약책임이 분리돼 구두변경 관행이 발생.</p>
-            <p><span class="label">권고 조정</span>학년부 안전계획과 행정실 계약서류를 통합검토, 일정·차량 변경은 서면변경 전 승인 금지.</p>
-            <p><span class="label">예시 문안</span>“안전계획 재검토와 서면 계약변경 확인 전에는 일정 변경을 승인하지 않습니다.”
-              <button type="button" class="copy-btn" data-copy="안전계획 재검토와 서면 계약변경 확인 전에는 일정 변경을 승인하지 않습니다." onclick="copyExample(this)">복사</button></p>
-          </div>
-        </details>
-
-        <details class="case case-item" data-type="인사·책임" data-difficulty="상" data-keywords="급식실 괴롭힘 퇴근 후 지시 모욕">
-          <summary><span>사례 8. 급식실 퇴근 후 지시·모욕 갈등</span><span>▼</span></summary>
-          <div class="case-body">
-            <p><span class="label">핵심 갈등</span>근무시간 외 반복 지시와 공개 모욕이 괴롭힘 분쟁으로 확대.</p>
-            <p><span class="label">권고 조정</span>퇴근 후 과제·사진전송 즉시 중단, 지시 채널 단일화, 직무지도는 근무시간 내 표준절차로 전환.</p>
-            <p><span class="label">예시 문안</span>“퇴근 후 메신저 지시와 공개적 인격비하는 즉시 중단하며 모든 직무지도는 근무시간 내 절차를 따릅니다.”
-              <button type="button" class="copy-btn" data-copy="퇴근 후 메신저 지시와 공개적 인격비하는 즉시 중단하며 모든 직무지도는 근무시간 내 절차를 따릅니다." onclick="copyExample(this)">복사</button></p>
-          </div>
-        </details>
-
-        <details class="case case-item" data-type="인사·책임" data-difficulty="상" data-keywords="식재료 대체납품 검수 대금보류">
-          <summary><span>사례 9. 식재료 대체납품과 검수·대금 분쟁</span><span>▼</span></summary>
-          <div class="case-body">
-            <p><span class="label">핵심 갈등</span>급식 연속성 압박 때문에 대체납품을 무리하게 수용하려는 상황.</p>
-            <p><span class="label">권고 조정</span>물품을 조건부 격리하고 동일성·안전성 확인 후 처리, 서면 소명·변경절차 없으면 대금보류 검토.</p>
-            <p><span class="label">예시 문안</span>“대체납품 물품은 계약적합성 확인 전 검수 완료로 보지 않으며 대금지급은 서면 확인 후 결정합니다.”
-              <button type="button" class="copy-btn" data-copy="대체납품 물품은 계약적합성 확인 전 검수 완료로 보지 않으며 대금지급은 서면 확인 후 결정합니다." onclick="copyExample(this)">복사</button></p>
-          </div>
-        </details>
-
-        <details class="case case-item" data-type="인사·책임" data-difficulty="중상" data-keywords="근무성적평정 성과상여금 이의신청">
-          <summary><span>사례 10. 근무성적평정·성과상여금 갈등</span><span>▼</span></summary>
-          <div class="case-body">
-            <p><span class="label">핵심 갈등</span>평정 재량은 있으나 설명 부족으로 인사 불신이 누적.</p>
-            <p><span class="label">권고 조정</span>등급 통보와 근거 설명 분리, 당사자 추가증빙 접수, 필요 시 고충심사 라인 연계.</p>
-            <p><span class="label">예시 문안</span>“제출자료를 평정 기준과 대조해 재검토하고 결과를 서면으로 회신하겠습니다.”
-              <button type="button" class="copy-btn" data-copy="제출자료를 평정 기준과 대조해 재검토하고 결과를 서면으로 회신하겠습니다." onclick="copyExample(this)">복사</button></p>
-          </div>
-        </details>
-
-        <details class="case case-item" data-type="인사·책임" data-difficulty="상" data-keywords="내부신고 보복의심 인사평가 보호절차">
-          <summary><span>사례 11. 회계·보조금 내부신고 후 보복 의심 사례</span><span>▼</span></summary>
-          <div class="case-body">
-            <p><span class="label">핵심 갈등</span>신고 이후 인사·평가 변동이 보복으로 의심되는 상황.</p>
-            <p><span class="label">권고 조정</span>신고 직후 인사·평가 변경 유보, 인사결정 라인과 신고 인지 라인 분리, 외부 보호신청 안내 병행.</p>
-            <p><span class="label">예시 문안</span>“신고 이후 예정된 인사·평가 변경은 관련성 검토 완료 시까지 유보하며 필요 시 보호절차를 병행합니다.”
-              <button type="button" class="copy-btn" data-copy="신고 이후 예정된 인사·평가 변경은 관련성 검토 완료 시까지 유보하며 필요 시 보호절차를 병행합니다." onclick="copyExample(this)">복사</button></p>
-          </div>
-        </details>
-
-        <details class="case case-item" data-type="인사·책임" data-difficulty="중" data-keywords="비대면 수업 메신저 지시선 플랫폼 응답시간">
-          <summary><span>사례 12. 비대면 수업·메신저 지시선 충돌</span><span>▼</span></summary>
-          <div class="case-body">
-            <p><span class="label">핵심 갈등</span>긴급 상황에서 야간 지시와 학생 영상정보 처리기준이 동시에 무너짐.</p>
-            <p><span class="label">권고 조정</span>승인 플랫폼·발송권자·응답시간 규칙을 선확정하고 예외 승인기록 의무화.</p>
-            <p><span class="label">예시 문안</span>“학생 영상·사진은 승인된 플랫폼에서 교육목적 범위로만 사용하며 공지 응답은 운영시간 원칙을 따릅니다.”
-              <button type="button" class="copy-btn" data-copy="학생 영상·사진은 승인된 플랫폼에서 교육목적 범위로만 사용하며 공지 응답은 운영시간 원칙을 따릅니다." onclick="copyExample(this)">복사</button></p>
-          </div>
-        </details>
-      </section>
-
-      <section id="flow">
-        <h2>5. 대표 조정 절차 흐름</h2>
-
-        <h3>흐름 A: 역할·배정 갈등</h3>
-        <div class="flow">
-          <ol>
-            <li>갈등 인지 및 당일 사실표 작성</li>
-            <li>24시간 내 직접 협의</li>
-            <li>합의 시 업무분장표 수정 및 단일 안내</li>
-            <li>불합의 시 교감 중재회의 + RACI 확정</li>
-            <li>자원추가가 필요하면 학교장 승인 후 시행</li>
-            <li>4주 후 이행 점검</li>
-          </ol>
         </div>
 
-        <h3>흐름 B: 학교폭력 절차 갈등</h3>
-        <div class="flow">
-          <ol>
-            <li>의심사안 인지 즉시 보호조치</li>
-            <li>보호자 1차 통보</li>
-            <li>전담기구 사실확인</li>
-            <li>자체해결 가능 시 서면합의 + 2주·4주 점검</li>
-            <li>자체해결 불가 시 교육지원청 심의 요청</li>
-          </ol>
+        <!-- 운영과 배정 -->
+        <div class="mb-6">
+          <div class="flex items-center gap-2 mb-3 pb-2 border-b border-slate-200">
+            <span class="w-2.5 h-2.5 rounded-full bg-teal-600 flex-shrink-0"></span>
+            <h3 class="font-bold text-slate-700 text-sm">운영과 배정의 갈등</h3>
+            <span class="text-xs text-slate-400 ml-1">(작성 예정)</span>
+          </div>
+          <div class="border border-dashed border-slate-300 rounded-lg p-8 text-center">
+            <p class="text-slate-400 text-sm mb-1">사례를 추가할 예정입니다.</p>
+            <p class="text-slate-300 text-xs">늘봄 수요 폭증 · 학교폭력 자체해결 오판 · 학부모 민원 단일창구 · 정서행동검사 공유범위</p>
+          </div>
         </div>
 
-        <h3>흐름 C: 공익신고 후 보복 의심 갈등</h3>
-        <div class="flow">
-          <ol>
-            <li>신고 접수기록 보존</li>
-            <li>예정 인사·평가 변경 사전점검</li>
-            <li>불이익 가능성 있으면 조치 유보</li>
-            <li>외부 보호신청 안내 + 내부조정 병행</li>
-            <li>인사결정과 신고라인 분리, 1개월·3개월 추적 점검</li>
-          </ol>
+        <!-- 학생보호와 안전 -->
+        <div class="mb-6">
+          <div class="flex items-center gap-2 mb-3 pb-2 border-b border-slate-200">
+            <span class="w-2.5 h-2.5 rounded-full bg-amber-600 flex-shrink-0"></span>
+            <h3 class="font-bold text-slate-700 text-sm">학생보호와 안전의 갈등</h3>
+            <span class="text-xs text-slate-400 ml-1">(작성 예정)</span>
+          </div>
+          <div class="border border-dashed border-slate-300 rounded-lg p-8 text-center">
+            <p class="text-slate-400 text-sm mb-1">사례를 추가할 예정입니다.</p>
+            <p class="text-slate-300 text-xs">감염병 대응 · 특수교육 IEP · 현장체험학습 · 급식실 퇴근 후 지시·모욕</p>
+          </div>
         </div>
-      </section>
 
-      <section id="practical-checklist">
-        <h2>6. 체크형 실무 점검표</h2>
-        <div class="ops-checklist">
-          <div class="group">
-            <strong>초기 대응</strong>
-            <label><input type="checkbox" class="ops-item"> 갈등 발생 시각과 최초 인지자를 기록했다.</label>
-            <label><input type="checkbox" class="ops-item"> 24시간 내 직접 협의 일정을 잡았다.</label>
-            <label><input type="checkbox" class="ops-item"> 관련 문서(업무분장표/공문/회의록)를 확보했다.</label>
+        <!-- 인사와 책임 -->
+        <div class="mb-2">
+          <div class="flex items-center gap-2 mb-3 pb-2 border-b border-slate-200">
+            <span class="w-2.5 h-2.5 rounded-full bg-slate-500 flex-shrink-0"></span>
+            <h3 class="font-bold text-slate-700 text-sm">인사와 책임의 갈등</h3>
+            <span class="text-xs text-slate-400 ml-1">(작성 예정)</span>
           </div>
-          <div class="group">
-            <strong>중재 절차</strong>
-            <label><input type="checkbox" class="ops-item"> 단일 의사결정권자와 안내 책임자를 지정했다.</label>
-            <label><input type="checkbox" class="ops-item"> 합의 실패 시 관리자 중재회의를 소집했다.</label>
-            <label><input type="checkbox" class="ops-item"> 조정 결과를 문서화하고 공유했다.</label>
+          <div class="border border-dashed border-slate-300 rounded-lg p-8 text-center">
+            <p class="text-slate-400 text-sm mb-1">사례를 추가할 예정입니다.</p>
+            <p class="text-slate-300 text-xs">식재료 대체납품 · 근무성적평정 · 회계 내부신고 보복 · 비대면 수업 지시선</p>
           </div>
-          <div class="group">
-            <strong>사후 관리</strong>
-            <label><input type="checkbox" class="ops-item"> 2주 또는 4주 후 후속 점검 일정을 확정했다.</label>
-            <label><input type="checkbox" class="ops-item"> 재발 방지용 규칙(안내문/절차)을 업데이트했다.</label>
-          </div>
-          <button type="button" onclick="buildChecklistSummary()">체크 결과 요약 생성</button>
-          <textarea id="checklistSummary" class="summary-box" placeholder="버튼을 누르면 체크 결과 요약이 생성됩니다."></textarea>
         </div>
-      </section>
 
-      <section id="appendix">
-        <h2>7. 부록 템플릿 (현장 즉시 활용용)</h2>
+      </div>
+    </div>
+  </section>
 
-        <h3>가. 초등학교 업무분장 조정합의서(요약본)</h3>
-        <div class="template">[합의 대상 업무]
-- 업무명:
-- 갈등 당사 부서:
+  <!-- SECTION 6: 법령 검색 -->
+  <section id="lawsearch" class="section-anchor">
+    <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+      <div class="border-l-4 border-slate-600 p-6">
+        <p class="text-xs font-bold text-slate-500 mb-1 tracking-widest">SECTION 06</p>
+        <h2 class="text-lg font-black text-slate-900 mb-1">법령·매뉴얼 검색</h2>
+        <p class="text-slate-500 text-sm">관련 법령과 교육부 매뉴얼의 주요 조항을 검색할 수 있습니다.</p>
+      </div>
+      <div class="px-6 pb-6">
+        <div class="flex gap-2 mb-3">
+          <input type="text" id="lawSearchInput" class="flex-1 border border-slate-300 rounded-lg px-4 py-2 text-sm outline-none focus:border-blue-900 focus:ring-1 focus:ring-blue-200 transition-colors" placeholder="예: 성폭력예방교육, 학교폭력, 업무분장, 교감..." oninput="runLawSearch()">
+        </div>
+        <div class="flex gap-2 mb-5">
+          <button onclick="setFilter('전체', this)" class="filter-btn px-3 py-1.5 text-xs font-semibold rounded border border-blue-900 bg-blue-900 text-white">전체</button>
+          <button onclick="setFilter('법령', this)" class="filter-btn px-3 py-1.5 text-xs font-semibold rounded border border-slate-300 text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">법령만</button>
+          <button onclick="setFilter('매뉴얼', this)" class="filter-btn px-3 py-1.5 text-xs font-semibold rounded border border-slate-300 text-slate-600 hover:border-blue-900 hover:text-blue-900 transition-colors">매뉴얼만</button>
+        </div>
+        <div id="lawResults"></div>
+      </div>
+    </div>
+  </section>
 
-[합의 내용]
-- 최종 결정권자:
-- 실무 입력자:
-- 학부모 안내자:
-- 긴급 대체자:
+  <!-- SECTION 7: 갈등 조정 신청서 -->
+  <section id="form" class="section-anchor">
+    <div class="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+      <div class="border-l-4 border-slate-400 p-6">
+        <p class="text-xs font-bold text-slate-400 mb-1 tracking-widest">SECTION 07</p>
+        <h2 class="text-lg font-black text-slate-900 mb-1">갈등 조정 신청서</h2>
+        <p class="text-slate-500 text-sm">업무 갈등 조정 신청 시 아래 양식을 작성하여 교무행정업무팀에 제출하세요.</p>
+      </div>
+      <div class="px-6 pb-6 overflow-x-auto">
+        <table class="w-full border-collapse border border-slate-300 text-sm min-w-96">
+          <tbody>
+            <tr><th class="border border-slate-300 px-4 py-3 bg-slate-50 text-slate-700 font-semibold text-left text-xs w-28">신청일</th><td class="border border-slate-300 px-4 py-3" colspan="3">&nbsp;</td></tr>
+            <tr><th class="border border-slate-300 px-4 py-3 bg-slate-50 text-slate-700 font-semibold text-left text-xs">신청자</th><td class="border border-slate-300 px-4 py-3 text-xs text-slate-400">소속 부서:</td><th class="border border-slate-300 px-4 py-3 bg-slate-50 text-slate-700 font-semibold text-left text-xs w-20">성명</th><td class="border border-slate-300 px-4 py-3 text-xs text-slate-400">(인)</td></tr>
+            <tr><th class="border border-slate-300 px-4 py-3 bg-slate-50 text-slate-700 font-semibold text-left text-xs">갈등 업무명</th><td class="border border-slate-300 px-4 py-3" colspan="3">&nbsp;</td></tr>
+            <tr><th class="border border-slate-300 px-4 py-3 bg-slate-50 text-slate-700 font-semibold text-left text-xs">관련 부서</th><td class="border border-slate-300 px-4 py-3" colspan="3">&nbsp;</td></tr>
+            <tr><th class="border border-slate-300 px-4 py-3 bg-slate-50 text-slate-700 font-semibold text-left text-xs align-top">갈등 내용</th><td class="border border-slate-300 px-4 py-3 h-20" colspan="3">&nbsp;</td></tr>
+            <tr><th class="border border-slate-300 px-4 py-3 bg-slate-50 text-slate-700 font-semibold text-left text-xs align-top">당사자 의견</th><td class="border border-slate-300 px-4 py-3 h-20" colspan="3">&nbsp;</td></tr>
+            <tr><th class="border border-slate-300 px-4 py-3 bg-slate-50 text-slate-700 font-semibold text-left text-xs align-top">요청 사항</th><td class="border border-slate-300 px-4 py-3 h-14" colspan="3">&nbsp;</td></tr>
+            <tr><th class="border border-slate-300 px-4 py-3 bg-slate-50 text-slate-700 font-semibold text-left text-xs align-top" colspan="2">조정 결과</th><td class="border border-slate-300 px-4 py-3 h-14" colspan="2">&nbsp;</td></tr>
+            <tr><th class="border border-slate-300 px-4 py-3 bg-slate-50 text-slate-700 font-semibold text-left text-xs" colspan="2">조정자 확인</th><td class="border border-slate-300 px-4 py-3 text-xs text-slate-400" colspan="2">직위:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 성명:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (인)</td></tr>
+          </tbody>
+        </table>
+        <p class="text-xs text-slate-400 mt-3">※ 조정 신청서는 접수 후 7일 이내 처리를 원칙으로 합니다.</p>
+      </div>
+    </div>
+  </section>
 
-[이행 일정]
-- 시행일:
-- 1차 점검일:
-- 2차 점검일:</div>
+</main>
 
-        <h3>나. 괴롭힘 및 2차피해 조정서(요약본)</h3>
-        <div class="template">[즉시 중단 조치]
-- 중단 행위:
-- 접촉 제한 규칙:
-
-[보호 조치]
-- 피해자 보호 방식:
-- 분리 조치 여부:
-
-[재발 방지]
-- 교육 일정:
-- 사과/회복 절차:
-- 1개월 추적 점검:</div>
-
-        <h3>다. 민원 단일창구 통지문(요약본)</h3>
-        <div class="template">[민원 접수 원칙]
-- 동일 사안 단일 접수번호:
-- 접수 창구:
-- 중간 안내 기한:
-- 최종 회신 기한:
-
-[유의 사항]
-- 교사 개인 연락처 직접 응대 중단
-- 반복 민원 통합 관리 원칙 안내</div>
-      </section>
-
-      <footer class="footer">
-        초등학교 현장형 업무갈등 조정 실무 문서 | 사례 확장 반영본
-      </footer>
-    </main>
+<!-- Footer -->
+<footer class="border-t border-slate-200 bg-white mt-10 py-8 px-6 no-print">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between gap-4">
+    <div>
+      <p class="font-bold text-slate-800 text-sm mb-1">와석초등학교 학교업무협의체</p>
+      <p class="text-xs text-slate-500">초등학교 업무갈등 조정 실무 매뉴얼 | 2025 연구학교 일반화 자료</p>
+    </div>
+    <div class="text-right text-xs text-slate-400">
+      <p>본 자료는 학교 현장에서 자유롭게 활용할 수 있습니다.</p>
+    </div>
   </div>
-  <div id="toast" class="toast">복사되었습니다.</div>
-  <script>
-    function applyCaseFilters() {
-      var query = document.getElementById("caseSearchInput").value.trim().toLowerCase();
-      var type = document.getElementById("typeFilter").value;
-      var difficulty = document.getElementById("difficultyFilter").value;
-      var cases = document.querySelectorAll(".case-item");
-      var visibleCount = 0;
+</footer>
 
-      cases.forEach(function (item) {
-        var itemType = item.getAttribute("data-type");
-        var itemDifficulty = item.getAttribute("data-difficulty");
-        var text = (item.textContent + " " + item.getAttribute("data-keywords")).toLowerCase();
-        var matchesQuery = !query || text.indexOf(query) !== -1;
-        var matchesType = (type === "전체") || (itemType === type);
-        var matchesDifficulty = (difficulty === "전체") || (itemDifficulty === difficulty);
-        var show = matchesQuery && matchesType && matchesDifficulty;
-        item.classList.toggle("hidden-case", !show);
-        if (show) visibleCount += 1;
-      });
+<script>
+function toggleCase(btn) {
+  var body = btn.nextElementSibling;
+  var toggle = btn.querySelector('.case-toggle');
+  body.classList.toggle('open');
+  if (toggle) toggle.classList.toggle('open');
+}
 
-      document.getElementById("caseCount").textContent = "표시 사례: " + visibleCount + "건";
-    }
+var currentFilter = '전체';
+var lawDB = [
+  { id:1, category:'법령', name:'초·중등교육법', article:'제20조', title:'교직원의 임무',
+    content:'① 교장은 교무를 통할하고, 소속 교직원을 지도·감독하며, 학생을 교육한다.\n② 교감은 교장을 보좌하여 교무를 관리하고, 교장이 직무를 수행할 수 없을 때 그 직무를 대행한다.\n③ 교사는 법령에서 정하는 바에 따라 학생을 교육한다.\n④ 행정직원 등 직원은 법령에서 정하는 바에 따라 학교의 행정사무와 그 밖의 사무를 담당한다.',
+    tags:'교장 교감 교사 직무 업무분장 지도감독' },
+  { id:2, category:'법령', name:'국가공무원법', article:'제56조', title:'성실 의무',
+    content:'모든 공무원은 법령을 준수하며 성실히 직무를 수행하여야 한다.',
+    tags:'성실의무 직무 공무원 업무회피' },
+  { id:3, category:'법령', name:'국가공무원법', article:'제57조', title:'복종의 의무',
+    content:'공무원은 직무를 수행할 때 소속 상관의 직무상 명령에 복종하여야 한다.',
+    tags:'복종 상관 명령 절차 결재' },
+  { id:4, category:'법령', name:'교육공무원법', article:'제43조', title:'교원의 신분 보장',
+    content:'① 교원은 형의 선고, 징계처분 또는 이 법에서 정하는 사유에 의하지 아니하고는 그 의사에 반하여 휴직·강임 또는 면직을 당하지 아니한다.\n② 교원은 권고에 의하여 사직을 당하지 아니한다.',
+    tags:'신분보장 교원 징계 면직 인사' },
+  { id:5, category:'법령', name:'성폭력방지 및 피해자보호 등에 관한 법률', article:'제5조', title:'성폭력 예방교육',
+    content:'① 각급 학교의 장은 대통령령으로 정하는 바에 따라 성교육 및 성폭력 예방교육을 실시하고, 그 결과를 여성가족부장관에게 제출하여야 한다.\n② 예방교육의 실시 주체는 학교 업무분장 상 명시된 담당 부서에서 수행하며, 보건교사 등 전문 인력이 있는 경우 이를 적극 활용한다.',
+    tags:'성폭력예방교육 보건교사 학부모교육 여성가족부 결과보고' },
+  { id:6, category:'법령', name:'학교폭력예방 및 대책에 관한 법률', article:'제14조', title:'전담기구 구성·운영',
+    content:'① 학교의 장은 학교폭력문제를 담당하는 전담기구를 구성·운영하여야 한다.\n② 전담기구는 교감, 전문상담교사, 보건교사 및 책임교사, 학부모 등으로 구성한다.\n③ 전담기구는 학교폭력 실태조사, 예방 프로그램 구성·실시, 신고 접수, 피해학생 관계개선 지원 등의 업무를 담당한다.',
+    tags:'학교폭력 전담기구 교감 보건교사 상담교사 책임교사 예방교육' },
+  { id:7, category:'법령', name:'학교폭력예방 및 대책에 관한 법률', article:'제13조의2', title:'학교폭력 자체해결',
+    content:'① 피해학생 및 그 보호자가 심의위원회 개최를 원하지 않고, 학교폭력이 경미한 경우 학교의 장은 학교폭력을 자체적으로 해결할 수 있다.\n② 자체해결 요건: 2주 이상의 신체적·정신적 치료 진단서 미발급, 재산상 피해 없음, 지속·반복성 없음.',
+    tags:'학교폭력 자체해결 경미 피해학생 심의위원회' },
+  { id:8, category:'법령', name:'교원의 지위 향상 및 교육활동 보호를 위한 특별법', article:'제15조', title:'교육활동 침해행위에 대한 조치',
+    content:'① 학교의 장은 교육활동 중인 교원에 대하여 교육활동 침해행위가 발생한 경우 즉시 관련 교원의 치유와 교권 회복에 필요한 조치를 하여야 한다.',
+    tags:'교육활동 침해 교권 보호 조치 모욕' },
+  { id:9, category:'법령', name:'행정업무의 효율적 운영에 관한 규정', article:'제7조', title:'업무처리의 기본원칙',
+    content:'① 행정기관의 업무는 신속·정확하게 처리하여야 하며, 불필요한 절차나 단계를 최소화하여야 한다.\n② 행정기관의 장은 업무 처리에 있어 권한과 책임을 명확히 하고, 소속 직원에게 적절히 분담하여야 한다.',
+    tags:'업무처리 절차 권한 책임 분담 결재' },
+  { id:10, category:'법령', name:'학교보건법', article:'제11조', title:'감염병 예방조치',
+    content:'① 학교의 장은 감염병 예방을 위하여 학생·교직원에 대한 예방접종 실시 등 필요한 조치를 하여야 한다.\n② 보건교사는 감염병 의심자 등교 중지 조치를 할 수 있으며, 이 경우 지체 없이 학교의 장에게 보고하여야 한다.',
+    tags:'감염병 보건교사 등교중지 예방 학교보건 안전' },
+  { id:11, category:'법령', name:'장애인 등에 대한 특수교육법', article:'제22조', title:'개별화교육',
+    content:'① 각급학교의 장은 특수교육대상자에 대하여 특수교육교원 및 관련 서비스 담당 인력으로 구성된 개별화교육지원팀을 구성하여야 한다.\n② 개별화교육지원팀은 매 학기마다 개별화교육계획을 작성하고, 특수교육대상자의 교육활동에 참여하는 교원이 이를 이행하도록 지원하여야 한다.',
+    tags:'특수교육 IEP 개별화교육 통합교육 특수학급 일반교사' },
+  { id:12, category:'법령', name:'부패방지 및 국민권익위원회의 설치와 운영에 관한 법률', article:'제62조', title:'신고자 보호',
+    content:'① 부패행위를 신고한 자는 그 신고를 이유로 해임·징계·전보 등 불이익 조치를 받지 아니한다.\n② 누구든지 신고자에게 불이익 조치를 하거나 하도록 요구하여서는 아니 된다.',
+    tags:'공익신고 내부신고 보복 불이익 부패방지 회계' },
+  { id:13, category:'법령', name:'공익신고자 보호법', article:'제2조·제15조', title:'공익신고자 보호',
+    content:'• 공익신고자란 공익침해행위를 신고하거나 제보한 자를 말한다.\n• 신고를 이유로 한 불이익 조치(해고, 전보, 징계, 감봉, 따돌림 등)는 금지된다.\n• 불이익 조치를 받은 경우 국민권익위원회에 보호 조치를 신청할 수 있다.',
+    tags:'공익신고자 보호 불이익 내부신고 회계 보복' },
+  { id:14, category:'매뉴얼', name:'교육부 학교폭력 사안처리 가이드북', article:'업무 분장 기준', title:'학교폭력 담당 업무 분장 지침',
+    content:'• 학교폭력 예방교육: 생활지도부(책임교사) 주관, 전 교사 협조\n• 사안 접수 및 초기 조치: 학교폭력 책임교사\n• 피해학생 지원: 전문상담교사(없는 경우 담임교사)\n• 보호자 통지: 담임교사 → 학교장 보고\n• 전담기구 회의 소집: 교감(전담기구장)',
+    tags:'학교폭력 담당교사 전담기구 상담교사 교감 보고 생활지도부' },
+  { id:15, category:'매뉴얼', name:'교육부 방과후학교 운영 가이드라인', article:'업무 담당 기준', title:'방과후학교 부서별 업무 분장',
+    content:'• 방과후학교 운영 총괄: 교무부(방과후학교 담당교사)\n• 강사 채용 및 계약: 행정실(계약 업무) + 교무부(선정 기준)\n• 수강신청 및 수납: 행정실\n• 교육과정 편성 및 수업 관리: 방과후학교 담당교사',
+    tags:'방과후학교 행정실 강사 수강신청 교무부 운영 담당교사' },
+  { id:16, category:'매뉴얼', name:'교육부 늘봄학교 운영 길라잡이', article:'배정 기준 및 운영 절차', title:'늘봄학교 수요 조사 및 배정 원칙',
+    content:'• 수요 조사는 학기 전 2주 이내 실시\n• 배정 우선순위: ① 한부모·저소득 가정 ② 맞벌이 가정 ③ 일반 신청 순\n• 수용 인원 초과 시 우선순위 기준을 문서로 공지\n• 배정 결과는 학부모에게 개별 통보',
+    tags:'늘봄학교 배정 수요 우선순위 맞벌이 한부모 운영' },
+  { id:17, category:'매뉴얼', name:'교육부 교원 행정업무 경감 지침', article:'학교 업무분장 합리화', title:'업무 경감 및 분장 효율화 방안',
+    content:'• 교사의 행정업무는 교육활동 지원 범위로 한정\n• 각종 조사·통계 업무는 행정실과 이원화 처리\n• 동일 또는 유사 업무는 단일 부서 통합 처리\n• 부서 간 업무 경계 불명확 시 교무행정팀 조정',
+    tags:'업무경감 행정실 업무분장 교무행정팀 협의 교육활동' },
+  { id:18, category:'매뉴얼', name:'교육부 학교업무협의체 운영 매뉴얼', article:'갈등 조정 절차', title:'업무 갈등 조정 및 협의 절차',
+    content:'• 1단계: 당사자 간 직접 협의 (24시간 내)\n• 2단계: 부서장 중재 (3일 내)\n• 3단계: 교무행정업무팀 조정 (1주일 내)\n• 조정 결과는 반드시 문서로 기록하고 전 교직원에게 공지\n• 해결되지 않는 경우 교육청 장학사 자문 요청 가능',
+    tags:'갈등조정 업무분장 협의 교무행정팀 문서 교육청 장학사' }
+];
 
-    function copyExample(button) {
-      var text = button.getAttribute("data-copy");
-      navigator.clipboard.writeText(text).then(function () {
-        showToast("예시 문안을 복사했습니다.");
-      }).catch(function () {
-        showToast("복사에 실패했습니다.");
-      });
-    }
+function setFilter(val, btn) {
+  currentFilter = val;
+  document.querySelectorAll('.filter-btn').forEach(function(b) {
+    b.classList.remove('bg-blue-900', 'text-white', 'border-blue-900');
+    b.classList.add('border-slate-300', 'text-slate-600');
+  });
+  btn.classList.remove('border-slate-300', 'text-slate-600');
+  btn.classList.add('bg-blue-900', 'text-white', 'border-blue-900');
+  runLawSearch();
+}
 
-    function showToast(message) {
-      var toast = document.getElementById("toast");
-      toast.textContent = message;
-      toast.classList.add("show");
-      window.setTimeout(function () {
-        toast.classList.remove("show");
-      }, 1500);
-    }
-
-    function buildChecklistSummary() {
-      var checked = document.querySelectorAll(".ops-item:checked");
-      var total = document.querySelectorAll(".ops-item").length;
-      var lines = [];
-      lines.push("[갈등 조정 점검 요약]");
-      lines.push("- 점검일: " + new Date().toLocaleDateString("ko-KR"));
-      lines.push("- 완료 항목: " + checked.length + "/" + total);
-      lines.push("");
-      if (checked.length > 0) {
-        lines.push("[완료 항목]");
-        checked.forEach(function (item, idx) {
-          var text = item.parentElement.textContent.trim();
-          lines.push((idx + 1) + ". " + text);
-        });
-      } else {
-        lines.push("완료된 항목이 없습니다.");
-      }
-      document.getElementById("checklistSummary").value = lines.join("\n");
-    }
-  </script>
+function runLawSearch() {
+  var query = document.getElementById('lawSearchInput').value.trim().toLowerCase();
+  var results = lawDB.filter(function(item) {
+    if (currentFilter !== '전체' && item.category !== currentFilter) return false;
+    if (!query) return true;
+    var text = (item.name + ' ' + item.article + ' ' + item.title + ' ' + item.content + ' ' + item.tags).toLowerCase();
+    return query.split(' ').every(function(w) { return text.indexOf(w) !== -1; });
+  });
+  var container = document.getElementById('lawResults');
+  if (results.length === 0) {
+    container.innerHTML = '<div class="py-8 text-center text-slate-400 text-sm">검색 결과가 없습니다. 다른 키워드로 검색해보세요.</div>';
+    return;
+  }
+  container.innerHTML = results.map(function(item) {
+    var badge = item.category === '법령'
+      ? '<span class="inline-block text-xs font-bold bg-blue-900 text-white px-2 py-0.5 rounded mr-2">법령</span>'
+      : '<span class="inline-block text-xs font-bold bg-teal-700 text-white px-2 py-0.5 rounded mr-2">매뉴얼</span>';
+    return '<div class="border border-slate-200 rounded-lg mb-2 p-4 hover:bg-slate-50 transition-colors">' +
+      '<div class="flex flex-wrap items-baseline gap-1 mb-2">' + badge +
+      '<span class="font-semibold text-slate-800 text-sm">' + item.name + '</span>' +
+      '<span class="text-slate-400 text-xs ml-1">' + item.article + ' ' + item.title + '</span>' +
+      '</div><div class="law-content">' + item.content + '</div></div>';
+  }).join('');
+}
+window.addEventListener('load', function() { runLawSearch(); });
+</script>
 </body>
 </html>
